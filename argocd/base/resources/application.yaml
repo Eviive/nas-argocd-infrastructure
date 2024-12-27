@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps
+  name: infrastructure-apps
 spec:
   source:
-    path: apps/overlays/production
+    path: apps/overlays/$OVERLAY
   destination:
     namespace: argocd

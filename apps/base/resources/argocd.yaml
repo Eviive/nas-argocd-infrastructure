@@ -4,6 +4,6 @@ metadata:
   name: argocd
 spec:
   source:
-    path: argocd/overlays/production
+    path: argocd/overlays/$OVERLAY
   destination:
     namespace: argocd

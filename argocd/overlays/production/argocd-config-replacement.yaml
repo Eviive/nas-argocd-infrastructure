@@ -1,0 +1,12 @@
+source:
+  kind: ConfigMap
+  name: argocd-config
+  fieldPath: data.folder
+targets:
+  - select:
+      kind: Application
+    fieldPaths:
+      - spec.source.path
+    options:
+      delimiter: /
+      index: 2

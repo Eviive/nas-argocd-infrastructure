@@ -6,9 +6,12 @@ patches:
   - path: application.yaml
     target:
       kind: Application
-  - patch: |-
-      - op: replace
-        path: /spec/destinations/0/server
-        value: https://kubernetes.default.svc
+  - path: project.yaml
     target:
       kind: AppProject
+  - path: configmap.yml
+    target:
+      kind: ConfigMap
+      name: argocd-config
+replacements:
+  - path: argocd-config-replacement.yaml

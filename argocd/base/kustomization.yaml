@@ -4,6 +4,7 @@ namespace: argocd
 resources:
   - resources/application.yaml
   - resources/project.yaml
+  - resources/configmap.yml
 patches:
   - path: application.yaml
     target:
@@ -11,3 +12,6 @@ patches:
   - path: project.yaml
     target:
       kind: AppProject
+  - path: configmap.yml
+    target:
+      kind: ConfigMap

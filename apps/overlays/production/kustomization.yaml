@@ -6,3 +6,9 @@ patches:
   - path: application.yaml
     target:
       kind: Application
+  - path: configmap.yml
+    target:
+      kind: ConfigMap
+      name: infrastructure-apps-config
+replacements:
+  - path: infrastructure-apps-config-replacement.yaml
