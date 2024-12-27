@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+patches:
+  - path: application.yaml
+    target:
+      kind: Application
+  - patch: |-
+      - op: replace
+        path: /spec/destinations/0/server
+        value: https://kubernetes.default.svc
+    target:
+      kind: AppProject
