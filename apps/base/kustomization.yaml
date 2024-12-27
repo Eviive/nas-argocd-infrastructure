@@ -8,6 +8,3 @@ patches:
   - path: application.yaml
     target:
       kind: Application
-  - path: configmap.yml
-    target:
-      kind: ConfigMap

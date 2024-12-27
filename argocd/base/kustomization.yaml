@@ -12,6 +12,3 @@ patches:
   - path: project.yaml
     target:
       kind: AppProject
-  - path: configmap.yml
-    target:
-      kind: ConfigMap
