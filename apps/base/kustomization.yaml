@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: argocd
 resources:
   - resources/argocd.yaml
-  - resources/configmap.yml
+  - resources/configmap.yaml
 patches:
   - path: application.yaml
     target:

@@ -9,7 +9,7 @@ patches:
   - path: project.yaml
     target:
       kind: AppProject
-  - path: configmap.yml
+  - path: configmap.yaml
     target:
       kind: ConfigMap
       name: argocd-config
