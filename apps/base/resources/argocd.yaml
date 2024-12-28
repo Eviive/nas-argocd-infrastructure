@@ -5,5 +5,3 @@ metadata:
 spec:
   source:
     path: argocd/$OVERLAY
-  destination:
-    namespace: argocd

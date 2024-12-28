@@ -8,6 +8,8 @@ spec:
   project: infrastructure
   source:
     targetRevision: '*.*.*'
+  destination:
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
