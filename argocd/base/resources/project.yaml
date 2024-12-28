@@ -8,3 +8,9 @@ spec:
     - '*'
   destinations:
     - namespace: '*'
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
