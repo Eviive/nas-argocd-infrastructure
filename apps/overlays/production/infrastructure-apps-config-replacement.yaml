@@ -1,7 +1,7 @@
 source:
   kind: ConfigMap
   name: infrastructure-apps-config
-  fieldPath: data.folder
+  fieldPath: data.path
 targets:
   - select:
       kind: Application
@@ -9,4 +9,4 @@ targets:
       - spec.source.path
     options:
       delimiter: /
-      index: 2
+      index: 1

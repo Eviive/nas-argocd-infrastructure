@@ -4,6 +4,6 @@ metadata:
   name: infrastructure-apps
 spec:
   source:
-    path: apps/overlays/$OVERLAY
+    path: apps/$OVERLAY
   destination:
     namespace: argocd

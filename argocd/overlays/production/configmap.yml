@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: argocd-config
 data:
-  folder: 'production'
+  path: 'overlays/production'
