@@ -12,6 +12,6 @@ patches:
   - path: configmap.yaml
     target:
       kind: ConfigMap
-      name: argocd-config
+      name: argocd-cm
 replacements:
-  - path: argocd-config-replacement.yaml
+  - path: argocd-cm-replacement.yaml

@@ -1,0 +1,9 @@
+replicaCount: 1
+strategyType: RollingUpdate
+image:
+  repository: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+nfs:
+  reclaimPolicy: Retain
+storageClass:
+  create: false
+  provisionerName: nfs-provisioner

@@ -1,6 +1,6 @@
 source:
   kind: ConfigMap
-  name: argocd-config
+  name: argocd-cm
   fieldPath: data.path
 targets:
   - select:

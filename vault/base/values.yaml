@@ -1,0 +1,44 @@
+global:
+  enabled: true
+  namespace: vault
+  tlsDisable: true
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 250m
+    limits:
+      memory: 256Mi
+      cpu: 250m
+
+server:
+  image:
+    repository: "hashicorp/vault"
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: 500m
+    limits:
+      memory: 1Gi
+      cpu: 1000m
+  readinessProbe:
+    enabled: true
+    path: "/v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204"
+  livenessProbe:
+    enabled: true
+    path: "/v1/sys/health?standbyok=true"
+    initialDelaySeconds: 60
+  extraEnvironmentVars:
+    VAULT_CACERT: /vault/userconfig/tls-ca/ca.crt
+  extraVolumes:
+    - type: secret
+      name: tls-server
+    - type: secret
+      name: tls-ca
+  dataStorage:
+    enabled: true
+    storageClass: vault-nfs-storage-class
+  auditStorage:
+    enabled: true
+    storageClass: vault-nfs-storage-class
+  standalone:
+    enabled: false

@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: nfs-provisioner
 spec:
   source:
-    path: argocd/$OVERLAY
+    path: nfs-provisioner/$OVERLAY
   destination:
-    namespace: argocd
+    namespace: nfs-provisioner

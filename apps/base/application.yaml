@@ -8,12 +8,7 @@ spec:
   project: infrastructure
   source:
     targetRevision: '*.*.*'
-  destination:
-    namespace: argocd
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     retry:
       limit: 5
       backoff:
