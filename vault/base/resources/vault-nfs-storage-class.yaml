@@ -2,6 +2,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: vault-nfs-storage-class
+parameters:
+  pathPattern: ${namespace}/${pvcName}/${pvName}
 provisioner: nfs-provisioner
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
