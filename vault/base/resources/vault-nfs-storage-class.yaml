@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name: vault-nfs-storage-class
 parameters:
-  pathPattern: ${namespace}/${pvcName}/${pvName}
+  pathPattern: "${.PVC.namespace}/${.PVC.name}"
 provisioner: nfs-provisioner
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
