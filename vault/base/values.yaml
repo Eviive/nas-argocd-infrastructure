@@ -1,7 +1,7 @@
 global:
   enabled: true
   namespace: vault
-  tlsDisable: true
+  tlsDisable: false
   resources:
     requests:
       memory: 256Mi
@@ -9,6 +9,9 @@ global:
     limits:
       memory: 256Mi
       cpu: 250m
+
+injector:
+  enabled: true
 
 server:
   image:
@@ -27,13 +30,6 @@ server:
     enabled: true
     path: "/v1/sys/health?standbyok=true"
     initialDelaySeconds: 60
-  extraEnvironmentVars:
-    VAULT_CACERT: /vault/userconfig/tls-ca/ca.crt
-  extraVolumes:
-    - type: secret
-      name: tls-server
-    - type: secret
-      name: tls-ca
   dataStorage:
     enabled: true
     storageClass: vault-nfs-storage-class
