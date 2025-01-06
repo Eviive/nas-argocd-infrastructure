@@ -9,9 +9,9 @@ spec:
   source:
     targetRevision: '*.*.*'
   syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     retry:
       limit: 5
       backoff:

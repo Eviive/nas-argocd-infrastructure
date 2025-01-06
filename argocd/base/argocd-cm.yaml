@@ -4,3 +4,11 @@ metadata:
   name: argocd-cm
 data:
   kustomize.buildOptions: '--load-restrictor LoadRestrictionsNone --enable-helm'
+  resource.customizations.ignoreDifferences.argoproj.io_Application: |
+    jqPathExpressions:
+      - '.spec.syncPolicy.automated'
+      - '.metadata.annotations.argocd.argoproj.io~1refresh'
+      - '.operation'
+  resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration: |
+    jqPathExpressions:
+      - '.webhooks[]?.clientConfig.caBundle'

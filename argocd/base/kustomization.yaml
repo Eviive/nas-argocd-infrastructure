@@ -12,9 +12,6 @@ patches:
     target:
       kind: ConfigMap
       name: argocd-cm
-  - path: application.yaml
-    target:
-      kind: Application
   - path: project.yaml
     target:
       kind: AppProject
