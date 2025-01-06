@@ -16,10 +16,10 @@ server:
     - envName: AZURE_CLIENT_SECRET
       secretName: vault-auto-unseal-azure-secret
       secretKey: client_secret
-    - envName: AZURE_VAULT_NAME
+    - envName: VAULT_AZUREKEYVAULT_VAULT_NAME
       secretName: vault-auto-unseal-azure-secret
       secretKey: vault_name
-    - envName: AZURE_KEY_NAME
+    - envName: VAULT_AZUREKEYVAULT_KEY_NAME
       secretName: vault-auto-unseal-azure-secret
       secretKey: key_name
   volumes:
