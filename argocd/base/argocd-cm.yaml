@@ -7,7 +7,7 @@ data:
   resource.customizations.ignoreDifferences.argoproj.io_Application: |
     jqPathExpressions:
       - '.spec.syncPolicy.automated'
-      - '.metadata.annotations.argocd.argoproj.io/refresh'
+      - '.metadata.annotations."argocd.argoproj.io/refresh"'
       - '.operation'
   resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration: |
     jqPathExpressions:
