@@ -72,6 +72,11 @@ server:
         }
 
         seal "azurekeyvault" {
+          client_id      = ""
+          client_secret  = ""
+          tenant_id      = ""
+          vault_name     = ""
+          key_name       = ""
         }
 
         disable_mlock = true
