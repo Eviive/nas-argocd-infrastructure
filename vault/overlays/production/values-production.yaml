@@ -5,6 +5,22 @@ server:
     VAULT_CACERT: /vault/userconfig/vault-ha-tls/vault.ca
     VAULT_TLSCERT: /vault/userconfig/vault-ha-tls/vault.crt
     VAULT_TLSKEY: /vault/userconfig/vault-ha-tls/vault.key
+  extraSecretEnvironmentVars:
+    - envName: AZURE_TENANT_ID
+      secretName: vault-auto-unseal-azure-secret
+      secretKey: tenant_id
+    - envName: AZURE_CLIENT_ID
+      secretName: vault-auto-unseal-azure-secret
+      secretKey: client_id
+    - envName: AZURE_CLIENT_SECRET
+      secretName: vault-auto-unseal-azure-secret
+      secretKey: client_secret
+    - envName: AZURE_VAULT_NAME
+      secretName: vault-auto-unseal-azure-secret
+      secretKey: vault_name
+    - envName: AZURE_KEY_NAME
+      secretName: vault-auto-unseal-azure-secret
+      secretKey: key_name
   volumes:
     - name: userconfig-vault-ha-tls
       secret:
@@ -53,6 +69,9 @@ server:
             leader_client_cert_file = "/vault/userconfig/vault-ha-tls/vault.crt"
             leader_client_key_file = "/vault/userconfig/vault-ha-tls/vault.key"
           }
+        }
+
+        seal "azurekeyvault" {
         }
 
         disable_mlock = true
