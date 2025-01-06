@@ -72,11 +72,11 @@ server:
         }
 
         seal "azurekeyvault" {
-          client_id      = ""
-          client_secret  = ""
-          tenant_id      = ""
-          vault_name     = ""
-          key_name       = ""
+          client_id      = "${AZURE_CLIENT_ID}"
+          client_secret  = "${AZURE_CLIENT_SECRET}"
+          tenant_id      = "${AZURE_TENANT_ID}"
+          vault_name     = "${AZURE_VAULT_NAME}"
+          key_name       = "${AZURE_KEY_NAME}"
         }
 
         disable_mlock = true
