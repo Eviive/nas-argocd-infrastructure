@@ -7,3 +7,10 @@ spec:
     path: argocd/$OVERLAY
   destination:
     namespace: argocd
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /spec/syncPolicy/automated
+        - /metadata/annotations/argocd.argoproj.io~1refresh
+        - /operation
