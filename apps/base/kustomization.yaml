@@ -6,6 +6,7 @@ resources:
   - resources/argocd.yaml
   - resources/vault.yaml
   - resources/nfs-provisioner.yaml
+  - resources/metallb.yaml
 patches:
   - path: application.yaml
     target:
