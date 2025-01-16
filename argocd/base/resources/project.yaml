@@ -23,6 +23,8 @@ spec:
       kind: ClusterRoleBinding
     - group: admissionregistration.k8s.io
       kind: MutatingWebhookConfiguration
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
   namespaceResourceWhitelist:
     - group: '*'
       kind: '*'
