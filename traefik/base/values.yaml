@@ -1,0 +1,23 @@
+api:
+  dashboard: true
+ports:
+  http-internal:
+    port: 80
+    expose: true
+    exposedPort: 80
+  https-internal:
+    port: 443
+    expose: true
+    exposedPort: 443
+  http-external:
+    port: 81
+    expose: true
+    exposedPort: 81
+  https-external:
+    port: 444
+    expose: true
+    exposedPort: 444
+  dashboard:
+    port: 8080
+    expose: true
+    exposedPort: 8080
