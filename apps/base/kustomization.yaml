@@ -7,6 +7,7 @@ resources:
   - resources/vault.yaml
   - resources/nfs-provisioner.yaml
   - resources/metallb.yaml
+  - resources/traefik.yaml
 patches:
   - path: application.yaml
     target:

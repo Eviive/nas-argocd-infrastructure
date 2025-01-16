@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: metallb
+  name: traefik
 spec:
   source:
-    path: metallb/$OVERLAY
+    path: traefik/$OVERLAY
   destination:
-    namespace: metallb
+    namespace: traefik
