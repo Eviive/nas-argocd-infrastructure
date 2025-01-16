@@ -3,7 +3,3 @@ kind: Kustomization
 namespace: traefik
 resources:
   - resources/namespace.yaml
-  - resources/cluster-role.yaml
-  - resources/service-account.yaml
-  - resources/cluster-role-binding.yaml
-  - resources/deployment.yaml
