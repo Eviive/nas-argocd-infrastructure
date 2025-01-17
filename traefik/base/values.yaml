@@ -1,18 +1,54 @@
 api:
   dashboard: true
+
 ports:
-  http-internal:
-    port: 80
+  web: null
+  websecure: null
+
+  web-external:
+    port: 8001
+    exposedPort: 7080
+    expose:
+      default: false
+      external: true
+    protocol: TCP
+    redirections:
+      entryPoint:
+        to: websecure-external
+        scheme: https
+        permanent: true
+
+  websecure-external:
+    port: 8444
+    exposedPort: 7443
+    expose:
+      default: false
+      external: true
+    protocol: TCP
+
+  web-internal:
+    port: 8000
     exposedPort: 80
-  https-internal:
-    port: 443
+    expose:
+      default: false
+      internal: true
+    protocol: TCP
+    redirections:
+      entryPoint:
+        to: websecure-internal
+        scheme: https
+        permanent: true
+
+  websecure-internal:
+    port: 8443
     exposedPort: 443
-  http-external:
-    port: 81
-    exposedPort: 81
-  https-external:
-    port: 444
-    exposedPort: 444
-  dashboard:
-    port: 8080
-    exposedPort: 8080
+    expose:
+      default: false
+      internal: true
+    protocol: TCP
+
+service:
+  enabled: false
+  additionalServices:
+    external: {}
+    internal: {}
