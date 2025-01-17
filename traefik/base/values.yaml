@@ -1,7 +1,6 @@
 ports:
   web: null
   websecure: null
-  traefik: null
 
   http-external:
     port: 8001
