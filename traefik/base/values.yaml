@@ -1,6 +1,3 @@
-api:
-  dashboard: true
-
 ports:
   web: null
   websecure: null
