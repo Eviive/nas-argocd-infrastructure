@@ -2,10 +2,10 @@ api:
   dashboard: true
 
 ports:
-  web: null
-  websecure: null
+  http: null
+  https: null
 
-  web-external:
+  http-external:
     port: 8001
     exposedPort: 7080
     expose:
@@ -14,11 +14,11 @@ ports:
     protocol: TCP
     redirections:
       entryPoint:
-        to: websecure-external
+        to: https-external
         scheme: https
         permanent: true
 
-  websecure-external:
+  https-external:
     port: 8444
     exposedPort: 7443
     expose:
@@ -26,7 +26,7 @@ ports:
       external: true
     protocol: TCP
 
-  web-internal:
+  http-internal:
     port: 8000
     exposedPort: 80
     expose:
@@ -35,11 +35,11 @@ ports:
     protocol: TCP
     redirections:
       entryPoint:
-        to: websecure-internal
+        to: https-internal
         scheme: https
         permanent: true
 
-  websecure-internal:
+  https-internal:
     port: 8443
     exposedPort: 443
     expose:
