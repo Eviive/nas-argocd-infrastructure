@@ -2,8 +2,8 @@ api:
   dashboard: true
 
 ports:
-  http: null
-  https: null
+  web: null
+  websecure: null
 
   http-external:
     port: 8001
