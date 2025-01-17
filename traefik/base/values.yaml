@@ -1,6 +1,7 @@
 ports:
   web: null
   websecure: null
+  traefik: null
 
   http-external:
     port: 8001
@@ -30,11 +31,11 @@ ports:
       default: false
       internal: true
     protocol: TCP
-    redirections:
-      entryPoint:
-        to: https-internal
-        scheme: https
-        permanent: true
+#    redirections:
+#      entryPoint:
+#        to: https-internal
+#        scheme: https
+#        permanent: true
 
   https-internal:
     port: 8443
@@ -49,3 +50,6 @@ service:
   additionalServices:
     external: {}
     internal: {}
+
+additionalArguments:
+  - "--log.level=DEBUG"

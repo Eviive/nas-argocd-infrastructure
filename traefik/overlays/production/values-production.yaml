@@ -1,14 +1,13 @@
 image:
   tag: v3.3
 
-api:
-  dashboard: true
-
 ingressRoute:
   dashboard:
     enabled: true
     matchRule: Host(`traefik.home.albertv.dev`)
-    entryPoints: ["https-internal"]
+    entryPoints:
+      - http-internal
+      - https-internal
     middlewares:
       - name: traefik-dashboard-auth
 
