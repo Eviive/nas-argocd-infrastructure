@@ -5,13 +5,13 @@ metadata:
 spec:
   description: Project for infrastructure applications
   sourceRepos:
-    - '*'
+    - "*"
   destinations:
-    - namespace: '*'
+    - namespace: "*"
   clusterResourceWhitelist:
-    - group: ''
+    - group: ""
       kind: Namespace
-    - group: ''
+    - group: ""
       kind: ServiceAccount
     - group: apiextensions.k8s.io
       kind: CustomResourceDefinition
@@ -28,5 +28,5 @@ spec:
     - group: networking.k8s.io
       kind: IngressClass
   namespaceResourceWhitelist:
-    - group: '*'
-      kind: '*'
+    - group: "*"
+      kind: "*"

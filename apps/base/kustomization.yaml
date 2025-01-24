@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-  - resources/configmap.yaml
+  - resources/overlay-cm.yaml
   - resources/argocd.yaml
   - resources/vault.yaml
   - resources/nfs-provisioner.yaml

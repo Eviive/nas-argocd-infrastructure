@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-config
+  name: argocd-overlay

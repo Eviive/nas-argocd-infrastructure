@@ -3,20 +3,20 @@ kind: Kustomization
 namespace: argocd
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.2/manifests/ha/install.yaml
-  - resources/namespace.yaml
-  - resources/configmap.yaml
-  - resources/project.yaml
+  - resources/ns.yaml
+  - resources/overlay-cm.yaml
+  - resources/infrastructure-app-project.yaml
   - resources/application.yaml
-  - resources/ingress-route.yaml
+  - resources/dashboard-ingr.yaml
 patches:
-  - path: argocd-cm.yaml
+  - path: cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cm
-  - path: project.yaml
+  - path: app-project.yaml
     target:
       kind: AppProject
-  - path: argocd-cmd-params-cm.yaml
+  - path: cmd-params-cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cmd-params-cm

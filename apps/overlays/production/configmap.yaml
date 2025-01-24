@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: infrastructure-apps-config
-data:
-  path: 'overlays/production'

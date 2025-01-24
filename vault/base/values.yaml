@@ -32,10 +32,10 @@ server:
     initialDelaySeconds: 60
   dataStorage:
     enabled: true
-    storageClass: vault-nfs-storage-class
+    storageClass: vault-nfs
   auditStorage:
     enabled: true
-    storageClass: vault-nfs-storage-class
+    storageClass: vault-nfs
   standalone:
     enabled: false
   extraEnvironmentVars:

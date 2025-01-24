@@ -6,9 +6,9 @@ patches:
   - path: application.yaml
     target:
       kind: Application
-  - path: configmap.yaml
+  - path: overlay-cm.yaml
     target:
       kind: ConfigMap
-      name: infrastructure-apps-config
+      name: infrastructure-apps-overlay
 replacements:
-  - path: infrastructure-apps-config-replacement.yaml
+  - path: application-overlay-replacement.yaml

@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: vault-auto-unseal-azure-role
+  name: vault-auto-unseal-azure
 rules:
   - apiGroups: [""]
     resources: ["secrets"]

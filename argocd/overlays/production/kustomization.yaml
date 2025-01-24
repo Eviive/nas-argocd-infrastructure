@@ -6,16 +6,16 @@ patches:
   - path: application.yaml
     target:
       kind: Application
-  - path: project.yaml
+  - path: app-project.yaml
     target:
       kind: AppProject
-  - path: configmap.yaml
+  - path: overlay-cm.yaml
     target:
       kind: ConfigMap
-      name: argocd-config
-  - path: ingress-route.yaml
+      name: argocd-overlay
+  - path: dashboard-ingr.yaml
     target:
       kind: IngressRoute
-      name: argocd-dashboard
+      name: argocd-dashboard-ingr
 replacements:
-  - path: argocd-config-replacement.yaml
+  - path: application-overlay-replacement.yaml

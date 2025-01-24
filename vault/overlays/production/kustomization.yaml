@@ -15,7 +15,7 @@ helmCharts:
     additionalValuesFiles:
       - values-production.yaml
 patches:
-  - path: ingress-route.yaml
+  - path: ui-ingr.yaml
     target:
       kind: IngressRoute
       name: vault-ui

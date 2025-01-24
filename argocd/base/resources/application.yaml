@@ -6,7 +6,7 @@ spec:
   project: infrastructure
   source:
     path: apps/$OVERLAY
-    targetRevision: '*.*.*'
+    targetRevision: "*.*.*"
   destination:
     namespace: argocd
   syncPolicy:
