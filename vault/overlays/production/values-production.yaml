@@ -2,9 +2,6 @@ server:
   image:
     tag: "1.18.3"
   extraEnvironmentVars:
-    VAULT_CACERT: /vault/userconfig/vault-ha-tls/vault.ca
-    VAULT_TLSCERT: /vault/userconfig/vault-ha-tls/vault.crt
-    VAULT_TLSKEY: /vault/userconfig/vault-ha-tls/vault.key
     VAULT_SEAL_TYPE: azurekeyvault
   extraSecretEnvironmentVars:
     - envName: AZURE_TENANT_ID
@@ -22,15 +19,6 @@ server:
     - envName: VAULT_AZUREKEYVAULT_KEY_NAME
       secretName: vault-auto-unseal-azure-secret
       secretKey: key_name
-  volumes:
-    - name: userconfig-vault-ha-tls
-      secret:
-        defaultMode: 420
-        secretName: vault-ha-tls
-  volumeMounts:
-    - mountPath: /vault/userconfig/vault-ha-tls
-      name: userconfig-vault-ha-tls
-      readOnly: true
   ha:
     enabled: true
     replicas: 3
