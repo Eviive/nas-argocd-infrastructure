@@ -11,5 +11,4 @@ spec:
       services:
         - name: vault-ui
           port: 8200
-  tls:
-    secretName: vault-ha-tls
+          serversTransport: vault-ui
