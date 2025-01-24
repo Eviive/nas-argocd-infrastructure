@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: traefik
 resources:
   - resources/namespace.yaml
+  - resources/middleware-dashboard-auth.yaml

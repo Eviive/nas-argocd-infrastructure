@@ -1,54 +1,35 @@
 ports:
-  web: null
-  websecure: null
-
-  http-external:
+  web-ext:
     port: 8001
     exposedPort: 7080
     expose:
       default: false
-      external: true
+      ext: true
     protocol: TCP
     redirections:
       entryPoint:
-        to: https-external
+        to: websecure-ext
         scheme: https
         permanent: true
 
-  https-external:
+  websecure-ext:
     port: 8444
     exposedPort: 7443
     expose:
       default: false
-      external: true
+      ext: true
     protocol: TCP
-
-  http-internal:
-    port: 8000
-    exposedPort: 80
-    expose:
-      default: false
-      internal: true
-    protocol: TCP
-#    redirections:
-#      entryPoint:
-#        to: https-internal
-#        scheme: https
-#        permanent: true
-
-  https-internal:
-    port: 8443
-    exposedPort: 443
-    expose:
-      default: false
-      internal: true
-    protocol: TCP
+    tls:
+      enabled: true
 
 service:
-  enabled: false
   additionalServices:
-    external: {}
-    internal: {}
+    ext: {}
 
-additionalArguments:
-  - "--log.level=DEBUG"
+ingressRoute:
+  dashboard:
+    enabled: true
+    entryPoints:
+      - websecure
+    middlewares:
+      - name: traefik-dashboard-auth
