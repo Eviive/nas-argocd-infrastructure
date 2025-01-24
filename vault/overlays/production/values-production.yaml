@@ -2,7 +2,6 @@ server:
   image:
     tag: "1.18.3"
   extraEnvironmentVars:
-    VAULT_ADDR: http://127.0.0.1:8200
     VAULT_CACERT: /vault/userconfig/vault-ha-tls/vault.ca
     VAULT_TLSCERT: /vault/userconfig/vault-ha-tls/vault.crt
     VAULT_TLSKEY: /vault/userconfig/vault-ha-tls/vault.key
@@ -43,9 +42,12 @@ server:
         ui = true
 
         listener "tcp" {
-          tls_disable = 1
+          tls_disable = 0
           address = "[::]:8200"
           cluster_address = "[::]:8201"
+          tls_cert_file = "/vault/userconfig/vault-ha-tls/vault.crt"
+          tls_key_file  = "/vault/userconfig/vault-ha-tls/vault.key"
+          tls_client_ca_file = "/vault/userconfig/vault-ha-tls/vault.ca"
         }
 
         storage "raft" {
