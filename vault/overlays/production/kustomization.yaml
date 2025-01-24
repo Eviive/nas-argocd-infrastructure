@@ -14,3 +14,8 @@ helmCharts:
     valuesFile: ../../base/values.yaml
     additionalValuesFiles:
       - values-production.yaml
+patches:
+  - path: ingress-route.yaml
+    target:
+      kind: IngressRoute
+      name: vault-ui

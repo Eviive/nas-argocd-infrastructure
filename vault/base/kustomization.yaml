@@ -4,3 +4,4 @@ namespace: vault
 resources:
   - resources/namespace.yaml
   - resources/vault-nfs-storage-class.yaml
+  - resources/ingress-route.yaml
