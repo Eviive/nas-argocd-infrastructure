@@ -16,3 +16,7 @@ patches:
   - path: project.yaml
     target:
       kind: AppProject
+  - path: argocd-cmd-params-cm.yaml
+    target:
+      kind: ConfigMap
+      name: argocd-cmd-params-cm
