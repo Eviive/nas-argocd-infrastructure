@@ -9,6 +9,7 @@ resources:
   - resources/metallb.yaml
   - resources/traefik.yaml
   - resources/cert-manager.yaml
+  - resources/authentik.yaml
 patches:
   - path: application.yaml
     target:

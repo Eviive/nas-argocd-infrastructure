@@ -1,0 +1,14 @@
+server:
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
+postgresql:
+  enabled: true
+  global:
+    storageClass: authentik-nfs
+
+redis:
+  enabled: true
+  global:
+    storageClass: authentik-nfs
