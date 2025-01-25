@@ -16,6 +16,6 @@ patches:
   - path: dashboard-ingr.yaml
     target:
       kind: IngressRoute
-      name: argocd-dashboard-ingr
+      name: argocd-dashboard
 replacements:
   - path: application-overlay-replacement.yaml
