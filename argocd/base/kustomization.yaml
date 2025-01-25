@@ -8,6 +8,7 @@ resources:
   - resources/infrastructure-app-project.yaml
   - resources/application.yaml
   - resources/dashboard-ingr.yaml
+  - resources/dashboard-cert.yaml
 patches:
   - path: cm.yaml
     target:

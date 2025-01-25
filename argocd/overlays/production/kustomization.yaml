@@ -17,5 +17,9 @@ patches:
     target:
       kind: IngressRoute
       name: argocd-dashboard
+  - path: dashboard-cert.yaml
+    target:
+      kind: Certificate
+      name: argocd-dashboard
 replacements:
   - path: application-overlay-replacement.yaml

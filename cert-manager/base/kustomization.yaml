@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - resources/ns.yaml
-  - resources/cloudflare-issuer.yaml
+  - resources/cloudflare-cluster-issuer.yaml
