@@ -18,8 +18,6 @@ postgresql:
         secretKeys:
           adminPasswordKey: AUTHENTIK_POSTGRESQL__ADMIN_PASSWORD
           userPasswordKey: AUTHENTIK_POSTGRESQL__PASSWORD
-  image:
-    debug: true
 
 redis:
   enabled: true
