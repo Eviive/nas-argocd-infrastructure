@@ -8,6 +8,7 @@ resources:
   - resources/nfs-provisioner.yaml
   - resources/metallb.yaml
   - resources/traefik.yaml
+  - resources/cert-manager.yaml
 patches:
   - path: application.yaml
     target:
