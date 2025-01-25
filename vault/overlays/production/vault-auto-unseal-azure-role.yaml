@@ -6,5 +6,5 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     resourceNames:
-      - vault-auto-unseal-azure-secret
+      - vault-auto-unseal-azure
     verbs: ["get"]

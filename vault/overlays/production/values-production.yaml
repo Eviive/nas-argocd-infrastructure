@@ -5,19 +5,19 @@ server:
     VAULT_SEAL_TYPE: azurekeyvault
   extraSecretEnvironmentVars:
     - envName: AZURE_TENANT_ID
-      secretName: vault-auto-unseal-azure-secret
+      secretName: vault-auto-unseal-azure
       secretKey: tenant_id
     - envName: AZURE_CLIENT_ID
-      secretName: vault-auto-unseal-azure-secret
+      secretName: vault-auto-unseal-azure
       secretKey: client_id
     - envName: AZURE_CLIENT_SECRET
-      secretName: vault-auto-unseal-azure-secret
+      secretName: vault-auto-unseal-azure
       secretKey: client_secret
     - envName: VAULT_AZUREKEYVAULT_VAULT_NAME
-      secretName: vault-auto-unseal-azure-secret
+      secretName: vault-auto-unseal-azure
       secretKey: vault_name
     - envName: VAULT_AZUREKEYVAULT_KEY_NAME
-      secretName: vault-auto-unseal-azure-secret
+      secretName: vault-auto-unseal-azure
       secretKey: key_name
   ha:
     enabled: true
