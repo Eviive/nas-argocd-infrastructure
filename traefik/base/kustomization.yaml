@@ -4,3 +4,4 @@ namespace: traefik
 resources:
   - resources/ns.yaml
   - resources/dashboard-auth-middleware.yaml
+  - resources/dashboard-cert.yaml

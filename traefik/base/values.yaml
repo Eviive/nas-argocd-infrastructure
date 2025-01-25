@@ -33,3 +33,5 @@ ingressRoute:
       - websecure
     middlewares:
       - name: traefik-dashboard-auth
+    tls:
+      secretName: traefik-dashboard-tls
