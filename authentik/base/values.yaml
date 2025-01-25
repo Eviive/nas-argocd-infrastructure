@@ -12,6 +12,8 @@ postgresql:
   enabled: true
   global:
     storageClass: authentik-nfs
+  image:
+    debug: true
 
 redis:
   enabled: true
