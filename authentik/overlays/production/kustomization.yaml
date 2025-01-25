@@ -12,3 +12,12 @@ helmCharts:
     valuesFile: ../../base/values.yaml
     additionalValuesFiles:
       - values-production.yaml
+patches:
+  - path: dashboard-ingr.yaml
+    target:
+      kind: IngressRoute
+      name: authentik-dashboard
+  - path: dashboard-cert.yaml
+    target:
+      kind: Certificate
+      name: authentik-dashboard

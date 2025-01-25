@@ -4,3 +4,5 @@ namespace: authentik
 resources:
   - resources/ns.yaml
   - resources/nfs-storage-class.yaml
+  - resources/dashboard-ingr.yaml
+  - resources/dashboard-cert.yaml
