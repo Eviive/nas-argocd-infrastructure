@@ -4,3 +4,8 @@ namespace: traefik
 resources:
   - resources/ns.yaml
   - resources/dashboard-cert.yaml
+configMapGenerator:
+  - name: traefik-error-pages
+    files:
+      - resources/error-pages/404.html
+      - resources/error-pages/501-599.html

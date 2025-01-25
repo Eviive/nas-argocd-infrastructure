@@ -1,0 +1,14 @@
+apiVersion: traefik.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-error-pages
+spec:
+  errors:
+    status:
+      - "404"
+      - "500"
+      - "501-599"
+    service:
+      name: traefik-error-pages
+      port: 80
+    query: "/{status}.html"
