@@ -12,6 +12,12 @@ postgresql:
   enabled: true
   global:
     storageClass: authentik-nfs
+    postgresql:
+      auth:
+        existingSecret: authentik-env
+        secretKeys:
+          adminPasswordKey: AUTHENTIK_POSTGRESQL__ADMIN_PASSWORD
+          userPasswordKey: AUTHENTIK_POSTGRESQL__PASSWORD
   image:
     debug: true
 
