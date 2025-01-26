@@ -9,6 +9,10 @@ patches:
   - path: app-project.yaml
     target:
       kind: AppProject
+  - path: cm.yaml
+    target:
+      kind: ConfigMap
+      name: argocd-cm
   - path: overlay-cm.yaml
     target:
       kind: ConfigMap
