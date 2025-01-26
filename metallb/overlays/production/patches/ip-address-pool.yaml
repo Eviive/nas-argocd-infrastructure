@@ -1,3 +1,7 @@
-- op: add
-  path: /spec/addresses/0
-  value: 192.168.1.201-192.168.1.210
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default
+spec:
+  addresses:
+    - 192.168.1.201-192.168.1.210
