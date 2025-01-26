@@ -8,7 +8,7 @@ spec:
     - websecure-ext
   routes:
     - kind: Rule
-      match: HostRegexp(`{catchall:.*}`)
+      match: HostRegexp(`^.+$`)
       priority: 1
       services:
         - name: traefik-error-pages
