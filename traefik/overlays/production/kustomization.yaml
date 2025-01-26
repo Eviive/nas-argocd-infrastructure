@@ -18,3 +18,7 @@ patches:
     target:
       kind: Certificate
       name: traefik-dashboard
+  - path: patches/dashboard-ingr.yaml
+    target:
+      kind: IngressRoute
+      name: traefik-dashboard
