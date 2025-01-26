@@ -1,5 +1,3 @@
-image:
-  tag: v4.0.2
 nfs:
   server: truenas.home.albertv.dev
   path: /mnt/fast-1/k8s-nfs

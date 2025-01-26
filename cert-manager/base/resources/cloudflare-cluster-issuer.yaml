@@ -4,14 +4,11 @@ metadata:
   name: cert-manager-cloudflare
 spec:
   acme:
-    email: albert.vaillon21@gmail.com
-    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cert-manager-cloudflare-issuer-private-key
     solvers:
       - dns01:
           cloudflare:
-            email: albert.vaillon21@gmail.com
             apiTokenSecretRef:
               name: cert-manager-cloudflare-api-token
               key: api-token
