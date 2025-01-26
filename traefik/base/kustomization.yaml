@@ -7,11 +7,13 @@ resources:
   - resources/error-pages-deployment.yaml
   - resources/error-pages-svc.yaml
   - resources/error-pages-middleware.yaml
+  - resources/catch-all-ingr.yaml
+  - resources/catch-all-cert.yaml
+  - resources/catch-all-middleware.yaml
 configMapGenerator:
   - name: traefik-error-pages
     options:
       disableNameSuffixHash: true
     files:
       - assets/error-pages/404.html
-      - assets/error-pages/500.html
-      - assets/error-pages/501-599.html
+      - assets/error-pages/502-504.html

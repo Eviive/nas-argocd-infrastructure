@@ -22,3 +22,7 @@ patches:
     target:
       kind: IngressRoute
       name: traefik-dashboard
+  - path: patches/catch-all-cert.yaml
+    target:
+      kind: Certificate
+      name: catch-all

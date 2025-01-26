@@ -5,9 +5,7 @@ metadata:
 spec:
   errors:
     status:
-      - "404"
-      - "500"
-      - "501-599"
+      - "502-504"
     service:
       name: traefik-error-pages
       port: 80
