@@ -4,12 +4,6 @@ server:
       mountPath: /web/dist/assets/images/custom
       subPath: images
       readOnly: true
-  volumes:
-    - name: authentik-assets
-      nfs:
-        server: truenas.home.albertv.dev
-        path: /mnt/fast-1/k8s-nfs/authentik-assets
-        readOnly: true
   envFrom:
     - secretRef:
         name: authentik-env
