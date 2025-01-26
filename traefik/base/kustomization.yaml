@@ -6,6 +6,9 @@ resources:
   - resources/dashboard-cert.yaml
 configMapGenerator:
   - name: traefik-error-pages
+    options:
+      disableNameSuffixHash: true
     files:
-      - resources/error-pages/404.html
-      - resources/error-pages/501-599.html
+      - assets/error-pages/404.html
+      - assets/error-pages/500.html
+      - assets/error-pages/501-599.html

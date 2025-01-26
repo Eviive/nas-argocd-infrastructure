@@ -31,5 +31,8 @@ ingressRoute:
     enabled: true
     entryPoints:
       - websecure
+    middlewares:
+      - name: traefik-error-pages
+        namespace: traefik
     tls:
       secretName: traefik-dashboard-tls
