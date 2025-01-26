@@ -1,0 +1,11 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-dashboard-oidc
+spec:
+  plugin:
+    oidc:
+      Provider:
+        Url: https://authentik.home.albertv.dev/application/o/traefik/
+        ClientId: "urn:k8s:secret:traefik-dashboard-oidc:client_id"
+        ClientSecret: "urn:k8s:secret:traefik-dashboard-oidc:client_secret"
