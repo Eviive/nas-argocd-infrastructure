@@ -12,9 +12,6 @@ service:
 ingressRoute:
   dashboard:
     matchRule: Host(`traefik.home.albertv.dev`)
-    middlewares:
-      - name: traefik-dashboard-oidc
-        namespace: traefik
 
 experimental:
   plugins:

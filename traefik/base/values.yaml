@@ -6,11 +6,6 @@ ports:
         scheme: https
         permanent: true
 
-  websecure:
-    middlewares:
-      - name: traefik-error-pages
-        namespace: traefik
-
   web-ext:
     port: 8001
     exposedPort: 7080
@@ -31,9 +26,6 @@ ports:
       default: false
       ext: true
     protocol: TCP
-    middlewares:
-      - name: traefik-error-pages
-        namespace: traefik
     tls:
       enabled: true
 
@@ -46,5 +38,8 @@ ingressRoute:
     enabled: true
     entryPoints:
       - websecure
+    middlewares:
+      - name: traefik-error-pages
+        namespace: traefik
     tls:
       secretName: traefik-dashboard-tls
