@@ -6,4 +6,4 @@ spec:
   secretName: authentik-dashboard-tls
   issuerRef:
     kind: ClusterIssuer
-    name: cloudflare
+    name: cert-manager-cloudflare

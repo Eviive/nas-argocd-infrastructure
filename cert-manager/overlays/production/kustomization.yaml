@@ -19,4 +19,4 @@ patches:
   - path: patches/cloudflare-cluster-issuer.yaml
     target:
       kind: ClusterIssuer
-      name: cloudflare
+      name: cert-manager-cloudflare
