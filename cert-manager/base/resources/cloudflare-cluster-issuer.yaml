@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: cloudflare
+  name: cert-manager-cloudflare
 spec:
   acme:
     email: albert.vaillon21@gmail.com

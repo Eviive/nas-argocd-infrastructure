@@ -6,4 +6,4 @@ patches:
   - path: patches/ip-address-pool.yaml
     target:
       kind: IPAddressPool
-      name: default
+      name: metallb-default
