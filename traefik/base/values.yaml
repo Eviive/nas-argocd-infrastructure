@@ -43,3 +43,7 @@ ingressRoute:
         namespace: traefik
     tls:
       secretName: traefik-dashboard-tls
+
+providers:
+  kubernetesCRD:
+    allowCrossNamespace: true
