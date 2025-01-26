@@ -1,7 +1,7 @@
 server:
   volumeMounts:
     - name: authentik-assets
-      mountPath: /static/dist/assets/images/custom
+      mountPath: /web/dist/assets/images/custom
       subPath: images
       readOnly: true
   volumes:
