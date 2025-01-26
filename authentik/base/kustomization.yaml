@@ -6,3 +6,7 @@ resources:
   - resources/nfs-storage-class.yaml
   - resources/dashboard-ingr.yaml
   - resources/dashboard-cert.yaml
+configMapGenerator:
+  - name: authentik-assets
+    files:
+      - assets/images/flow_background_mesa_verde_squirrel.jpg

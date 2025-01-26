@@ -1,4 +1,11 @@
 server:
+  volumeMounts:
+    - name: authentik-assets
+      mountPath: /static/dist/assets/images/custom
+  volumes:
+    - name: authentik-assets
+      configMap:
+        name: authentik-assets
   envFrom:
     - secretRef:
         name: authentik-env
