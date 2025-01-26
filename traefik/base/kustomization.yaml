@@ -16,4 +16,6 @@ configMapGenerator:
       disableNameSuffixHash: true
     files:
       - assets/error-pages/404.html
-      - assets/error-pages/502-504.html
+      - 502.html=assets/error-pages/502-504.html
+      - 503.html=assets/error-pages/502-504.html
+      - 504.html=assets/error-pages/502-504.html
