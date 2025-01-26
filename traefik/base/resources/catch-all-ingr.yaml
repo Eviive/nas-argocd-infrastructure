@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: catch-all
+spec:
+  entryPoints:
+    - websecure
+    - websecure-ext
+  routes:
+    - kind: Rule
+      match: HostRegexp(`{catchall:.*}`)
+      priority: 1
+      services:
+        - name: traefik-error-pages
+          port: 80
+      middlewares:
+        - name: traefik-catch-all
+          namespace: traefik
+  tls:
+    secretName: catch-all-tls
