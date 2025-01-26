@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: catch-all
+  name: traefik-catch-all
 spec:
   entryPoints:
     - websecure
@@ -17,4 +17,4 @@ spec:
         - name: traefik-catch-all
           namespace: traefik
   tls:
-    secretName: catch-all-tls
+    secretName: traefik-catch-all-tls

@@ -7,7 +7,7 @@ spec:
     email: albert.vaillon21@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: cloudflare-issuer-private-key
+      name: cert-manager-cloudflare-issuer-private-key
     solvers:
       - dns01:
           cloudflare:

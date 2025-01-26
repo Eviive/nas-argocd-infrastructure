@@ -25,4 +25,4 @@ patches:
   - path: patches/catch-all-cert.yaml
     target:
       kind: Certificate
-      name: catch-all
+      name: traefik-catch-all

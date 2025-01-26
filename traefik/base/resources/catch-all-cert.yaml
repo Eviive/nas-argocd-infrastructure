@@ -1,9 +1,9 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: catch-all
+  name: traefik-catch-all
 spec:
-  secretName: catch-all-tls
+  secretName: traefik-catch-all-tls
   issuerRef:
     kind: ClusterIssuer
     name: cloudflare
