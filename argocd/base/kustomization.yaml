@@ -10,14 +10,14 @@ resources:
   - resources/dashboard-ingr.yaml
   - resources/dashboard-cert.yaml
 patches:
-  - path: cm.yaml
+  - path: patches/cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cm
-  - path: app-project.yaml
+  - path: patches/app-project.yaml
     target:
       kind: AppProject
-  - path: cmd-params-cm.yaml
+  - path: patches/cmd-params-cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cmd-params-cm

@@ -11,6 +11,6 @@ resources:
   - resources/cert-manager.yaml
   - resources/authentik.yaml
 patches:
-  - path: application.yaml
+  - path: patches/application.yaml
     target:
       kind: Application

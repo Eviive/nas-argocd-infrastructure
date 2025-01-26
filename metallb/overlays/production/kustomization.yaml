@@ -2,4 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-  - resources/ip-address-pool.yaml
+patches:
+  - path: patches/ip-address-pool.yaml
+    target:
+      kind: IPAddressPool
+      name: default

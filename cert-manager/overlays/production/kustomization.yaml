@@ -13,10 +13,10 @@ helmCharts:
     additionalValuesFiles:
       - values-production.yaml
 patches:
-  - path: cluster-issuer.yaml
+  - path: patches/cluster-issuer.yaml
     target:
       kind: ClusterIssuer
-  - path: cloudflare-cluster-issuer.yaml
+  - path: patches/cloudflare-cluster-issuer.yaml
     target:
       kind: ClusterIssuer
       name: cloudflare

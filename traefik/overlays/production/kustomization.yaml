@@ -13,7 +13,7 @@ helmCharts:
     additionalValuesFiles:
       - values-production.yaml
 patches:
-  - path: dashboard-cert.yaml
+  - path: patches/dashboard-cert.yaml
     target:
       kind: Certificate
       name: traefik-dashboard

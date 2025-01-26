@@ -13,11 +13,11 @@ helmCharts:
     additionalValuesFiles:
       - values-production.yaml
 patches:
-  - path: dashboard-ingr.yaml
+  - path: patches/dashboard-ingr.yaml
     target:
       kind: IngressRoute
       name: authentik-dashboard
-  - path: dashboard-cert.yaml
+  - path: patches/dashboard-cert.yaml
     target:
       kind: Certificate
       name: authentik-dashboard

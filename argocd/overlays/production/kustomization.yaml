@@ -3,31 +3,31 @@ kind: Kustomization
 resources:
   - ../../base
 patches:
-  - path: application.yaml
+  - path: patches/application.yaml
     target:
       kind: Application
-  - path: app-project.yaml
+  - path: patches/app-project.yaml
     target:
       kind: AppProject
-  - path: cm.yaml
+  - path: patches/cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cm
-  - path: rbac-cm.yaml
+  - path: patches/rbac-cm.yaml
     target:
       kind: ConfigMap
       name: argocd-rbac-cm
-  - path: overlay-cm.yaml
+  - path: patches/overlay-cm.yaml
     target:
       kind: ConfigMap
       name: argocd-overlay
-  - path: dashboard-ingr.yaml
+  - path: patches/dashboard-ingr.yaml
     target:
       kind: IngressRoute
       name: argocd-dashboard
-  - path: dashboard-cert.yaml
+  - path: patches/dashboard-cert.yaml
     target:
       kind: Certificate
       name: argocd-dashboard
 replacements:
-  - path: application-overlay-replacement.yaml
+  - path: replacements/application-overlay-replacement.yaml

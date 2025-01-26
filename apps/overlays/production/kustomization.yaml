@@ -3,12 +3,12 @@ kind: Kustomization
 resources:
   - ../../base
 patches:
-  - path: application.yaml
+  - path: patches/application.yaml
     target:
       kind: Application
-  - path: overlay-cm.yaml
+  - path: patches/overlay-cm.yaml
     target:
       kind: ConfigMap
       name: infrastructure-apps-overlay
 replacements:
-  - path: application-overlay-replacement.yaml
+  - path: replacements/application-overlay-replacement.yaml
