@@ -1,5 +1,0 @@
-- op: add
-  path: /spec/routes/0/middlewares/-
-  value:
-    name: traefik-dashboard-oidc
-    namespace: traefik
