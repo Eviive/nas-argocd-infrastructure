@@ -1,5 +1,10 @@
 # NAS ArgoCD Infrastructure
 
+## Overview
+
+This repository contains the configuration for the infrastructure supporting my NAS's Kubernetes cluster.  
+It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to deploy all applications.
+
 ## Versions
 
 | Name            | Provider | Version   |
