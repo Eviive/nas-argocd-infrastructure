@@ -1,9 +1,3 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: application
-spec:
-  source:
-    repoURL: https://github.com/Eviive/nas-argocd-infrastructure
-  destination:
-    server: https://kubernetes.default.svc
+- op: replace
+  path: /spec/destination/server
+  value: https://kubernetes.default.svc
