@@ -47,3 +47,10 @@ ingressRoute:
 providers:
   kubernetesCRD:
     allowCrossNamespace: true
+
+logs:
+  general:
+    filePath: /var/log/traefik/traefik.log
+  access:
+    enabled: true
+    filePath: /var/log/traefik/access.log
