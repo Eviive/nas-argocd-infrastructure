@@ -48,6 +48,15 @@ providers:
   kubernetesCRD:
     allowCrossNamespace: true
 
+deployment:
+  additionalVolumeMounts:
+    - name: logs
+      mountPath: /var/log/traefik
+  additionalVolumes:
+    - name: logs
+      persistentVolumeClaim:
+        claimName: traefik-logs
+
 logs:
   general:
     filePath: /var/log/traefik/traefik.log
