@@ -8,6 +8,9 @@ spec:
     - "*"
   destinations:
     - namespace: "*"
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
   clusterResourceWhitelist:
     - group: ""
       kind: Namespace
@@ -29,6 +32,3 @@ spec:
       kind: IngressClass
     - group: cert-manager.io
       kind: ClusterIssuer
-  namespaceResourceWhitelist:
-    - group: "*"
-      kind: "*"
