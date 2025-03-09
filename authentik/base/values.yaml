@@ -1,9 +1,13 @@
 server:
   volumeMounts:
-    - name: authentik-assets
+    - name: assets
       mountPath: /web/dist/assets/images/custom
       subPath: images
       readOnly: true
+  volumes:
+    - name: assets
+      persistentVolumeClaim:
+        claimName: authentik-assets
   envFrom:
     - secretRef:
         name: authentik-env

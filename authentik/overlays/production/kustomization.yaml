@@ -10,8 +10,6 @@ helmCharts:
     namespace: authentik
     includeCRDs: true
     valuesFile: ../../base/values.yaml
-    additionalValuesFiles:
-      - values-production.yaml
 patches:
   - path: patches/dashboard-ingr.yaml
     target:

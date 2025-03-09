@@ -1,7 +1,0 @@
-server:
-  volumes:
-    - name: authentik-assets
-      nfs:
-        server: truenas.home.albertv.dev
-        path: /mnt/ssd-1/k8s-nfs/authentik-assets
-        readOnly: true
