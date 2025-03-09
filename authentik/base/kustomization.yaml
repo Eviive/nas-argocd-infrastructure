@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: authentik
 resources:
   - resources/ns.yaml
-  - resources/nfs-storage-class.yaml
+  - resources/nfs-sc.yaml
   - resources/dashboard-ingr.yaml
   - resources/dashboard-cert.yaml

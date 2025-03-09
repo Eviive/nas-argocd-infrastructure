@@ -10,7 +10,7 @@ resources:
   - resources/catch-all-ingr.yaml
   - resources/catch-all-cert.yaml
   - resources/catch-all-middleware.yaml
-  - resources/nfs-storage-class.yaml
+  - resources/nfs-sc.yaml
   - resources/logs-pvc.yaml
 configMapGenerator:
   - name: traefik-error-pages
