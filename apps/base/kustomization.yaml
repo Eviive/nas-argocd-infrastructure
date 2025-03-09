@@ -5,7 +5,8 @@ resources:
   - resources/overlay-cm.yaml
   - resources/argocd.yaml
   - resources/vault.yaml
-  - resources/nfs-provisioner.yaml
+  - resources/nfs-ssd-provisioner.yaml
+  - resources/nfs-hdd-provisioner.yaml
   - resources/metallb.yaml
   - resources/traefik.yaml
   - resources/cert-manager.yaml

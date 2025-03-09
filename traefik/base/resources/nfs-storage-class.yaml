@@ -4,6 +4,6 @@ metadata:
   name: traefik-nfs
 parameters:
   pathPattern: "${.PVC.namespace}/${.PVC.annotations.folder}"
-provisioner: nfs-provisioner
+provisioner: nfs-ssd-provisioner
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer

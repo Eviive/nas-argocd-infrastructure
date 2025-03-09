@@ -1,0 +1,11 @@
+- op: replace
+  path: /spec/template/spec/containers/0/env/1/value
+  value: truenas.home.albertv.dev
+- op: replace
+  path: /spec/template/spec/containers/0/env/2/value
+  value: /mnt/hdd-1/k8s-nfs
+- op: replace
+  path: /spec/template/spec/volumes/0/nfs
+  value:
+    server: truenas.home.albertv.dev
+    path: /mnt/hdd-1/k8s-nfs

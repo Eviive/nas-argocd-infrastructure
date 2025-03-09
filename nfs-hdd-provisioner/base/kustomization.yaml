@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nfs-hdd-provisioner
+resources:
+  - github.com/kubernetes-sigs/nfs-subdir-external-provisioner/deploy?ref=nfs-subdir-external-provisioner-4.0.18
+  - resources/ns.yaml
+patches:
+  - path: patches/deployment.yaml
+    target:
+      kind: Deployment
+      name: nfs-client-provisioner
+  - path: patches/storage-class.yaml
+    target:
+      kind: StorageClass
+      name: nfs-client

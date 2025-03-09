@@ -4,6 +4,6 @@ metadata:
   name: vault-nfs
 parameters:
   pathPattern: "${.PVC.namespace}/${.PVC.name}"
-provisioner: nfs-provisioner
+provisioner: nfs-ssd-provisioner
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer

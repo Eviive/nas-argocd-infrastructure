@@ -1,4 +1,0 @@
-strategyType: RollingUpdate
-storageClass:
-  create: false
-  provisionerName: nfs-provisioner
