@@ -11,6 +11,7 @@ resources:
   - resources/traefik.yaml
   - resources/cert-manager.yaml
   - resources/authentik.yaml
+  - resources/flaresolverr.yaml
 patches:
   - path: patches/application.yaml
     target:
