@@ -40,7 +40,6 @@ ingressRoute:
       - websecure
     middlewares:
       - name: traefik-error-pages
-        namespace: traefik
     tls:
       secretName: traefik-dashboard-tls
 

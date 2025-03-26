@@ -15,6 +15,5 @@ spec:
           port: 80
       middlewares:
         - name: traefik-catch-all
-          namespace: traefik
   tls:
     secretName: traefik-catch-all-tls

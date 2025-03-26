@@ -9,9 +9,3 @@ service:
 ingressRoute:
   dashboard:
     matchRule: Host(`traefik.home.albertv.dev`)
-
-experimental:
-  plugins:
-    oidc:
-      moduleName: github.com/sevensolutions/traefik-oidc-auth
-      version: v0.5.0

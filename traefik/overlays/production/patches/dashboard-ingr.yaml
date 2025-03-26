@@ -1,5 +1,18 @@
 - op: add
   path: /spec/routes/0/middlewares/-
   value:
-    name: traefik-dashboard-oidc
-    namespace: traefik
+    name: traefik-dashboard-basic-auth
+- op: add
+  path: /spec/routes/-
+  value:
+    kind: Rule
+    match: Host(`traefik.home.albertv.dev`) && PathPrefix(`/outpost.goauthentik.io/`)
+    services:
+      - name: ak-outpost-authentik-embedded-outpost
+        namespace: authentik
+        port: 9000
+- op: add
+  path: /spec/routes/0/middlewares/-
+  value:
+    name: ak-outpost-authentik-embedded-outpost
+    namespace: authentik
