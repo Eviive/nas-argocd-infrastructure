@@ -1,8 +1,4 @@
 - op: add
-  path: /spec/routes/0/middlewares/-
-  value:
-    name: traefik-dashboard-basic-auth
-- op: add
   path: /spec/routes/-
   value:
     kind: Rule
@@ -16,3 +12,7 @@
   value:
     name: ak-outpost-authentik-embedded-outpost
     namespace: authentik
+- op: add
+  path: /spec/routes/0/middlewares/-
+  value:
+    name: traefik-dashboard-basic-auth
