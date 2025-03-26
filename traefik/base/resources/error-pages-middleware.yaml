@@ -8,5 +8,5 @@ spec:
       - "502-504"
     service:
       name: traefik-error-pages
-      port: 80
+      port: http
     query: "/{status}.html"

@@ -12,7 +12,7 @@ spec:
       priority: 1
       services:
         - name: traefik-error-pages
-          port: 80
+          port: http
       middlewares:
         - name: traefik-catch-all
   tls:
