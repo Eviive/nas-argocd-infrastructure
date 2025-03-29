@@ -8,7 +8,7 @@ data:
     connectors:
     - config:
         issuer: https://authentik.home.albertv.dev/application/o/argocd/
-        clientID: qglmwiWOqURfhAkgClYQNKeVBfXau6fU5UO8SMlB
+        clientID: $dex.authentik.clientID
         clientSecret: $dex.authentik.clientSecret
         insecureEnableGroups: true
         scopes:
