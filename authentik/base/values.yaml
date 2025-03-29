@@ -19,16 +19,21 @@ worker:
 
 postgresql:
   enabled: true
-  global:
-    storageClass: authentik-nfs
-    postgresql:
-      auth:
-        existingSecret: authentik-env
-        secretKeys:
-          adminPasswordKey: AUTHENTIK_POSTGRESQL__ADMIN_PASSWORD
-          userPasswordKey: AUTHENTIK_POSTGRESQL__PASSWORD
+  auth:
+    existingSecret: authentik-env
+    secretKeys:
+      adminPasswordKey: AUTHENTIK_POSTGRESQL__ADMIN_PASSWORD
+      userPasswordKey: AUTHENTIK_POSTGRESQL__PASSWORD
+  primary:
+    persistence:
+      storageClass: nfs-ssd-1
+      annotations:
+        folder: authentik/postgresql
 
 redis:
   enabled: true
-  global:
-    storageClass: authentik-nfs
+  master:
+    persistence:
+      storageClass: nfs-ssd-1
+      annotations:
+        folder: authentik/redis

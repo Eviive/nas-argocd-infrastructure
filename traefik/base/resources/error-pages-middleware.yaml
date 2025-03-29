@@ -5,8 +5,8 @@ metadata:
 spec:
   errors:
     status:
-      - "502-504"
+      - 502-504
     service:
       name: traefik-error-pages
       port: http
-    query: "/{status}.html"
+    query: /{status}.html

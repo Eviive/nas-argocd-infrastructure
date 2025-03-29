@@ -5,12 +5,12 @@ metadata:
 spec:
   description: Project for infrastructure applications
   sourceRepos:
-    - "*"
+    - *
   destinations:
-    - namespace: "*"
+    - namespace: *
   namespaceResourceWhitelist:
-    - group: "*"
-      kind: "*"
+    - group: *
+      kind: *
   clusterResourceWhitelist:
     - group: ""
       kind: Namespace

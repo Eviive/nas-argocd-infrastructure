@@ -4,8 +4,8 @@ namespace: argocd
 resources:
   - resources/overlay-cm.yaml
   - resources/argocd.yaml
-  - resources/nfs-ssd-provisioner.yaml
-  - resources/nfs-hdd-provisioner.yaml
+  - resources/nfs-ssd-1-provisioner.yaml
+  - resources/nfs-hdd-1-provisioner.yaml
   - resources/metallb.yaml
   - resources/traefik.yaml
   - resources/cert-manager.yaml

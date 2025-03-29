@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: nfs-ssd-provisioner
+  name: nfs-ssd-1-provisioner

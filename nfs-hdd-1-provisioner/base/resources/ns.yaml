@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: nfs-hdd-provisioner
+  name: nfs-hdd-1-provisioner

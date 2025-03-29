@@ -1,3 +1,0 @@
-storageClass:
-  create: false
-  provisionerName: nfs-hdd-provisioner

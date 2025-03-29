@@ -1,0 +1,5 @@
+storageClass:
+  provisionerName: nfs-hdd-1-provisioner
+  name: nfs-hdd-1
+  reclaimPolicy: Retain
+  pathPattern: ${.PVC.annotations.folder}

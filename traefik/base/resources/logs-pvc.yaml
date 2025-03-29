@@ -3,11 +3,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: traefik-logs
   annotations:
-    folder: logs
+    folder: traefik/logs
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-  storageClassName: traefik-nfs
+  storageClassName: nfs-ssd-1

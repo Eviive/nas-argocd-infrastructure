@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-ssd-1-provisioner
+spec:
+  source:
+    path: nfs-ssd-1-provisioner/$OVERLAY
+  destination:
+    namespace: nfs-ssd-1-provisioner
