@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      services:
+        - name: prometheus-grafana
+          port: http-web
+      middlewares:
+        - name: traefik-error-pages
+          namespace: traefik
+  tls:
+    secretName: grafana-tls
