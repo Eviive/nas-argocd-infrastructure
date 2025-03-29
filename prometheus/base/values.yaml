@@ -4,8 +4,8 @@ grafana:
   defaultDashboardsTimezone: browser
   admin:
     existingSecret: grafana-admin
-    userKey: admin-user
-    passwordKey: admin-password
+    userKey: user
+    passwordKey: password
 
 kube-state-metrics:
   selfMonitor:
