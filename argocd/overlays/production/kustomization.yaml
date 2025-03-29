@@ -10,9 +10,14 @@ patches:
     target:
       kind: Application
       name: infrastructure-apps
-  - path: patches/app-project.yaml
+  - path: patches/infrastructure-app-project.yaml
     target:
       kind: AppProject
+      name: infrastructure
+  - path: patches/media-server-app-project.yaml
+    target:
+      kind: AppProject
+      name: media-server
   - path: patches/cm.yaml
     target:
       kind: ConfigMap
