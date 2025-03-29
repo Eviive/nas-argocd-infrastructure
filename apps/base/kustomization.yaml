@@ -11,6 +11,7 @@ resources:
   - resources/cert-manager.yaml
   - resources/authentik.yaml
   - resources/flaresolverr.yaml
+  - resources/prometheus.yaml
 patches:
   - path: patches/application.yaml
     target:
