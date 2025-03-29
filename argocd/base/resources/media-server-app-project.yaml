@@ -5,7 +5,7 @@ metadata:
 spec:
   description: Project for media server applications
   sourceRepos:
-    - *
+    - "*"
   destinations:
     - namespace: jellyfin
     - namespace: sonarr
@@ -14,8 +14,8 @@ spec:
     - namespace: qbittorrent
     - namespace: bazarr
   namespaceResourceWhitelist:
-    - group: *
-      kind: *
+    - group: "*"
+      kind: "*"
   clusterResourceWhitelist:
     - group: ""
       kind: Namespace
