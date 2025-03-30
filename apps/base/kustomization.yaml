@@ -16,3 +16,7 @@ patches:
   - path: patches/application.yaml
     target:
       kind: Application
+  - path: patches/prometheus.yaml
+    target:
+      kind: Application
+      name: prometheus

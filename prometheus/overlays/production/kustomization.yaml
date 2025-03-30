@@ -14,8 +14,8 @@ patches:
   - path: patches/ingr.yaml
     target:
       kind: IngressRoute
-      name: grafana
+      name: prometheus
   - path: patches/cert.yaml
     target:
       kind: Certificate
-      name: grafana
+      name: prometheus
