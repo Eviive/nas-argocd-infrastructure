@@ -15,6 +15,9 @@ prometheus:
   prometheusSpec:
     storageSpec:
       volumeClaimTemplate:
+        metadata:
+          annotations:
+            folder: prometheus/data
         spec:
           accessModes:
             - ReadWriteOnce
