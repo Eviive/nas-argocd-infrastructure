@@ -10,3 +10,15 @@ grafana:
 kube-state-metrics:
   selfMonitor:
     enabled: true
+
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: nfs-ssd-1
