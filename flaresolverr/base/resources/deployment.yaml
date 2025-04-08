@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: flaresolverr
-          image: alexfozor/flaresolverr:pr-1300-experimental
+          image: alexfozor/flaresolverr:pr-1300
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8191
