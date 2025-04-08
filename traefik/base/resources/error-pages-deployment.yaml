@@ -16,7 +16,8 @@ spec:
           image: nginx:1.27.4
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - name: http
+              containerPort: 80
           volumeMounts:
             - name: traefik-error-pages
               mountPath: /usr/share/nginx/html
