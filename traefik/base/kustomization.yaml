@@ -11,6 +11,7 @@ resources:
   - resources/catch-all-cert.yaml
   - resources/catch-all-middleware.yaml
   - resources/logs-pvc.yaml
+  - resources/dashboard-basic-auth-middleware.yaml
 configMapGenerator:
   - name: traefik-error-pages
     options:
