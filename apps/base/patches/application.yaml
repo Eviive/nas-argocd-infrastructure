@@ -6,8 +6,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: infrastructure
-  source:
-    targetRevision: "*.*.*"
   syncPolicy:
     syncOptions:
       - RespectIgnoreDifferences=true
