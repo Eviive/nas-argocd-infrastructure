@@ -7,8 +7,9 @@ grafana:
     passwordKey: password
   defaultDashboardsTimezone: browser
   dashboards:
-    scraparr:
-      url: https://raw.githubusercontent.com/thecfu/scraparr/refs/tags/v2.1.2/dashboards/dashboard1.json
+    default:
+      scraparr:
+        url: https://raw.githubusercontent.com/thecfu/scraparr/refs/tags/v2.1.2/dashboards/dashboard1.json
 
 kube-state-metrics:
   selfMonitor:
