@@ -8,7 +8,7 @@ grafana:
   sidecar:
     dashboards:
       annotations:
-        grafana_folder: kubernetes
+        grafana_folder: Default
       folderAnnotation: grafana_folder
       provider:
         name: sidecar
