@@ -7,29 +7,14 @@ grafana:
     passwordKey: password
   sidecar:
     dashboards:
+      annotations:
+        grafana_folder: kubernetes
+      folderAnnotation: grafana_folder
       provider:
         name: sidecar
-        folder: Default
         disableDelete: true
         allowUiUpdates: false
-  dashboardProviders:
-    dashboardproviders.yaml:
-      apiVersion: 1
-      providers:
-        - name: media-server
-          folder: Media Server
-          disableDeletion: true
-          allowUiUpdates: false
-          options:
-            path: /var/lib/grafana/dashboards/media-server
-  dashboards:
-    media-server:
-      scraparr:
-        gnetId: 22934
-        revision: 3
-        datasource:
-          - name: DS_MIMIR
-            value: Prometheus
+        foldersFromFilesStructure: true
   defaultDashboardsTimezone: browser
 
 kube-state-metrics:
