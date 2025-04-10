@@ -23,7 +23,9 @@ grafana:
       scraparr:
         gnetId: 22934
         revision: 3
-        datasource: Prometheus
+        datasource:
+          - name: DS_MIMIR
+            value: Prometheus
 
 kube-state-metrics:
   selfMonitor:
