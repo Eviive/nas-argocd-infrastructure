@@ -12,16 +12,18 @@ grafana:
       providers:
         - name: default
           orgId: 1
-          folder: default
+          folder: ''
           type: file
           disableDeletion: true
-          editable: true
+          editable: false
           options:
             path: /var/lib/grafana/dashboards/default
   dashboards:
     default:
       scraparr:
-        url: https://raw.githubusercontent.com/thecfu/scraparr/refs/tags/v2.1.2/dashboards/dashboard1.json
+        gnetId: 22934
+        revision: 3
+        datasource: Prometheus
 
 kube-state-metrics:
   selfMonitor:
