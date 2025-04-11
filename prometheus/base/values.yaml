@@ -39,9 +39,9 @@ alertmanager:
       routes:
         - match:
             alertname: Watchdog
-          receiver: null
+          receiver: 'null'
     receivers:
-      - name: null
+      - name: 'null'
       - name: discord
         discord_configs:
           - webhook_url_file: /etc/alertmanager/secrets/prometheus-alertmanager-discord/webhook_url
