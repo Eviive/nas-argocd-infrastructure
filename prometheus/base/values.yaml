@@ -1,5 +1,20 @@
 fullnameOverride: prometheus
 
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        metadata:
+          annotations:
+            folder: prometheus/data
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: nfs-ssd-1
+
 grafana:
   admin:
     existingSecret: grafana-admin
@@ -17,21 +32,23 @@ grafana:
         foldersFromFilesStructure: true
   defaultDashboardsTimezone: browser
 
+alertmanager:
+  config:
+    route:
+      receiver: discord
+      routes:
+        - match:
+            alertname: Watchdog
+          receiver: null
+    receivers:
+      - name: null
+      - name: discord
+        discord_configs:
+          - webhook_url_file: /etc/alertmanager/secrets/prometheus-alertmanager-discord/webhook_url
+  alertmanagerSpec:
+    secrets:
+      - prometheus-alertmanager-discord
+
 kube-state-metrics:
   selfMonitor:
     enabled: true
-
-prometheus:
-  prometheusSpec:
-    storageSpec:
-      volumeClaimTemplate:
-        metadata:
-          annotations:
-            folder: prometheus/data
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 10Gi
-          storageClassName: nfs-ssd-1
