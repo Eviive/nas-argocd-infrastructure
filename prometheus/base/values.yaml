@@ -31,6 +31,22 @@ grafana:
         allowUiUpdates: false
         foldersFromFilesStructure: true
   defaultDashboardsTimezone: browser
+  grafana.ini:
+    auth:
+      oauth_auto_login: true
+    auth.generic_oauth:
+      name: authentik
+      enabled: true
+      client_id: $__file{/etc/secrets/generic-oauth/client_id}
+      client_secret: $__file{/etc/secrets/generic-oauth/client_secret}
+      scopes: openid profile email
+      role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+  extraSecretMounts:
+    - name: generic-oauth
+      secretName: prometheus-grafana-generic-oauth
+      mountPath: /etc/secrets/generic-oauth
+      defaultMode: 0440
+      readOnly: true
 
 alertmanager:
   config:
