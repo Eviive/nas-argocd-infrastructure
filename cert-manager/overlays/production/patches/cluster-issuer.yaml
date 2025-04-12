@@ -1,8 +1,6 @@
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: cert-manager-cloudflare
-spec:
-  acme:
-    email: albert.vaillon21@gmail.com
-    server: https://acme-v02.api.letsencrypt.org/directory
+- op: replace
+  path: /spec/acme/email
+  value: albert.vaillon21@gmail.com
+- op: replace
+  path: /spec/acme/server
+  value: https://acme-v02.api.letsencrypt.org/directory
