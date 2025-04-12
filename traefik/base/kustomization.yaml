@@ -18,7 +18,7 @@ patches:
       kind: IngressRoute
       name: traefik-dashboard
 configMapGenerator:
-  - name: traefik-error-pages
+  - name: traefik-error-pages-html
     options:
       disableNameSuffixHash: true
     files:
@@ -26,3 +26,8 @@ configMapGenerator:
       - 502.html=assets/error-pages/502-504.html
       - 503.html=assets/error-pages/502-504.html
       - 504.html=assets/error-pages/502-504.html
+  - name: traefik-error-pages-conf
+    options:
+      disableNameSuffixHash: true
+    files:
+      - assets/error-pages/default.conf
