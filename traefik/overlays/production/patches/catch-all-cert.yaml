@@ -1,8 +1,5 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: traefik-catch-all
-spec:
-  dnsNames:
+- op: replace
+  path: /spec/dnsNames
+  value:
     - "*.albertv.dev"
     - "*.home.albertv.dev"

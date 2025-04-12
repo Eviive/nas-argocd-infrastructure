@@ -1,9 +1,6 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: grafana
-spec:
-  dnsNames:
+- op: replace
+  path: /spec/dnsNames
+  value:
     - prometheus.home.albertv.dev
     - grafana.home.albertv.dev
     - alertmanager.home.albertv.dev

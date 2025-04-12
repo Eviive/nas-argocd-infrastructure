@@ -1,7 +1,4 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: argocd
-spec:
-  dnsNames:
+- op: replace
+  path: /spec/dnsNames
+  value:
     - argocd.home.albertv.dev
