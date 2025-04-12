@@ -33,7 +33,7 @@ grafana:
   defaultDashboardsTimezone: browser
   grafana.ini:
     auth.generic_oauth:
-      name: authentik
+      name: Authentik
       enabled: true
       client_id: $__file{/etc/secrets/generic-oauth/client_id}
       client_secret: $__file{/etc/secrets/generic-oauth/client_secret}
