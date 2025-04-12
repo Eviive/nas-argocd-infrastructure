@@ -18,14 +18,14 @@ spec:
             - name: http
               containerPort: 80
           volumeMounts:
-            - name: traefik-error-pages-conf
+            - name: conf
               mountPath: /etc/nginx/conf.d
-            - name: traefik-error-pages
+            - name: html
               mountPath: /usr/share/nginx/html
       volumes:
-        - name: traefik-error-pages-conf
+        - name: conf
           configMap:
             name: traefik-error-pages-conf
-        - name: traefik-error-pages-html
+        - name: html
           configMap:
             name: traefik-error-pages-html
