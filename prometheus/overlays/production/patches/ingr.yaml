@@ -7,3 +7,6 @@
 - op: replace
   path: /spec/routes/2/match
   value: Host(`alertmanager.home.albertv.dev`)
+- op: replace
+  path: /spec/routes/3/match
+  value: (Host(`prometheus.home.albertv.dev`) || Host(`alertmanager.home.albertv.dev`)) && PathPrefix(`/outpost.goauthentik.io/`)

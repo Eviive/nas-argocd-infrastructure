@@ -40,6 +40,9 @@ ingressRoute:
       - websecure
     middlewares:
       - name: traefik-error-pages
+      - name: ak-outpost-authentik-embedded-outpost
+        namespace: authentik
+      - name: traefik-dashboard-basic-auth
     tls:
       secretName: traefik-dashboard-tls
 

@@ -1,0 +1,8 @@
+- op: add
+  path: /spec/routes/-
+  value:
+    kind: Rule
+    services:
+      - name: ak-outpost-authentik-embedded-outpost
+        namespace: authentik
+        port: http
