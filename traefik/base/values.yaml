@@ -8,7 +8,7 @@ ports:
 
   web-ext:
     port: 8001
-    exposedPort: 7080
+    exposedPort: 80
     expose:
       default: false
       ext: true
@@ -21,7 +21,7 @@ ports:
 
   websecure-ext:
     port: 8444
-    exposedPort: 7443
+    exposedPort: 443
     expose:
       default: false
       ext: true
