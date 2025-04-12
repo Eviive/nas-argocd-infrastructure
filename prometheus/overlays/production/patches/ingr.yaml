@@ -6,4 +6,4 @@
   value: Host(`grafana.home.albertv.dev`)
 - op: replace
   path: /spec/routes/2/match
-  value: Host(`alert-manager.home.albertv.dev`)
+  value: Host(`alertmanager.home.albertv.dev`)

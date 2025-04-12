@@ -6,4 +6,4 @@ spec:
   dnsNames:
     - prometheus.home.albertv.dev
     - grafana.home.albertv.dev
-    - alert-manager.home.albertv.dev
+    - alertmanager.home.albertv.dev

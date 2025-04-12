@@ -1,0 +1,13 @@
+prometheus:
+  prometheusSpec:
+    externalUrl: https://prometheus.home.albertv.dev
+
+grafana:
+  grafana.ini:
+    server:
+      domain: grafana.home.albertv.dev
+      root_url: https://grafana.home.albertv.dev
+
+alertmanager:
+  alertmanagerSpec:
+    externalUrl: https://alertmanager.home.albertv.dev
