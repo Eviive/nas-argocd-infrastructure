@@ -7,8 +7,8 @@ resources:
   - resources/overlay-cm.yaml
   - resources/infrastructure-app-project.yaml
   - resources/infrastructure-application.yaml
-  - resources/dashboard-ingr.yaml
-  - resources/dashboard-cert.yaml
+  - resources/ingr.yaml
+  - resources/cert.yaml
   - resources/media-server-app-project.yaml
   - resources/media-server-application.yaml
 patches:

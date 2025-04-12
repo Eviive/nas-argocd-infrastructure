@@ -11,11 +11,11 @@ helmCharts:
     includeCRDs: true
     valuesFile: ../../base/values.yaml
 patches:
-  - path: patches/dashboard-ingr.yaml
+  - path: patches/ingr.yaml
     target:
       kind: IngressRoute
-      name: authentik-dashboard
-  - path: patches/dashboard-cert.yaml
+      name: authentik
+  - path: patches/cert.yaml
     target:
       kind: Certificate
-      name: authentik-dashboard
+      name: authentik

@@ -30,14 +30,14 @@ patches:
     target:
       kind: ConfigMap
       name: argocd-overlay
-  - path: patches/dashboard-ingr.yaml
+  - path: patches/ingr.yaml
     target:
       kind: IngressRoute
-      name: argocd-dashboard
-  - path: patches/dashboard-cert.yaml
+      name: argocd
+  - path: patches/cert.yaml
     target:
       kind: Certificate
-      name: argocd-dashboard
+      name: argocd
   - path: patches/media-server-application.yaml
     target:
       kind: Application

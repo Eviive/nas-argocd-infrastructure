@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argocd-dashboard
+  name: argocd
 spec:
   entryPoints:
     - websecure
@@ -14,4 +14,4 @@ spec:
         - name: traefik-error-pages
           namespace: traefik
   tls:
-    secretName: argocd-dashboard-tls
+    secretName: argocd-tls
