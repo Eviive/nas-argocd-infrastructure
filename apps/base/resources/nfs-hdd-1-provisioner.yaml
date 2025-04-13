@@ -1,9 +1,0 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: nfs-hdd-1-provisioner
-spec:
-  source:
-    path: nfs-hdd-1-provisioner/$OVERLAY
-  destination:
-    namespace: nfs-hdd-1-provisioner
