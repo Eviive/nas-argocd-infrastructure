@@ -52,8 +52,10 @@ alertmanager:
     route:
       receiver: discord
       routes:
-        - match:
-            alertname: Watchdog
+        - matchers:
+            - name: alertname
+              matchType: =
+              value: Watchdog
           receiver: 'null'
     receivers:
       - name: 'null'
