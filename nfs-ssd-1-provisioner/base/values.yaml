@@ -1,5 +1,0 @@
-storageClass:
-  provisionerName: nfs-ssd-1-provisioner
-  name: nfs-ssd-1
-  reclaimPolicy: Retain
-  pathPattern: ${.PVC.annotations.folder}

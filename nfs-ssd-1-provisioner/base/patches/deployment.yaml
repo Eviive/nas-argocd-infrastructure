@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/template/spec/containers/0/env/0/value
+  value: k8s-sigs.io/nfs-subdir-external-provisioner-ssd-1
