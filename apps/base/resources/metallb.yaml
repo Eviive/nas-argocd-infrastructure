@@ -6,4 +6,4 @@ spec:
   source:
     path: metallb/$OVERLAY
   destination:
-    namespace: metallb
+    namespace: metallb-system
