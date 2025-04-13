@@ -1,3 +1,0 @@
-nfs:
-  server: truenas.home.albertv.dev
-  path: /mnt/hdd-1/k8s-nfs
