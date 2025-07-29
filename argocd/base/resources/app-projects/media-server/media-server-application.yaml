@@ -3,6 +3,6 @@ kind: Application
 metadata:
   name: media-server-apps
 spec:
-  project: media-server
+  project: infrastructure
   source:
     path: apps/$OVERLAY

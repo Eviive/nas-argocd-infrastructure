@@ -3,6 +3,6 @@ kind: Application
 metadata:
   name: projects-apps
 spec:
-  project: projects
+  project: infrastructure
   source:
     path: apps/$OVERLAY

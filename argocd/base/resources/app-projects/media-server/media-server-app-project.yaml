@@ -7,7 +7,6 @@ spec:
   sourceRepos:
     - "*"
   destinations:
-    - namespace: argocd
     - namespace: jellyfin
     - namespace: sonarr
     - namespace: radarr
