@@ -5,12 +5,14 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.2/manifests/install.yaml
   - resources/ns.yaml
   - resources/overlay-cm.yaml
-  - resources/infrastructure-app-project.yaml
-  - resources/infrastructure-application.yaml
+  - resources/app-projects/infrastructure/infrastructure-app-project.yaml
+  - resources/app-projects/infrastructure/infrastructure-application.yaml
   - resources/ingr.yaml
   - resources/cert.yaml
-  - resources/media-server-app-project.yaml
-  - resources/media-server-application.yaml
+  - resources/app-projects/media-server/media-server-app-project.yaml
+  - resources/app-projects/media-server/media-server-application.yaml
+  - resources/app-projects/projects/projects-app-project.yaml
+  - resources/app-projects/projects/projects-application.yaml
 patches:
   - path: patches/application.yaml
     target:

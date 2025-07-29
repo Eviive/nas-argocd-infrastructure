@@ -1,0 +1,7 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: projects-apps
+spec:
+  source:
+    repoURL: https://github.com/Eviive/projects-gitops

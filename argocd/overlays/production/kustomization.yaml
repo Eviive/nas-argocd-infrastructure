@@ -6,18 +6,6 @@ patches:
   - path: patches/application.yaml
     target:
       kind: Application
-  - path: patches/infrastructure-application.yaml
-    target:
-      kind: Application
-      name: infrastructure-apps
-  - path: patches/infrastructure-app-project.yaml
-    target:
-      kind: AppProject
-      name: infrastructure
-  - path: patches/media-server-app-project.yaml
-    target:
-      kind: AppProject
-      name: media-server
   - path: patches/cm.yaml
     target:
       kind: ConfigMap
@@ -26,6 +14,14 @@ patches:
     target:
       kind: ConfigMap
       name: argocd-overlay
+  - path: patches/app-projects/infrastructure/infrastructure-application.yaml
+    target:
+      kind: Application
+      name: infrastructure-apps
+  - path: patches/app-projects/infrastructure/infrastructure-app-project.yaml
+    target:
+      kind: AppProject
+      name: infrastructure
   - path: patches/ingr.yaml
     target:
       kind: IngressRoute
@@ -34,9 +30,21 @@ patches:
     target:
       kind: Certificate
       name: argocd
-  - path: patches/media-server-application.yaml
+  - path: patches/app-projects/media-server/media-server-app-project.yaml
+    target:
+      kind: AppProject
+      name: media-server
+  - path: patches/app-projects/media-server/media-server-application.yaml
     target:
       kind: Application
       name: media-server-apps
+  - path: patches/app-projects/projects/projects-app-project.yaml
+    target:
+      kind: AppProject
+      name: projects
+  - path: patches/app-projects/projects/projects-application.yaml
+    target:
+      kind: Application
+      name: projects-apps
 replacements:
   - path: replacements/application-overlay-replacement.yaml
