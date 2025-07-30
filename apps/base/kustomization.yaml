@@ -12,6 +12,7 @@ resources:
   - resources/authentik.yaml
   - resources/flaresolverr.yaml
   - resources/prometheus.yaml
+  - resources/postgresql.yaml
 patches:
   - path: patches/application.yaml
     target:
