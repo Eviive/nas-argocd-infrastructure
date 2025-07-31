@@ -32,3 +32,7 @@ patches:
     target:
       kind: ConfigMap
       name: argocd-rbac-cm
+  - path: patches/dex-server-deployment.yaml
+    target:
+      kind: Deployment
+      name: argocd-dex-server

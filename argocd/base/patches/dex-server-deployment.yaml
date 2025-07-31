@@ -1,0 +1,24 @@
+- op: add
+  path: "/spec/template/spec/containers/0/startupProbe"
+  value:
+    failureThreshold: 3
+    httpGet:
+      path: /api/dex/healthz
+      port: 5556
+      scheme: HTTPS
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+- op: add
+  path: "/spec/template/spec/containers/0/livenessProbe"
+  value:
+    failureThreshold: 3
+    httpGet:
+      path: /api/dex/.well-known/openid-configuration
+      port: 5556
+      scheme: HTTPS
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
