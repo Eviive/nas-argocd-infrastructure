@@ -69,3 +69,7 @@ alertmanager:
 kube-state-metrics:
   selfMonitor:
     enabled: true
+
+defaultRules:
+  disabled:
+    KubeCPUOvercommit: true
