@@ -7,14 +7,17 @@ It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/
 
 ## Applications
 
-| Name            | Provider | Version   |
-|-----------------|----------|-----------|
-| ArgoCD          | GitHub   | v2.13.2   |
-| MetalLB         | GitHub   | v0.14.9   |
-| NFS Provisioner | Helm     | 4.0.18    |
-| Traefik         | Helm     | 34.1.0    |
-| Cert-Manager    | Helm     | v1.17.1   |
-| Authentik       | Helm     | 2024.12.2 |
+| Name            | Provider | Version              |
+|-----------------|----------|----------------------|
+| ArgoCD          | GitHub   | v3.1.0               |
+| MetalLB         | GitHub   | v0.15.2              |
+| Traefik         | Helm     | 37.0.0               |
+| Cert-Manager    | GitHub   | v1.18.2              |
+| Authentik       | Helm     | 2024.12.2            |
+| NFS Provisioner | GitHub   | 4.0.18               |
+| FlareSolverr    | Docker   | pr-1300-experimental |
+| Prometheus      | Helm     | 76.4.0               |
+| PostgreSQL      | Helm     | 16.7.26              |
 
 ## Installation
 
