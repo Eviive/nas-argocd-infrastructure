@@ -5,9 +5,9 @@
     ":assignee(Eviive)",
     ":automergePatch",
     ":disableRateLimiting",
-    ":semanticCommits",
     ":separateMultipleMajorReleases",
-    "mergeConfidence:all-badges"
+    "mergeConfidence:all-badges",
+    "security:openssf-scorecard"
   ],
   "kubernetes": {
     "managerFilePatterns": [
