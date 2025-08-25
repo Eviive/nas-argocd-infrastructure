@@ -2,19 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
+    ":assignee(Eviive)",
+    ":automergePatch",
+    ":disableRateLimiting",
     ":semanticCommits",
     ":separateMultipleMajorReleases",
     "mergeConfidence:all-badges"
-  ],
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 0,
-  "packageRules": [
-    {
-      "matchUpdateTypes": [
-        "patch"
-      ],
-      "automerge": true
-    }
   ],
   "kubernetes": {
     "managerFilePatterns": [
