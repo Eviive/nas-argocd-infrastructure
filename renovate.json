@@ -14,5 +14,22 @@
       "/^.*deployment\\.yaml$/",
       "/^.*cronjob\\.yaml$/"
     ]
-  }
+  },
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepTypes": [
+        "HelmChart"
+      ],
+      "matchPackageNames": [
+        "registry-1.docker.io/bitnamicharts/postgresql"
+      ],
+      "pinDigests": false
+    }
+  ],
+  "ignoreDeps": [
+    "alexfozor/flaresolverr"
+  ]
 }
