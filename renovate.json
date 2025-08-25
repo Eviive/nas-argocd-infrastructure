@@ -7,6 +7,14 @@
   ],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true
+    }
+  ],
   "kubernetes": {
     "managerFilePatterns": [
       "/^.*deployment\\.yaml$/",
