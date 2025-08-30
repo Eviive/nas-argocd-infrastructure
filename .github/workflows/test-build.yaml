@@ -61,11 +61,6 @@ jobs:
         if: ${{ steps.check-helm.outputs.need-helm == 'true' }}
         uses: eviive/actions/setup/helm@main
 
-      - name: Which
-        run: |
-          which kustomize
-          which helm
-
       - name: Build Overlay
         working-directory: ${{ matrix.overlay }}
         run: kustomize build ${{ steps.check-helm.outputs.helm-args }} .
