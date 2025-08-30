@@ -4,40 +4,24 @@ on:
   pull_request:
 
 jobs:
-  kustomize-overlay-changes:
-    name: Kustomize Overlay Changes
+  kustomize-changed-overlays:
+    name: Kustomize Changed Overlays
     runs-on: ubuntu-latest
     outputs:
-      changed-overlays: ${{ steps.filter.outputs.changes }}
+      changed-overlays: ${{ steps.find-changed-kustomize-overlays.outputs.changed-overlays }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - id: build-filters
-        name: Build Kustomize overlay filters
-        run: |
-          echo "filters<<EOF" >> $GITHUB_OUTPUT
-          find . -path "*/overlays/*/kustomization.yaml" | while read file; do
-            path=$(dirname "$file" | sed 's|^\./||')
-            folder=$(echo "$path" | cut -d'/' -f1)
-            echo "$path: $folder/**" >> $GITHUB_OUTPUT
-          done
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - id: filter
-        name: Filter Kustomize overlays with changes
-        uses: dorny/paths-filter@v3
-        with:
-          filters: ${{ steps.build-filters.outputs.filters }}
+      - id: find-changed-kustomize-overlays
+        name: Find Changed Kustomize Overlays
+        uses: eviive/actions/find/kustomize/changed-overlays@main
 
   build-kustomize-overlay:
     name: Build Kustomize Overlay
-    needs: kustomize-overlay-changes
-    if: needs.kustomize-overlay-changes.outputs.changed-overlays != '[]'
+    needs: kustomize-changed-overlays
+    if: needs.kustomize-changed-overlays.outputs.changed-overlays != '[]'
     strategy:
       fail-fast: false
       matrix:
-        overlay: ${{ fromJSON(needs.kustomize-overlay-changes.outputs.changed-overlays) }}
+        overlay: ${{ fromJSON(needs.kustomize-changed-overlays.outputs.changed-overlays) }}
     runs-on: ubuntu-latest
     steps:
       - name: Build Kustomize overlay
