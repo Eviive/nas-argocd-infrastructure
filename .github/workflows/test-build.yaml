@@ -4,10 +4,11 @@ on:
   pull_request:
 
 jobs:
-  changes:
+  overlay-changes:
+    name: Overlay Changes
     runs-on: ubuntu-latest
     outputs:
-      overlays: ${{ steps.filter.outputs.changes }}
+      changed-overlays: ${{ steps.filter.outputs.changes }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,11 +30,13 @@ jobs:
           filters: ${{ steps.overlay-filters.outputs.filters }}
 
   build:
-    needs: changes
+    name: Build Overlay
+    needs: overlay-changes
+    if: needs.overlay-changes.outputs.changed-overlays != '[]'
     strategy:
       fail-fast: false
       matrix:
-        overlays: ${{ fromJSON(needs.changes.outputs.overlays) }}
+        overlay: ${{ fromJSON(needs.overlay-changes.outputs.changed-overlays) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,7 +47,7 @@ jobs:
 
       - id: check-helm
         name: Check if Helm is needed
-        working-directory: ${{ matrix.overlays }}
+        working-directory: ${{ matrix.overlay }}
         run: |
           if grep -q "helmCharts:" kustomization.yaml; then
             echo "need-helm=true" >> $GITHUB_OUTPUT
@@ -59,5 +62,5 @@ jobs:
         uses: eviive/actions/install/helm@main
 
       - name: Build Overlay
-        working-directory: ${{ matrix.overlays }}
+        working-directory: ${{ matrix.overlay }}
         run: kustomize build ${{ steps.check-helm.outputs.helm-args }} .
