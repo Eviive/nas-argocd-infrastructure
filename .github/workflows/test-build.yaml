@@ -4,8 +4,8 @@ on:
   pull_request:
 
 jobs:
-  overlay-changes:
-    name: Overlay Changes
+  kustomize-overlay-changes:
+    name: Kustomize Overlay Changes
     runs-on: ubuntu-latest
     outputs:
       changed-overlays: ${{ steps.filter.outputs.changes }}
@@ -13,8 +13,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - id: overlay-filters
-        name: Build overlay filters
+      - id: build-filters
+        name: Build Kustomize overlay filters
         run: |
           echo "filters<<EOF" >> $GITHUB_OUTPUT
           find . -path "*/overlays/*/kustomization.yaml" | while read file; do
@@ -25,42 +25,22 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
       - id: filter
+        name: Filter Kustomize overlays with changes
         uses: dorny/paths-filter@v3
         with:
-          filters: ${{ steps.overlay-filters.outputs.filters }}
+          filters: ${{ steps.build-filters.outputs.filters }}
 
-  build:
-    name: Build Overlay
-    needs: overlay-changes
-    if: needs.overlay-changes.outputs.changed-overlays != '[]'
+  build-kustomize-overlay:
+    name: Build Kustomize Overlay
+    needs: kustomize-overlay-changes
+    if: needs.kustomize-overlay-changes.outputs.changed-overlays != '[]'
     strategy:
       fail-fast: false
       matrix:
-        overlay: ${{ fromJSON(needs.overlay-changes.outputs.changed-overlays) }}
+        overlay: ${{ fromJSON(needs.kustomize-overlay-changes.outputs.changed-overlays) }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Kustomize
-        uses: eviive/actions/setup/kustomize@main
-
-      - id: check-helm
-        name: Check if Helm is needed
-        working-directory: ${{ matrix.overlay }}
-        run: |
-          if grep -q "helmCharts:" kustomization.yaml; then
-            echo "need-helm=true" >> $GITHUB_OUTPUT
-            echo "helm-args=--enable-helm --load-restrictor LoadRestrictionsNone" >> $GITHUB_OUTPUT
-          else
-            echo "need-helm=false" >> $GITHUB_OUTPUT
-            echo "helm-args=" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Setup Helm
-        if: ${{ steps.check-helm.outputs.need-helm == 'true' }}
-        uses: eviive/actions/setup/helm@main
-
-      - name: Build Overlay
-        working-directory: ${{ matrix.overlay }}
-        run: kustomize build ${{ steps.check-helm.outputs.helm-args }} .
+      - name: Build Kustomize overlay
+        uses: eviive/actions/build/kustomize@main
+        with:
+          working-directory: ${{ matrix.overlay }}
