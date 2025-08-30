@@ -1,0 +1,63 @@
+name: Test Build
+
+on:
+  pull_request:
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      overlays: ${{ steps.filter.outputs.changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: overlay-filters
+        name: Build overlay filters
+        run: |
+          echo "filters<<EOF" >> $GITHUB_OUTPUT
+          find . -path "*/overlays/*/kustomization.yaml" | while read file; do
+            path=$(dirname "$file" | sed 's|^\./||')
+            folder=$(echo "$path" | cut -d'/' -f1)
+            echo "$path: $folder" >> $GITHUB_OUTPUT
+          done
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: ${{ steps.overlay-filters.outputs.filters }}
+
+  build:
+    needs: changes
+    strategy:
+      fail-fast: false
+      matrix:
+        overlays: ${{ fromJSON(needs.changes.outputs.overlays) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Kustomize
+        uses: eviive/actions/install/kustomize@main
+
+      - id: check-helm
+        name: Check if Helm is needed
+        working-directory: ${{ matrix.overlays }}
+        run: |
+          if grep -q "helmCharts:" kustomization.yaml; then
+            echo "need-helm=true" >> $GITHUB_OUTPUT
+            echo "helm-args=--enable-helm --load-restrictor LoadRestrictionsNone" >> $GITHUB_OUTPUT
+          else
+            echo "need-helm=false" >> $GITHUB_OUTPUT
+            echo "helm-args=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install Helm
+        if: ${{ steps.check-helm.outputs.need-helm == 'true' }}
+        uses: eviive/actions/install/helm@main
+
+      - name: Build Overlay
+        working-directory: ${{ matrix.overlays }}
+        run: kustomize build ${{ steps.check-helm.outputs.helm-args }} .
