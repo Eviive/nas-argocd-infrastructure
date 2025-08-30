@@ -42,7 +42,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Kustomize
+      - name: Setup Kustomize
         uses: eviive/actions/setup/kustomize@main
 
       - id: check-helm
@@ -57,9 +57,14 @@ jobs:
             echo "helm-args=" >> $GITHUB_OUTPUT
           fi
 
-      - name: Install Helm
+      - name: Setup Helm
         if: ${{ steps.check-helm.outputs.need-helm == 'true' }}
         uses: eviive/actions/setup/helm@main
+
+      - name: Which
+        run: |
+          which kustomize
+          which helm
 
       - name: Build Overlay
         working-directory: ${{ matrix.overlay }}
