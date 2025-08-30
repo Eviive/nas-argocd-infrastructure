@@ -1,20 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices",
-    ":assignee(Eviive)",
-    ":automergePatch",
-    ":disableRateLimiting",
-    ":separateMultipleMajorReleases",
-    "mergeConfidence:all-badges",
-    "security:openssf-scorecard"
+    "github>Eviive/renovate-config:base",
+    "github>Eviive/renovate-config//kubernetes:base"
   ],
-  "kubernetes": {
-    "managerFilePatterns": [
-      "/^.*deployment\\.yaml$/",
-      "/^.*cronjob\\.yaml$/"
-    ]
-  },
   "packageRules": [
     {
       "matchDatasources": [
