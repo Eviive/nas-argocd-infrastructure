@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: flaresolverr
 resources:
   - resources/ns.yaml
-  - resources/deployment.yaml
+  - resources/deploy.yaml
   - resources/svc.yaml

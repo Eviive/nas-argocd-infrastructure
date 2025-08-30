@@ -4,7 +4,7 @@ namespace: traefik
 resources:
   - resources/ns.yaml
   - resources/dashboard-cert.yaml
-  - resources/error-pages-deployment.yaml
+  - resources/error-pages-deploy.yaml
   - resources/error-pages-svc.yaml
   - resources/error-pages-middleware.yaml
   - resources/catch-all-ingr.yaml
