@@ -20,7 +20,7 @@ jobs:
           find . -path "*/overlays/*/kustomization.yaml" | while read file; do
             path=$(dirname "$file" | sed 's|^\./||')
             folder=$(echo "$path" | cut -d'/' -f1)
-            echo "$path: $folder" >> $GITHUB_OUTPUT
+            echo "$path: $folder/**" >> $GITHUB_OUTPUT
           done
           echo "EOF" >> $GITHUB_OUTPUT
 
