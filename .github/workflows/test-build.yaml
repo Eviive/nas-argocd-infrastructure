@@ -30,7 +30,7 @@ jobs:
           filters: ${{ steps.overlay-filters.outputs.filters }}
 
   build:
-    name: Build Overlay
+    name: Build `${{ matrix.overlay }}` Overlay
     needs: overlay-changes
     if: needs.overlay-changes.outputs.changed-overlays != '[]'
     strategy:
