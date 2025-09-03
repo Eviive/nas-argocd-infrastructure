@@ -16,6 +16,20 @@
         "registry-1.docker.io/bitnamicharts/postgresql"
       ],
       "pinDigests": false
+    },
+    {
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchDepTypes": [
+        "HelmChart"
+      ],
+      "matchPackageNames": [
+        "kube-prometheus-stack"
+      ],
+      "extends": [
+        "schedule:weekly"
+      ]
     }
   ],
   "ignoreDeps": [
