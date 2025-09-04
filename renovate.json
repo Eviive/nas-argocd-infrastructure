@@ -13,7 +13,8 @@
         "HelmChart"
       ],
       "matchPackageNames": [
-        "registry-1.docker.io/bitnamicharts/postgresql"
+        "registry-1.docker.io/bitnamicharts/postgresql",
+        "registry-1.docker.io/bitnamicharts/redis"
       ],
       "pinDigests": false
     },

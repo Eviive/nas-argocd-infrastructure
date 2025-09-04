@@ -3,14 +3,13 @@ global:
     auth:
       existingSecret: postgresql-password
       secretKeys:
-        adminPasswordKey: "ADMIN_PASSWORD"
-        replicationPasswordKey: "REPLICATION_PASSWORD"
+        adminPasswordKey: ADMIN_PASSWORD
+        replicationPasswordKey: REPLICATION_PASSWORD
 
 primary:
   persistence:
     enabled: true
-    volumeName: postgresql-primary
+    volumeName: postgresql-data
     storageClass: nfs-ssd-1
     annotations:
       folder: postgresql/primary
-    size: 10Gi
