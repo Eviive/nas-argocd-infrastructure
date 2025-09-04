@@ -1,3 +1,5 @@
+architecture: standalone
+
 auth:
   existingSecret: redis-password
   existingSecretPasswordKey: PASSWORD
@@ -7,6 +9,3 @@ master:
     storageClass: nfs-ssd-1
     annotations:
       folder: redis/master
-
-replica:
-  replicaCount: 0
