@@ -17,18 +17,5 @@ worker:
     - secretRef:
         name: authentik-env
 
-postgresql:
-  enabled: true
-  auth:
-    existingSecret: authentik-env
-    secretKeys:
-      adminPasswordKey: AUTHENTIK_POSTGRESQL__ADMIN_PASSWORD
-      userPasswordKey: AUTHENTIK_POSTGRESQL__PASSWORD
-  primary:
-    persistence:
-      storageClass: nfs-ssd-1
-      annotations:
-        folder: authentik/postgresql
-
 redis:
   enabled: false
