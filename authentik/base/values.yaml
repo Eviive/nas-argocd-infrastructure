@@ -31,9 +31,4 @@ postgresql:
         folder: authentik/postgresql
 
 redis:
-  enabled: true
-  master:
-    persistence:
-      storageClass: nfs-ssd-1
-      annotations:
-        folder: authentik/redis
+  enabled: false
