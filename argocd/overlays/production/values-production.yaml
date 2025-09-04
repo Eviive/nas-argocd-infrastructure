@@ -1,0 +1,17 @@
+configs:
+  cm:
+    url: "https://argocd.home.albertv.dev"
+    dex.config: |
+      connectors:
+      - id: authentik
+        name: authentik
+        type: oidc
+        config:
+          issuer: https://authentik.home.albertv.dev/application/o/argocd/
+          clientID: $dex.authentik.clientID
+          clientSecret: $dex.authentik.clientSecret
+          insecureEnableGroups: true
+          scopes:
+            - openid
+            - profile
+            - email

@@ -1,0 +1,26 @@
+configs:
+  cm:
+    kustomize.buildOptions: "--load-restrictor LoadRestrictionsNone --enable-helm"
+    resource.customizations.ignoreDifferences.all: |
+      jqPathExpressions:
+        - ".webhooks[]?.clientConfig.caBundle"
+        - ".spec.conversion.webhook.clientConfig.caBundle"
+  params:
+    server.insecure: true
+  rbac:
+    policy.csv: |
+      g, ArgoCD Admins, role:admin
+      g, ArgoCD, role:readonly
+
+dex:
+  livenessProbe:
+    enabled: true
+  readinessProbe:
+    enabled: true
+
+redis:
+  enabled: false
+
+externalRedis:
+  host: redis-master.redis.svc.cluster.local
+  existingSecret: argocd-secret

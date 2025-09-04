@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.0/manifests/install.yaml
   - resources/ns.yaml
   - resources/overlay-cm.yaml
   - resources/app-projects/infrastructure/infrastructure-app-project.yaml
@@ -14,25 +13,13 @@ resources:
   - resources/app-projects/projects/projects-app-project.yaml
   - resources/app-projects/projects/projects-application.yaml
 patches:
-  - path: patches/application.yaml
-    target:
-      kind: Application
-  - path: patches/cm.yaml
-    target:
-      kind: ConfigMap
-      name: argocd-cm
   - path: patches/app-project.yaml
     target:
       kind: AppProject
-  - path: patches/cmd-params-cm.yaml
+  - path: patches/application.yaml
     target:
-      kind: ConfigMap
-      name: argocd-cmd-params-cm
-  - path: patches/rbac-cm.yaml
-    target:
-      kind: ConfigMap
-      name: argocd-rbac-cm
-  - path: patches/dex-server-deployment.yaml
-    target:
-      kind: Deployment
-      name: argocd-dex-server
+      kind: Application
+#  - path: patches/dex-server-deployment.yaml
+#    target:
+#      kind: Deployment
+#      name: argocd-dex-server
