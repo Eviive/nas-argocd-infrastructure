@@ -9,6 +9,7 @@ spec:
   destinations:
     - namespace: argocd
     - namespace: jellyfin
+    - namespace: jellyseerr
     - namespace: sonarr
     - namespace: radarr
     - namespace: prowlarr
