@@ -22,3 +22,6 @@
 - op: replace
   path: /spec/destinations/7/server
   value: https://kubernetes.default.svc
+- op: replace
+  path: /spec/destinations/8/server
+  value: https://kubernetes.default.svc
