@@ -10,7 +10,7 @@ patches:
     target:
       kind: StorageClass
       name: nfs-client
-  - path: patches/deployment.yaml
+  - path: patches/deploy.yaml
     target:
       kind: Deployment
       name: nfs-client-provisioner
