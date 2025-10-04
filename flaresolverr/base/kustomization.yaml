@@ -4,4 +4,5 @@ namespace: flaresolverr
 resources:
   - resources/ns.yaml
   - resources/deploy.yaml
+  - resources/gluetun-config-pvc.yaml
   - resources/svc.yaml
