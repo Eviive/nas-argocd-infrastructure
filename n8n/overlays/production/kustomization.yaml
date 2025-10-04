@@ -10,6 +10,8 @@ helmCharts:
     namespace: n8n
     includeCRDs: true
     valuesFile: ../../base/values.yaml
+    additionalValuesFiles:
+      - values-production.yaml
 patches:
   - path: patches/ingr.yaml
     target:

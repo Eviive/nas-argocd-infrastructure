@@ -1,0 +1,10 @@
+main:
+  config:
+    webhook:
+      url: https://n8n.home.albertv.dev
+    n8n:
+      editor:
+        base:
+          url: https://n8n.home.albertv.dev
+      proxy:
+        hops: 1
