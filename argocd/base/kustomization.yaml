@@ -19,7 +19,3 @@ patches:
   - path: patches/application.yaml
     target:
       kind: Application
-#  - path: patches/dex-server-deployment.yaml
-#    target:
-#      kind: Deployment
-#      name: argocd-dex-server
