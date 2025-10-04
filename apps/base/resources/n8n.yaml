@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n
+spec:
+  source:
+    path: n8n/$OVERLAY
+  destination:
+    namespace: n8n

@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: flaresolverr
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: flaresolverr

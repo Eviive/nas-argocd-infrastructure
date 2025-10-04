@@ -14,6 +14,7 @@ resources:
   - resources/prometheus.yaml
   - resources/postgresql.yaml
   - resources/redis.yaml
+  - resources/n8n.yaml
 patches:
   - path: patches/application.yaml
     target:
