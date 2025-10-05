@@ -3,8 +3,6 @@ main:
     db:
       type: postgresdb
     n8n:
-      port: 443
-      protocol: https
       forward:
         auth:
           header: X-authentik-email

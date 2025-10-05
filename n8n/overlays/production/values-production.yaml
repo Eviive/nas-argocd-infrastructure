@@ -3,7 +3,6 @@ main:
     webhook:
       url: https://n8n.home.albertv.dev
     n8n:
-      host: n8n.home.albertv.dev
       editor:
         base:
           url: https://n8n.home.albertv.dev
