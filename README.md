@@ -18,6 +18,8 @@ It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/
 | FlareSolverr    | Docker   |
 | Prometheus      | Helm     |
 | PostgreSQL      | Helm     |
+| Redis           | Helm     |
+| n8n             | Helm     |
 
 ## Installation
 
