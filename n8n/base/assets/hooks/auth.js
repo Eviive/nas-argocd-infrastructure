@@ -4,9 +4,7 @@ const Layer = require("router/lib/layer");
 
 const ignoreAuthRegexp = /^\/(assets|healthz|webhook|rest\/oauth2-credential)/;
 
-const middleware = async (config, req, res, next) => {
-    console.log(req.headers);
-
+async function middleware(config, req, res, next) {
     if (ignoreAuthRegexp.test(req.url)) {
         return next();
     }
@@ -42,7 +40,7 @@ const middleware = async (config, req, res, next) => {
 
     issueCookie(res, user);
     return next();
-};
+}
 
 module.exports = {
     n8n: {
@@ -50,16 +48,16 @@ module.exports = {
             async function ({ app }, config) {
                 const { stack } = app.router;
                 const index = stack.findIndex(l => l.name === "cookieParser");
-                
+
                 const layer = new Layer(
                     "/",
                     {
                         strict: false,
                         end: false
                     },
-                    (...args) => middleware.call(this, config, ...args)
+                    middleware.bind(this, config)
                 );
-                
+
                 stack.splice(index + 1, 0, layer);
             }
         ]
