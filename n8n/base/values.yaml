@@ -5,6 +5,13 @@ main:
     n8n:
       port: 443
       protocol: https
+      forward:
+        auth:
+          header: X-authentik-email
+    external:
+      hook:
+        files: /home/node/hooks/auth.js
+
   extraEnv:
     DB_POSTGRESDB_HOST:
       valueFrom:
@@ -21,9 +28,20 @@ main:
         secretKeyRef:
           name: n8n
           key: DB_POSTGRESDB_PASSWORD
+
   persistence:
     enabled: true
     type: dynamic
     storageClass: nfs-ssd-1
     annotations:
       folder: n8n
+
+  extraVolumes:
+    - name: hooks
+      configMap:
+        name: n8n-hooks
+
+  extraVolumeMounts:
+    - name: hooks
+      mountPath: /home/node/hooks
+      readOnly: true

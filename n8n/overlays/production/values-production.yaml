@@ -9,19 +9,3 @@ main:
           url: https://n8n.home.albertv.dev
       proxy:
         hops: 1
-      forward:
-        auth:
-          header: X-authentik-email
-    external:
-      hook:
-        files: /home/node/hooks/auth.js
-
-  extraVolumes:
-    - name: hooks
-      configMap:
-        name: n8n-hooks
-
-  extraVolumeMounts:
-    - name: hooks
-      mountPath: /home/node/hooks
-      readOnly: true

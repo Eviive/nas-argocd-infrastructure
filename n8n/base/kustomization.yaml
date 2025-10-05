@@ -5,3 +5,9 @@ resources:
   - resources/ns.yaml
   - resources/ingr.yaml
   - resources/cert.yaml
+configMapGenerator:
+  - name: n8n-hooks
+    options:
+      disableNameSuffixHash: true
+    files:
+      - auth.js=assets/hooks/auth.js

@@ -12,12 +12,6 @@ helmCharts:
     valuesFile: ../../base/values.yaml
     additionalValuesFiles:
       - values-production.yaml
-configMapGenerator:
-  - name: n8n-hooks
-    options:
-      disableNameSuffixHash: true
-    files:
-      - auth.js=assets/hooks/auth.js
 patches:
   - path: patches/ingr.yaml
     target:
