@@ -2,6 +2,9 @@ main:
   config:
     db:
       type: postgresdb
+    n8n:
+      port: 443
+      protocol: https
   extraEnv:
     DB_POSTGRESDB_HOST:
       valueFrom:
