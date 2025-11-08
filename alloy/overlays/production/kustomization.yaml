@@ -3,10 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
 helmCharts:
-  - name: loki
+  - name: alloy
     repo: https://grafana.github.io/helm-charts
-    version: 6.46.0
-    releaseName: loki
-    namespace: loki
+    version: 1.4.0
+    releaseName: alloy
+    namespace: alloy
     includeCRDs: true
     valuesFile: ../../base/values.yaml

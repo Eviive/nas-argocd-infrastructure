@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: argocd
 resources:
   - resources/overlay-cm.yaml
+  - resources/alloy.yaml
   - resources/argocd.yaml
   - resources/authentik.yaml
   - resources/cert-manager.yaml
