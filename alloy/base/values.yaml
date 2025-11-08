@@ -12,7 +12,7 @@ alloy:
             __path__  = "/var/log/syslog",
             job       = "node/syslog",
             node_name = sys.env("HOSTNAME"),
-            cluster   = "k8s-nas"
+            cluster   = "k8s-nas",
         }]
       }
 
@@ -78,7 +78,7 @@ alloy:
       loki.process "pod_logs" {
         stage.static_labels {
           values = {
-            cluster = "k8s-nas"
+            cluster = "k8s-nas",
           }
         }
         forward_to = [loki.write.default.receiver]
@@ -94,12 +94,12 @@ alloy:
         forward_to = [loki.write.default.receiver]
         stage.static_labels {
           values = {
-            cluster = "k8s-nas"
+            cluster = "k8s-nas",
           }
         }
         stage.labels {
           values = {
-            kubernetes_cluster_events = "job"
+            kubernetes_cluster_events = "job",
           }
         }
       }
