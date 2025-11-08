@@ -4,6 +4,7 @@ alloy:
       loki.write "default" {
         endpoint {
           url = "http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push"
+          tenant_id = "k8s-nas"
         }
       }
 
