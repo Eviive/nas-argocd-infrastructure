@@ -4,17 +4,18 @@ namespace: argocd
 resources:
   - resources/overlay-cm.yaml
   - resources/argocd.yaml
-  - resources/nfs-client-provisioner-ssd-1.yaml
-  - resources/nfs-client-provisioner-hdd-1.yaml
-  - resources/metallb.yaml
-  - resources/traefik.yaml
-  - resources/cert-manager.yaml
   - resources/authentik.yaml
+  - resources/cert-manager.yaml
   - resources/flaresolverr.yaml
-  - resources/prometheus.yaml
-  - resources/postgresql.yaml
-  - resources/redis.yaml
+  - resources/loki.yaml
+  - resources/metallb.yaml
   - resources/n8n.yaml
+  - resources/nfs-client-provisioner-hdd-1.yaml
+  - resources/nfs-client-provisioner-ssd-1.yaml
+  - resources/postgresql.yaml
+  - resources/prometheus.yaml
+  - resources/redis.yaml
+  - resources/traefik.yaml
 patches:
   - path: patches/application.yaml
     target:

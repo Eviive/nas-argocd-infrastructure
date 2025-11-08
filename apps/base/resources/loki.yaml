@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+spec:
+  source:
+    path: loki/$OVERLAY
+  destination:
+    namespace: loki
