@@ -10,3 +10,12 @@ helmCharts:
     namespace: alloy
     includeCRDs: true
     valuesFile: ../../base/values.yaml
+patches:
+  - path: patches/ingr.yaml
+    target:
+      kind: IngressRoute
+      name: alloy
+  - path: patches/cert.yaml
+    target:
+      kind: Certificate
+      name: alloy
