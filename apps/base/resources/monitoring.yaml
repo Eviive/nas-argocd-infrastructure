@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+spec:
+  source:
+    path: monitoring/$OVERLAY
+  destination:
+    namespace: monitoring

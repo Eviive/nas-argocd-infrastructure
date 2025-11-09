@@ -1,0 +1,35 @@
+destinations:
+  - name: mimir
+    type: prometheus
+    url: http://mimir-gateway.mimir.svc.cluster.local/prometheus
+  - name: loki
+    type: loki
+    url: http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push
+
+# Features
+clusterMetrics:
+  enabled: true
+  windows-exporter:
+    deploy: false
+
+clusterEvents:
+  enabled: true
+
+nodeLogs:
+  enabled: true
+
+podLogs:
+  enabled: true
+
+prometheusOperatorObjects:
+  enabled: true
+
+# Collectors
+alloy-metrics:
+  enabled: true
+
+alloy-singleton:
+  enabled: true
+
+alloy-logs:
+  enabled: true
