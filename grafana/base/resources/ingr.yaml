@@ -9,7 +9,7 @@ spec:
     - kind: Rule
       services:
         - name: grafana
-          port: grafana
+          port: service
       middlewares:
         - name: traefik-error-pages
           namespace: traefik
