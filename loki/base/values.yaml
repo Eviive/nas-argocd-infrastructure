@@ -1,3 +1,8 @@
+global:
+  extraEnvFrom:
+    - secretRef:
+        name: loki-s3
+
 loki:
   commonConfig:
     replication_factor: 1
@@ -5,13 +10,18 @@ loki:
     configs:
       - from: 2024-04-01
         store: tsdb
-        object_store: filesystem
+        object_store: s3
         schema: v13
         index:
-          prefix: index_
+          prefix: loki_index_
           period: 24h
   storage:
-    type: filesystem
+    bucketNames:
+      chunks: loki-chunks
+      ruler: loki-ruler
+    s3:
+      accessKeyId: "${S3_ACCESS_KEY_ID}"
+      secretAccessKey: "${S3_ACCESS_KEY}"
   pattern_ingester:
     enabled: true
   limits_config:
@@ -24,6 +34,16 @@ singleBinary:
     storageClass: nfs-ssd-1
     annotations:
       folder: loki
+
+chunksCache:
+  resources:
+    requests: null
+    limits: null
+
+resultsCache:
+  resources:
+    requests: null
+    limits: null
 
 backend:
   replicas: 0

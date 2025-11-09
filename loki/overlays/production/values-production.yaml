@@ -1,0 +1,4 @@
+loki:
+  storage:
+    s3:
+      endpoint: truenas.home.albertv.dev:9000

@@ -10,3 +10,5 @@ helmCharts:
     namespace: loki
     includeCRDs: true
     valuesFile: ../../base/values.yaml
+    additionalValuesFiles:
+      - values-production.yaml
