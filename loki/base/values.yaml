@@ -35,6 +35,9 @@ singleBinary:
     storageClass: nfs-ssd-1
     annotations:
       folder: monitoring/loki
+  extraEnvFrom:
+    - secretRef:
+        name: loki-s3
 
 chunksCache:
   resources:
