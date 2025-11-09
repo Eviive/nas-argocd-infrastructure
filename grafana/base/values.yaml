@@ -4,6 +4,11 @@ persistence:
   annotations:
     folder: monitoring/grafana
 
+initChownData:
+  securityContext:
+    runAsUser: null
+    runAsNonRoot: null
+
 admin:
   existingSecret: grafana-admin
   userKey: user
