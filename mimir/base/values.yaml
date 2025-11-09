@@ -1,3 +1,8 @@
+global:
+  extraEnvFrom:
+    - secretRef:
+        name: mimir-s3
+
 mimir:
   structuredConfig:
     common:
@@ -24,9 +29,6 @@ alertmanager:
     storageClass: nfs-ssd-1
     annotations:
       folder: monitoring/mimir/alertmanager
-  extraEnvFrom:
-    - secretRef:
-        name: mimir-s3
 
 distributor:
   resources:
@@ -41,9 +43,6 @@ compactor:
     storageClass: nfs-ssd-1
     annotations:
       folder: monitoring/mimir/compactor
-  extraEnvFrom:
-    - secretRef:
-        name: mimir-s3
 
 ingester:
   replicas: 1
@@ -54,9 +53,6 @@ ingester:
     storageClass: nfs-ssd-1
     annotations:
       folder: monitoring/mimir/ingester
-  extraEnvFrom:
-    - secretRef:
-        name: mimir-s3
   zoneAwareReplication:
     enabled: false
 
@@ -110,9 +106,6 @@ querier:
   resources:
     requests: null
     limits: null
-  extraEnvFrom:
-    - secretRef:
-        name: mimir-s3
 
 query_frontend:
   resources:
@@ -124,9 +117,6 @@ ruler:
   resources:
     requests: null
     limits: null
-  extraEnvFrom:
-    - secretRef:
-        name: mimir-s3
 
 query_scheduler:
   replicas: 1
@@ -144,6 +134,3 @@ store_gateway:
       folder: monitoring/mimir/store-gateway
   zoneAwareReplication:
     enabled: false
-  extraEnvFrom:
-    - secretRef:
-        name: mimir-s3
