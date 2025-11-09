@@ -1,0 +1,6 @@
+- op: add
+  path: /spec/volumeClaimTemplates/0/metadata/annotations
+  value: {}
+- op: add
+  path: /spec/volumeClaimTemplates/0/metadata/annotations/folder
+  value: monitoring/mimir/kafka

@@ -12,3 +12,8 @@ helmCharts:
     valuesFile: ../../base/values.yaml
     additionalValuesFiles:
       - values-production.yaml
+patches:
+  - path: ../../base/patches/kafka.yaml
+    target:
+      kind: StatefulSet
+      name: mimir-kafka

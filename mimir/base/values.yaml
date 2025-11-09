@@ -17,6 +17,9 @@ mimir:
         bucket_name: mimir-blocks
 
 alertmanager:
+  resources:
+    requests: null
+    limits: null
   persistentVolume:
     storageClass: nfs-ssd-1
     annotations:
@@ -25,7 +28,15 @@ alertmanager:
     - secretRef:
         name: mimir-s3
 
+distributor:
+  resources:
+    requests: null
+    limits: null
+
 compactor:
+  resources:
+    requests: null
+    limits: null
   persistentVolume:
     storageClass: nfs-ssd-1
     annotations:
@@ -33,6 +44,9 @@ compactor:
 
 ingester:
   replicas: 1
+  resources:
+    requests: null
+    limits: null
   persistentVolume:
     storageClass: nfs-ssd-1
     annotations:
@@ -40,37 +54,81 @@ ingester:
   zoneAwareReplication:
     enabled: false
 
+memcachedExporter:
+  resources:
+    requests: null
+    limits: null
+
 chunks-cache:
   enabled: true
+  resources:
+    requests: null
+    limits: null
 
 index-cache:
   enabled: true
+  resources:
+    requests: null
+    limits: null
 
 metadata-cache:
   enabled: true
+  resources:
+    requests: null
+    limits: null
 
 results-cache:
   enabled: true
+  resources:
+    requests: null
+    limits: null
+
+rollout_operator:
+  enabled: false
 
 minio:
   enabled: false
+
+kafka:
+  persistence:
+    storageClassName: nfs-ssd-1
+  resources:
+    requests: null
+    limits: null
 
 overrides_exporter:
   enabled: false
 
 querier:
   replicas: 1
+  resources:
+    requests: null
+    limits: null
+
+query_frontend:
+  resources:
+    requests: null
+    limits: null
 
 ruler:
   replicas: 1
+  resources:
+    requests: null
+    limits: null
   extraEnvFrom:
     - secretRef:
         name: mimir-s3
 
 query_scheduler:
   replicas: 1
+  resources:
+    requests: null
+    limits: null
 
 store_gateway:
+  resources:
+    requests: null
+    limits: null
   persistentVolume:
     storageClass: nfs-ssd-1
     annotations:
