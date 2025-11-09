@@ -2,9 +2,11 @@ destinations:
   - name: mimir
     type: prometheus
     url: http://mimir-gateway.mimir.svc.cluster.local/prometheus
+    tenantId: k8s-nas
   - name: loki
     type: loki
     url: http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push
+    tenantId: k8s-nas
 
 # Features
 clusterMetrics:
