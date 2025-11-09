@@ -31,6 +31,8 @@ loki:
 deploymentMode: SingleBinary
 singleBinary:
   replicas: 1
+  extraArgs:
+    - -config.expand-env=true
   persistence:
     storageClass: nfs-ssd-1
     annotations:
