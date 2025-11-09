@@ -1,0 +1,37 @@
+persistence:
+  enabled: true
+  storageClassName: nfs-ssd-1
+  annotations:
+    folder: monitoring/grafana
+
+admin:
+  existingSecret: grafana-admin
+  userKey: user
+  passwordKey: password
+
+grafana.ini:
+  date_formats:
+    default_timezone: browser
+  auth.generic_oauth:
+    enabled: true
+    name: Authentik
+    client_id: $__file{/etc/secrets/generic-oauth/client_id}
+    client_secret: $__file{/etc/secrets/generic-oauth/client_secret}
+    scopes: openid profile email offline_access
+    role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+    use_refresh_token: true
+
+sidecar:
+  dashboards:
+    enabled: true
+    folderAnnotation: grafana_folder
+    provider:
+      disableDelete: true
+      foldersFromFilesStructure: true
+
+extraSecretMounts:
+  - name: generic-oauth
+    secretName: grafana-generic-oauth
+    mountPath: /etc/secrets/generic-oauth
+    defaultMode: 0440
+    readOnly: true

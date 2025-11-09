@@ -1,0 +1,9 @@
+grafana.ini:
+  server:
+    domain: grafana.home.albertv.dev
+    root_url: https://grafana.home.albertv.dev
+  auth.generic_oauth:
+    auth_url: https://authentik.home.albertv.dev/application/o/authorize/
+    token_url: https://authentik.home.albertv.dev/application/o/token/
+    api_url: https://authentik.home.albertv.dev/application/o/userinfo/
+    signout_redirect_url: https://authentik.home.albertv.dev/application/o/grafana/end-session/

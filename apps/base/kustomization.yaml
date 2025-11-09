@@ -8,6 +8,7 @@ resources:
   - resources/authentik.yaml
   - resources/cert-manager.yaml
   - resources/flaresolverr.yaml
+  - resources/grafana.yaml
   - resources/loki.yaml
   - resources/metallb.yaml
   - resources/mimir.yaml
