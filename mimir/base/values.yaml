@@ -25,10 +25,27 @@ alertmanager:
   resources:
     requests: null
     limits: null
+  fallbackConfig: |
+    route:
+      receiver: discord
+    receivers:
+      - name: 'null'
+      - name: discord
+        discord_configs:
+          - webhook_url_file: /etc/alertmanager/secrets/discord/webhook_url
+#        slack_configs:
+#          - api_url_file: /etc/alertmanager/secrets/discord/webhook_url
   persistentVolume:
     storageClass: nfs-ssd-1
     annotations:
       folder: monitoring/mimir/alertmanager
+  extraVolumes:
+    - name: discord
+      secret:
+        secretName: mimir-alertmanager-discord
+  extraVolumeMounts:
+    - name: discord
+      mountPath: /etc/alertmanager/secrets/discord
 
 distributor:
   resources:
