@@ -25,6 +25,10 @@ datasources:
         url: http://mimir-gateway.mimir.svc.cluster.local/prometheus
         access: proxy
         isDefault: true
+        jsonData:
+          httpHeaderName1: X-Scope-OrgID
+        secureJsonData:
+          httpHeaderValue1: k8s-nas
       - name: Alertmanager
         type: alertmanager
         uid: alertmanager
@@ -33,6 +37,9 @@ datasources:
         jsonData:
           implementation: mimir
           handleGrafanaManagedAlerts: false
+          httpHeaderName1: X-Scope-OrgID
+        secureJsonData:
+          httpHeaderValue1: k8s-nas
       - name: Loki
         type: loki
         uid: loki
@@ -41,6 +48,9 @@ datasources:
         jsonData:
           timeout: 60
           maxLines: 1000
+          httpHeaderName1: X-Scope-OrgID
+        secureJsonData:
+          httpHeaderValue1: k8s-nas
 
 grafana.ini:
   date_formats:
