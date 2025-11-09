@@ -10,6 +10,7 @@ resources:
   - resources/flaresolverr.yaml
   - resources/loki.yaml
   - resources/metallb.yaml
+  - resources/mimir.yaml
   - resources/n8n.yaml
   - resources/nfs-client-provisioner-hdd-1.yaml
   - resources/nfs-client-provisioner-ssd-1.yaml
