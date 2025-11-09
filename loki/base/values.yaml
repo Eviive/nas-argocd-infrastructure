@@ -33,7 +33,7 @@ singleBinary:
   persistence:
     storageClass: nfs-ssd-1
     annotations:
-      folder: loki
+      folder: monitoring/loki
 
 chunksCache:
   resources:
