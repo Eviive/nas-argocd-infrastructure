@@ -1,6 +1,0 @@
-- op: replace
-  path: /spec/routes/0/match
-  value: Host(`alloy.home.albertv.dev`)
-- op: add
-  path: /spec/routes/1/match
-  value: Host(`alloy.home.albertv.dev`) && PathPrefix(`/outpost.goauthentik.io/`)

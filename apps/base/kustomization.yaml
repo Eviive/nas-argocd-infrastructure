@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: argocd
 resources:
   - resources/overlay-cm.yaml
-  - resources/alloy.yaml
   - resources/argocd.yaml
   - resources/authentik.yaml
   - resources/cert-manager.yaml
@@ -17,14 +16,9 @@ resources:
   - resources/nfs-client-provisioner-hdd-1.yaml
   - resources/nfs-client-provisioner-ssd-1.yaml
   - resources/postgresql.yaml
-  - resources/prometheus.yaml
   - resources/redis.yaml
   - resources/traefik.yaml
 patches:
   - path: patches/application.yaml
     target:
       kind: Application
-  - path: patches/prometheus.yaml
-    target:
-      kind: Application
-      name: prometheus
