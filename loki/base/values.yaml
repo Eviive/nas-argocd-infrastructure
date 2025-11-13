@@ -18,7 +18,6 @@ loki:
   storage:
     bucketNames:
       chunks: loki-chunks
-      ruler: loki-ruler
     s3:
       accessKeyId: "${S3_ACCESS_KEY_ID}"
       secretAccessKey: "${S3_ACCESS_KEY}"
@@ -75,3 +74,6 @@ bloomCompactor:
   replicas: 0
 bloomGateway:
   replicas: 0
+
+ruler:
+  enabled: false
