@@ -44,25 +44,6 @@ datasources:
         secureJsonData:
           httpHeaderValue1: k8s-nas
 
-alerting:
-  contactpoints.yaml:
-    secret:
-      apiVersion: 1
-      contactPoints:
-        - orgId: 1
-          name: cp_1
-          receivers:
-            - uid: first_uid
-              type: pagerduty
-              settings:
-                integrationKey: XXX
-                severity: critical
-                class: ping failure
-                component: Grafana
-                group: app-stack
-                summary: |
-                  {{ `{{ include "default.message" . }}` }}
-
 grafana.ini:
   date_formats:
     default_timezone: browser
