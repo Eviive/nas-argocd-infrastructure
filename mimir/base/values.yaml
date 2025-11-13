@@ -11,41 +11,12 @@ mimir:
         s3:
           access_key_id: "${S3_ACCESS_KEY_ID}"
           secret_access_key: "${S3_ACCESS_KEY}"
-    ruler_storage:
-      s3:
-        bucket_name: mimir-ruler
-    alertmanager_storage:
-      s3:
-        bucket_name: mimir-alertmanager
     blocks_storage:
       s3:
         bucket_name: mimir-blocks
 
 alertmanager:
-  resources:
-    requests: null
-    limits: null
-  fallbackConfig: |
-    route:
-      receiver: discord
-    receivers:
-      - name: 'null'
-      - name: discord
-        discord_configs:
-          - webhook_url_file: /etc/alertmanager/secrets/discord/webhook_url
-#        slack_configs:
-#          - api_url_file: /etc/alertmanager/secrets/discord/webhook_url
-  persistentVolume:
-    storageClass: nfs-ssd-1
-    annotations:
-      folder: monitoring/mimir/alertmanager
-  extraVolumes:
-    - name: discord
-      secret:
-        secretName: mimir-alertmanager-discord
-  extraVolumeMounts:
-    - name: discord
-      mountPath: /etc/alertmanager/secrets/discord
+  enabled: false
 
 distributor:
   resources:
@@ -72,6 +43,12 @@ ingester:
       folder: monitoring/mimir/ingester
   zoneAwareReplication:
     enabled: false
+
+overrides_exporter:
+  enabled: false
+
+ruler:
+  enabled: false
 
 memcachedExporter:
   resources:
@@ -115,9 +92,6 @@ kafka:
     requests: null
     limits: null
 
-overrides_exporter:
-  enabled: false
-
 querier:
   replicas: 1
   resources:
@@ -125,12 +99,6 @@ querier:
     limits: null
 
 query_frontend:
-  resources:
-    requests: null
-    limits: null
-
-ruler:
-  replicas: 1
   resources:
     requests: null
     limits: null
