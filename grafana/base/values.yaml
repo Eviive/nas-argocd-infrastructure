@@ -22,12 +22,12 @@ datasources:
       - name: Mimir
         type: prometheus
         uid: mimir
-        url: http://mimir-gateway.mimir.svc.cluster.local
+        url: http://mimir-gateway.mimir.svc.cluster.local/prometheus
         access: proxy
         isDefault: true
         jsonData:
-          manageAlerts: true
-          allowAsRecordingRulesTarget: true
+          manageAlerts: false
+          allowAsRecordingRulesTarget: false
           prometheusType: Mimir
           httpHeaderName1: X-Scope-OrgID
         secureJsonData:
