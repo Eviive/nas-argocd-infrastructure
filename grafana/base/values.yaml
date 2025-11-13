@@ -22,21 +22,13 @@ datasources:
       - name: Mimir
         type: prometheus
         uid: mimir
-        url: http://mimir-gateway.mimir.svc.cluster.local/prometheus
+        url: http://mimir-gateway.mimir.svc.cluster.local
         access: proxy
         isDefault: true
         jsonData:
-          httpHeaderName1: X-Scope-OrgID
-        secureJsonData:
-          httpHeaderValue1: k8s-nas
-      - name: Alertmanager
-        type: alertmanager
-        uid: alertmanager
-        url: http://mimir-gateway.mimir.svc.cluster.local
-        access: proxy
-        jsonData:
-          implementation: mimir
-          handleGrafanaManagedAlerts: false
+          manageAlerts: true
+          allowAsRecordingRulesTarget: true
+          prometheusType: Mimir
           httpHeaderName1: X-Scope-OrgID
         secureJsonData:
           httpHeaderValue1: k8s-nas
@@ -51,6 +43,25 @@ datasources:
           httpHeaderName1: X-Scope-OrgID
         secureJsonData:
           httpHeaderValue1: k8s-nas
+
+alerting:
+  contactpoints.yaml:
+    secret:
+      apiVersion: 1
+      contactPoints:
+        - orgId: 1
+          name: cp_1
+          receivers:
+            - uid: first_uid
+              type: pagerduty
+              settings:
+                integrationKey: XXX
+                severity: critical
+                class: ping failure
+                component: Grafana
+                group: app-stack
+                summary: |
+                  {{ `{{ include "default.message" . }}` }}
 
 grafana.ini:
   date_formats:
