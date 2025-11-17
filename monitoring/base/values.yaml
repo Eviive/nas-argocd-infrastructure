@@ -11,6 +11,9 @@ destinations:
 # Features
 clusterMetrics:
   enabled: true
+  node-exporter:
+    metricsTuning:
+      useIntegrationAllowList: true
   windows-exporter:
     deploy: false
 
