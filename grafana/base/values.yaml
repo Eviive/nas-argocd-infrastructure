@@ -14,6 +14,10 @@ admin:
   userKey: user
   passwordKey: password
 
+envFromSecrets:
+  - name: grafana-discord
+    prefix: DISCORD_
+
 datasources:
   datasources.yaml:
     apiVersion: 1
@@ -43,6 +47,18 @@ datasources:
           httpHeaderName1: X-Scope-OrgID
         secureJsonData:
           httpHeaderValue1: k8s-nas
+
+alerting:
+  contactpoints.yaml:
+    apiVersion: 1
+    contactPoints:
+      - orgId: 1
+        name: Discord
+        receivers:
+          - uid: discord
+            type: discord
+            settings:
+              url: $DISCORD_WEBHOOK_URL
 
 grafana.ini:
   date_formats:
