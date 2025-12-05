@@ -13,7 +13,7 @@ clusterMetrics:
   enabled: true
   node-exporter:
     metricsTuning:
-      useIntegrationAllowList: true
+      useDefaultAllowList: false
   windows-exporter:
     deploy: false
 
