@@ -75,6 +75,7 @@ grafana.ini:
 sidecar:
   dashboards:
     enabled: true
+    searchNamespace: ALL
     folderAnnotation: grafana_folder
     provider:
       disableDelete: true
