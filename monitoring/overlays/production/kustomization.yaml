@@ -12,3 +12,8 @@ helmCharts:
     valuesFile: ../../base/values.yaml
     additionalValuesFiles:
       - values-production.yaml
+patches:
+  - path: ../../base/patches/node-exporter.yaml
+    target:
+      kind: DaemonSet
+      name: monitoring-node-exporter
