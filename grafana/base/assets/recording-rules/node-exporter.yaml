@@ -63,7 +63,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_cpu_utilisation:rate5m
           from: query
@@ -97,7 +97,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_load1_per_cpu:ratio
           from: query
@@ -143,7 +143,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_memory_utilisation:ratio
           from: query
@@ -173,7 +173,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_vmstat_pgmajfault:rate5m
           from: query
@@ -203,7 +203,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance_device:node_disk_io_time_seconds:rate5m
           from: query
@@ -233,7 +233,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance_device:node_disk_io_time_weighted_seconds:rate5m
           from: query
@@ -265,7 +265,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_network_receive_bytes_excluding_lo:rate5m
           from: query
@@ -297,7 +297,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_network_transmit_bytes_excluding_lo:rate5m
           from: query
@@ -329,7 +329,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_network_receive_drop_excluding_lo:rate5m
           from: query
@@ -361,7 +361,7 @@ groups:
         execErrState: OK
         labels:
           __converted_prometheus_rule__: "true"
-        isPaused: true
+        isPaused: false
         record:
           metric: instance:node_network_transmit_drop_excluding_lo:rate5m
           from: query

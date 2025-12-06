@@ -205,7 +205,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: critical
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 0f54c939-7a86-5f37-88ad-7a74c0977418
         title: NodeFilesystemAlmostOutOfSpace
@@ -304,7 +304,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 405408dc-8fce-50e8-9b7b-51065851ce41
         title: NodeFilesystemAlmostOutOfSpace
@@ -403,7 +403,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: critical
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 9f5d05a5-e4ec-54e8-baf9-5ca68baf2f49
         title: NodeFilesystemFilesFillingUp
@@ -504,7 +504,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 055aca05-7861-5d0e-ae04-9b841261dc9f
         title: NodeFilesystemFilesFillingUp
@@ -605,7 +605,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: critical
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 71e9d6dc-0d39-5187-8ced-04d27190a64f
         title: NodeFilesystemAlmostOutOfFiles
@@ -704,7 +704,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: c4278fd0-ad91-50c8-933b-052d8c83e029
         title: NodeFilesystemAlmostOutOfFiles
@@ -803,7 +803,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: critical
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 31c80813-689d-55eb-9b0b-fa10cc0e8af0
         title: NodeNetworkReceiveErrs
@@ -898,7 +898,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 4f09859f-e5c3-50d1-bdca-6a8991790b12
         title: NodeNetworkTransmitErrs
@@ -993,7 +993,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: b8097ea5-893a-5b74-8498-a1b31cb24c73
         title: NodeHighNumberConntrackEntriesUsed
@@ -1087,7 +1087,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: cd3f16db-a5c3-5acb-8cde-83e3636e3bf1
         title: NodeTextFileCollectorScrapeError
@@ -1181,7 +1181,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 270ea9f9-f5cd-51ca-a08c-93f8990cd483
         title: NodeClockSkewDetected
@@ -1286,7 +1286,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 431a95d3-d33a-5f84-b93b-f259a7123646
         title: NodeClockNotSynchronising
@@ -1383,7 +1383,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 2d02fee6-6012-5039-a394-331778d7ce67
         title: NodeRAIDDegraded
@@ -1478,7 +1478,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: critical
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: a7a21eb2-2238-5654-8eb2-4fd679615471
         title: NodeRAIDDiskFailure
@@ -1572,7 +1572,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 20c7ba2b-86ba-5cd4-8688-41c14465f1ea
         title: NodeFileDescriptorLimit
@@ -1669,7 +1669,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 14f9cc9c-bdeb-5eae-ad04-7f962a835226
         title: NodeFileDescriptorLimit
@@ -1766,7 +1766,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: critical
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 50948ecd-924f-5c45-bf7d-621078e7d85d
         title: NodeCPUHighUsage
@@ -1862,7 +1862,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: info
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 8c3b1f8b-747c-5385-8f8f-ef6442428c94
         title: NodeSystemSaturation
@@ -1960,7 +1960,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: af3d8453-6236-51cf-9490-c00686b22ff6
         title: NodeMemoryMajorPagesFaults
@@ -2057,7 +2057,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 37f01052-3763-5bf5-853b-fb9f04027899
         title: NodeMemoryHighUtilization
@@ -2153,7 +2153,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 2af28bab-b462-5e1c-856f-5478efb7b1c4
         title: NodeDiskIOSaturation
@@ -2250,7 +2250,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: 2a7c303b-d1f5-51d2-a6c3-2c3e722fe8c4
         title: NodeSystemdServiceFailed
@@ -2345,7 +2345,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: ceaea426-8c14-5418-8239-15ab54dc4455
         title: NodeSystemdServiceCrashlooping
@@ -2440,7 +2440,7 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1
       - uid: d0fcbf1a-8494-53ad-bfe5-5bd771779f4c
         title: NodeBondingDegraded
@@ -2535,5 +2535,5 @@ groups:
         labels:
           __converted_prometheus_rule__: "true"
           severity: warning
-        isPaused: true
+        isPaused: false
         missing_series_evals_to_resolve: 1

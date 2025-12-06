@@ -21,11 +21,11 @@ configMapGenerator:
       labels:
         grafana_alert: "1"
     files:
-      - nodeExporter.yaml=assets/alerting-rules/node-exporter.yaml
+      - node-exporter.yaml=assets/alerting-rules/node-exporter.yaml
   - name: grafana-recording-rules-infrastructure
     options:
       disableNameSuffixHash: true
       labels:
         grafana_alert: "1"
     files:
-      - nodeExporter.yaml=assets/recording-rules/node-exporter.yaml
+      - node-exporter.yaml=assets/recording-rules/node-exporter.yaml
