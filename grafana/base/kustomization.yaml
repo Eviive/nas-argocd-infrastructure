@@ -22,3 +22,4 @@ configMapGenerator:
         grafana_alert: "1"
     files:
       - node-exporter-rules.yaml=assets/node-exporter/rules.yaml
+      - delete-rules.yaml=assets/delete-rules.yaml

@@ -1,0 +1,22 @@
+apiVersion: 1
+deleteRules:
+  - orgId: 1
+    uid: fbe074e7-0f0b-52ce-885d-bd45fa519f0f
+  - orgId: 1
+    uid: 9fa95258-6f0f-5a29-88ea-c37685b5307b
+  - orgId: 1
+    uid: b100c587-97a5-5a91-9090-f5c177717ce3
+  - orgId: 1
+    uid: bbdf214b-0bd3-53e5-87e9-b1a7eeecb8fe
+  - orgId: 1
+    uid: 25d7b969-35e5-5745-9b3d-2ac6ddba5a8a
+  - orgId: 1
+    uid: 0204686a-12de-55c4-aa4a-f39bfbc8a3d2
+  - orgId: 1
+    uid: 843e1e86-570e-53b5-a693-1f564e19e8d4
+  - orgId: 1
+    uid: ede26137-5983-57bb-bb72-5a658f435c09
+  - orgId: 1
+    uid: 0c13b6d0-47ce-57ef-9eb2-1d44d52d768f
+  - orgId: 1
+    uid: 04dd7cf1-96f4-5873-9d91-d96bccaefec8
