@@ -15,6 +15,15 @@ configMapGenerator:
         grafana_folder: Node Exporter
     files:
       - node-exporter.json=assets/node-exporter/dashboard.json
+  - name: grafana-dashboards-kube-state-metrics
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+      annotations:
+        grafana_folder: Kube State Metrics
+    files:
+      - kube-state-metrics.json=assets/kube-state-metrics/dashboard.json
   - name: grafana-rules
     options:
       disableNameSuffixHash: true
