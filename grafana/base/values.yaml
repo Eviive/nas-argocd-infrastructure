@@ -31,7 +31,6 @@ datasources:
         isDefault: true
         jsonData:
           manageAlerts: false
-          allowAsRecordingRulesTarget: false
           prometheusType: Mimir
           httpHeaderName1: X-Scope-OrgID
         secureJsonData:
