@@ -2,7 +2,7 @@ apiVersion: 1
 groups:
   - orgId: 1
     name: Recording Rules
-    folder: Infrastructure/Node Exporter
+    folder: Node Exporter
     interval: 1m
     rules:
       - uid: fbe074e7-0f0b-52ce-885d-bd45fa519f0f
