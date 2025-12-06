@@ -84,7 +84,7 @@ alerting:
           {{ define "__discord_text_alert_list" }}{{range .}}
           Value: {{template "__discord_text_values_list" .}}
 
-          Started: <t:{{ .StartsAt.Unix }}:R>{{if .EndsAt.Unix }}
+          Started: <t:{{ .StartsAt.Unix }}:R>{{if eq .Status "resolved" }}
           Ended: <t:{{ .EndsAt.Unix }}:R>
           {{end}}
           Labels:
