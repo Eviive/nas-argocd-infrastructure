@@ -11,6 +11,9 @@ destinations:
 # Features
 clusterMetrics:
   enabled: true
+  kube-state-metrics:
+    metricsTuning:
+      useDefaultAllowList: false
   node-exporter:
     metricsTuning:
       useDefaultAllowList: false
