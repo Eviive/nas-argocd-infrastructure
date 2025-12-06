@@ -20,7 +20,7 @@ groups:
                 uid: mimir
               expr: |
                 count without (cpu, mode) (
-                  node_cpu_seconds_total{job="node",mode="idle"}
+                  node_cpu_seconds_total{job="integrations/node_exporter",mode="idle"}
                 )
               instant: true
               intervalMs: 1000
@@ -52,7 +52,7 @@ groups:
                 uid: mimir
               expr: |
                 1 - avg without (cpu) (
-                  sum without (mode) (rate(node_cpu_seconds_total{job="node", mode=~"idle|iowait|steal"}[5m]))
+                  sum without (mode) (rate(node_cpu_seconds_total{job="integrations/node_exporter", mode=~"idle|iowait|steal"}[5m]))
                 )
               instant: true
               intervalMs: 1000
@@ -84,9 +84,9 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_load1{job="node"}
+                  node_load1{job="integrations/node_exporter"}
                 /
-                  instance:node_num_cpu:sum{job="node"}
+                  instance:node_num_cpu:sum{job="integrations/node_exporter"}
                 )
               instant: true
               intervalMs: 1000
@@ -119,20 +119,20 @@ groups:
               expr: |
                 1 - (
                   (
-                    node_memory_MemAvailable_bytes{job="node"}
+                    node_memory_MemAvailable_bytes{job="integrations/node_exporter"}
                     or
                     (
-                      node_memory_Buffers_bytes{job="node"}
+                      node_memory_Buffers_bytes{job="integrations/node_exporter"}
                       +
-                      node_memory_Cached_bytes{job="node"}
+                      node_memory_Cached_bytes{job="integrations/node_exporter"}
                       +
-                      node_memory_MemFree_bytes{job="node"}
+                      node_memory_MemFree_bytes{job="integrations/node_exporter"}
                       +
-                      node_memory_Slab_bytes{job="node"}
+                      node_memory_Slab_bytes{job="integrations/node_exporter"}
                     )
                   )
                 /
-                  node_memory_MemTotal_bytes{job="node"}
+                  node_memory_MemTotal_bytes{job="integrations/node_exporter"}
                 )
               instant: true
               intervalMs: 1000
@@ -163,7 +163,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_vmstat_pgmajfault{job="node"}[5m])
+                rate(node_vmstat_pgmajfault{job="integrations/node_exporter"}[5m])
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -193,7 +193,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_disk_io_time_seconds_total{job="node", device!=""}[5m])
+                rate(node_disk_io_time_seconds_total{job="integrations/node_exporter", device!=""}[5m])
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -223,7 +223,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_disk_io_time_weighted_seconds_total{job="node", device!=""}[5m])
+                rate(node_disk_io_time_weighted_seconds_total{job="integrations/node_exporter", device!=""}[5m])
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -254,7 +254,7 @@ groups:
                 uid: mimir
               expr: |
                 sum without (device) (
-                  rate(node_network_receive_bytes_total{job="node", device!="lo"}[5m])
+                  rate(node_network_receive_bytes_total{job="integrations/node_exporter", device!="lo"}[5m])
                 )
               instant: true
               intervalMs: 1000
@@ -286,7 +286,7 @@ groups:
                 uid: mimir
               expr: |
                 sum without (device) (
-                  rate(node_network_transmit_bytes_total{job="node", device!="lo"}[5m])
+                  rate(node_network_transmit_bytes_total{job="integrations/node_exporter", device!="lo"}[5m])
                 )
               instant: true
               intervalMs: 1000
@@ -318,7 +318,7 @@ groups:
                 uid: mimir
               expr: |
                 sum without (device) (
-                  rate(node_network_receive_drop_total{job="node", device!="lo"}[5m])
+                  rate(node_network_receive_drop_total{job="integrations/node_exporter", device!="lo"}[5m])
                 )
               instant: true
               intervalMs: 1000
@@ -350,7 +350,7 @@ groups:
                 uid: mimir
               expr: |
                 sum without (device) (
-                  rate(node_network_transmit_drop_total{job="node", device!="lo"}[5m])
+                  rate(node_network_transmit_drop_total{job="integrations/node_exporter", device!="lo"}[5m])
                 )
               instant: true
               intervalMs: 1000

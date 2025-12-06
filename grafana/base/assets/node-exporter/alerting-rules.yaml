@@ -21,11 +21,11 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_avail_bytes{job="node",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="node",fstype!="",mountpoint!=""} * 100 < 40
+                  node_filesystem_avail_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 40
                 and
-                  predict_linear(node_filesystem_avail_bytes{job="node",fstype!="",mountpoint!=""}[6h], 24*60*60) < 0
+                  predict_linear(node_filesystem_avail_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""}[6h], 24*60*60) < 0
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -122,11 +122,11 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_avail_bytes{job="node",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="node",fstype!="",mountpoint!=""} * 100 < 20
+                  node_filesystem_avail_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 20
                 and
-                  predict_linear(node_filesystem_avail_bytes{job="node",fstype!="",mountpoint!=""}[6h], 4*60*60) < 0
+                  predict_linear(node_filesystem_avail_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""}[6h], 4*60*60) < 0
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -223,9 +223,9 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_avail_bytes{job="node",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="node",fstype!="",mountpoint!=""} * 100 < 5
+                  node_filesystem_avail_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 5
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -322,9 +322,9 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_avail_bytes{job="node",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="node",fstype!="",mountpoint!=""} * 100 < 3
+                  node_filesystem_avail_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_size_bytes{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 3
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -421,11 +421,11 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_files_free{job="node",fstype!="",mountpoint!=""} / node_filesystem_files{job="node",fstype!="",mountpoint!=""} * 100 < 40
+                  node_filesystem_files_free{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_files{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 40
                 and
-                  predict_linear(node_filesystem_files_free{job="node",fstype!="",mountpoint!=""}[6h], 24*60*60) < 0
+                  predict_linear(node_filesystem_files_free{job="integrations/node_exporter",fstype!="",mountpoint!=""}[6h], 24*60*60) < 0
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -522,11 +522,11 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_files_free{job="node",fstype!="",mountpoint!=""} / node_filesystem_files{job="node",fstype!="",mountpoint!=""} * 100 < 20
+                  node_filesystem_files_free{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_files{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 20
                 and
-                  predict_linear(node_filesystem_files_free{job="node",fstype!="",mountpoint!=""}[6h], 4*60*60) < 0
+                  predict_linear(node_filesystem_files_free{job="integrations/node_exporter",fstype!="",mountpoint!=""}[6h], 4*60*60) < 0
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -623,9 +623,9 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_files_free{job="node",fstype!="",mountpoint!=""} / node_filesystem_files{job="node",fstype!="",mountpoint!=""} * 100 < 5
+                  node_filesystem_files_free{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_files{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 5
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -722,9 +722,9 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filesystem_files_free{job="node",fstype!="",mountpoint!=""} / node_filesystem_files{job="node",fstype!="",mountpoint!=""} * 100 < 3
+                  node_filesystem_files_free{job="integrations/node_exporter",fstype!="",mountpoint!=""} / node_filesystem_files{job="integrations/node_exporter",fstype!="",mountpoint!=""} * 100 < 3
                 and
-                  node_filesystem_readonly{job="node",fstype!="",mountpoint!=""} == 0
+                  node_filesystem_readonly{job="integrations/node_exporter",fstype!="",mountpoint!=""} == 0
                 )
               instant: true
               intervalMs: 1000
@@ -820,7 +820,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_network_receive_errs_total{job="node"}[2m]) / rate(node_network_receive_packets_total{job="node"}[2m]) > 0.01
+                rate(node_network_receive_errs_total{job="integrations/node_exporter"}[2m]) / rate(node_network_receive_packets_total{job="integrations/node_exporter"}[2m]) > 0.01
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -915,7 +915,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_network_transmit_errs_total{job="node"}[2m]) / rate(node_network_transmit_packets_total{job="node"}[2m]) > 0.01
+                rate(node_network_transmit_errs_total{job="integrations/node_exporter"}[2m]) / rate(node_network_transmit_packets_total{job="integrations/node_exporter"}[2m]) > 0.01
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1010,7 +1010,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                (node_nf_conntrack_entries{job="node"} / node_nf_conntrack_entries_limit) > 0.75
+                (node_nf_conntrack_entries{job="integrations/node_exporter"} / node_nf_conntrack_entries_limit) > 0.75
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1104,7 +1104,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                node_textfile_scrape_error{job="node"} == 1
+                node_textfile_scrape_error{job="integrations/node_exporter"} == 1
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1199,15 +1199,15 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_timex_offset_seconds{job="node"} > 0.05
+                  node_timex_offset_seconds{job="integrations/node_exporter"} > 0.05
                 and
-                  deriv(node_timex_offset_seconds{job="node"}[5m]) >= 0
+                  deriv(node_timex_offset_seconds{job="integrations/node_exporter"}[5m]) >= 0
                 )
                 or
                 (
-                  node_timex_offset_seconds{job="node"} < -0.05
+                  node_timex_offset_seconds{job="integrations/node_exporter"} < -0.05
                 and
-                  deriv(node_timex_offset_seconds{job="node"}[5m]) <= 0
+                  deriv(node_timex_offset_seconds{job="integrations/node_exporter"}[5m]) <= 0
                 )
               instant: true
               intervalMs: 1000
@@ -1303,9 +1303,9 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                min_over_time(node_timex_sync_status{job="node"}[5m]) == 0
+                min_over_time(node_timex_sync_status{job="integrations/node_exporter"}[5m]) == 0
                 and
-                node_timex_maxerror_seconds{job="node"} >= 16
+                node_timex_maxerror_seconds{job="integrations/node_exporter"} >= 16
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1400,7 +1400,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                node_md_disks_required{job="node",device!=""} - ignoring (state) (node_md_disks{state="active",job="node",device!=""}) > 0
+                node_md_disks_required{job="integrations/node_exporter",device!=""} - ignoring (state) (node_md_disks{state="active",job="integrations/node_exporter",device!=""}) > 0
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1495,7 +1495,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                node_md_disks{state="failed",job="node",device!=""} > 0
+                node_md_disks{state="failed",job="integrations/node_exporter",device!=""} > 0
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1590,7 +1590,7 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filefd_allocated{job="node"} * 100 / node_filefd_maximum{job="node"} > 70
+                  node_filefd_allocated{job="integrations/node_exporter"} * 100 / node_filefd_maximum{job="integrations/node_exporter"} > 70
                 )
               instant: true
               intervalMs: 1000
@@ -1687,7 +1687,7 @@ groups:
                 uid: mimir
               expr: |
                 (
-                  node_filefd_allocated{job="node"} * 100 / node_filefd_maximum{job="node"} > 90
+                  node_filefd_allocated{job="integrations/node_exporter"} * 100 / node_filefd_maximum{job="integrations/node_exporter"} > 90
                 )
               instant: true
               intervalMs: 1000
@@ -1783,7 +1783,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                sum without(mode) (avg without (cpu) (rate(node_cpu_seconds_total{job="node", mode!~"idle|iowait"}[2m]))) * 100 > 90
+                sum without(mode) (avg without (cpu) (rate(node_cpu_seconds_total{job="integrations/node_exporter", mode!~"idle|iowait"}[2m]))) * 100 > 90
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1879,8 +1879,8 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                node_load1{job="node"}
-                / count without (cpu, mode) (node_cpu_seconds_total{job="node", mode="idle"}) > 2
+                node_load1{job="integrations/node_exporter"}
+                / count without (cpu, mode) (node_cpu_seconds_total{job="integrations/node_exporter", mode="idle"}) > 2
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -1977,7 +1977,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_vmstat_pgmajfault{job="node"}[5m]) > 500
+                rate(node_vmstat_pgmajfault{job="integrations/node_exporter"}[5m]) > 500
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -2074,7 +2074,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                100 - (node_memory_MemAvailable_bytes{job="node"} / node_memory_MemTotal_bytes{job="node"} * 100) > 90
+                100 - (node_memory_MemAvailable_bytes{job="integrations/node_exporter"} / node_memory_MemTotal_bytes{job="integrations/node_exporter"} * 100) > 90
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -2170,7 +2170,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                rate(node_disk_io_time_weighted_seconds_total{job="node", device!=""}[5m]) > 10
+                rate(node_disk_io_time_weighted_seconds_total{job="integrations/node_exporter", device!=""}[5m]) > 10
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -2267,7 +2267,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                node_systemd_unit_state{job="node", state="failed"} == 1
+                node_systemd_unit_state{job="integrations/node_exporter", state="failed"} == 1
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -2362,7 +2362,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                increase(node_systemd_service_restart_total{job="node"}[5m]) > 2
+                increase(node_systemd_service_restart_total{job="integrations/node_exporter"}[5m]) > 2
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
@@ -2457,7 +2457,7 @@ groups:
                 type: prometheus
                 uid: mimir
               expr: |
-                (node_bonding_slaves{job="node"} - node_bonding_active{job="node"}) != 0
+                (node_bonding_slaves{job="integrations/node_exporter"} - node_bonding_active{job="integrations/node_exporter"}) != 0
               instant: true
               intervalMs: 1000
               maxDataPoints: 43200
