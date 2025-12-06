@@ -21,5 +21,4 @@ configMapGenerator:
       labels:
         grafana_alert: "1"
     files:
-      - node-exporter-alerting-rules.yaml=assets/node-exporter/alerting-rules.yaml
-      - node-exporter-recording-rules.yaml=assets/node-exporter/recording-rules.yaml
+      - node-exporter-rules.yaml=assets/node-exporter/rules.yaml
