@@ -11,10 +11,16 @@ destinations:
 # Features
 clusterMetrics:
   enabled: true
+  apiServer:
+    enabled: true
   cadvisor:
+    enabled: false
+  controlPlane:
+    enabled: true
+  kube-state-metrics:
     metricsTuning:
       useDefaultAllowList: false
-  kube-state-metrics:
+  kubelet:
     metricsTuning:
       useDefaultAllowList: false
   node-exporter:
@@ -22,6 +28,7 @@ clusterMetrics:
       useDefaultAllowList: false
   windows-exporter:
     deploy: false
+    enabled: false
 
 clusterEvents:
   enabled: true
