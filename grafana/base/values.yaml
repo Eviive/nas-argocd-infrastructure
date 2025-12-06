@@ -69,15 +69,17 @@ alerting:
             type: discord
             settings:
               url: $DISCORD_WEBHOOK_URL
-              title: '{{ template "discord.title" . }}'
-              message: '{{ template "discord.message" . }}'
+              title: |
+                {{`{{ template "discord.title" . }}`}}
+              message: |
+                {{`{{ template "discord.message" . }}`}}
   templates.yaml:
     apiVersion: 1
     templates:
       - orgId: 1
         name: Discord Template
         template: |
-          {{ define "__discord_subject" }}{{ if eq .Status "firing" }}[FIRING:{{ .Alerts.Firing | len }}]{{ else }}[RESOLVED:{{ .Alerts.Resolved | len }}]{{ end }} {{ .GroupLabels.SortedPairs.Values | join " " }}{{ end }}
+          {{`{{ define "__discord_subject" }}{{ if eq .Status "firing" }}[FIRING:{{ .Alerts.Firing | len }}]{{ else }}[RESOLVED:{{ .Alerts.Resolved | len }}]{{ end }} {{ .GroupLabels.SortedPairs.Values | join " " }}{{ end }}
 
           {{ define "__discord_text_alert_list" }}{{range .}}
           Value: {{template "__discord_text_values_list" .}}
@@ -109,7 +111,7 @@ alerting:
           {{end}}
           {{ end }}
 
-          {{ define "discord.title" }}{{template "__discord_subject" .}}{{ end }}
+          {{ define "discord.title" }}{{template "__discord_subject" .}}{{ end }}`}}
 
 grafana.ini:
   date_formats:
