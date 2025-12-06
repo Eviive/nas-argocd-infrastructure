@@ -94,8 +94,6 @@ groups:
         annotations:
           description: |-
             Node memory is filling up (< 10% left)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host out of memory (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -190,8 +188,6 @@ groups:
         annotations:
           description: |-
             The node is under heavy memory pressure. High rate of loading memory pages from disk.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host memory under memory pressure (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -286,8 +282,6 @@ groups:
         annotations:
           description: |-
             Node memory usage is < 20% for 1 week. Consider reducing memory space. (instance {{ $labels.instance }})
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host Memory is underutilized (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -382,8 +376,6 @@ groups:
         annotations:
           description: |-
             Host receive bandwidth is high (>80%).
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host unusual network throughput in (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -478,8 +470,6 @@ groups:
         annotations:
           description: |-
             Host transmit bandwidth is high (>80%)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host unusual network throughput out (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -574,8 +564,6 @@ groups:
         annotations:
           description: |-
             Disk is too busy (IO wait > 80%)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host unusual disk read rate (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -671,8 +659,6 @@ groups:
         annotations:
           description: |-
             Disk is almost full (< 10% left)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host out of disk space (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -768,8 +754,6 @@ groups:
         annotations:
           description: |-
             Filesystem will likely run out of space within the next 24 hours.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host disk may fill in 24 hours (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -865,8 +849,6 @@ groups:
         annotations:
           description: |-
             Disk is almost running out of available inodes (< 10% left)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host out of inodes (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -962,8 +944,6 @@ groups:
         annotations:
           description: |-
             Error stat-ing the {{ $labels.mountpoint }} filesystem
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host filesystem device error (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1059,8 +1039,6 @@ groups:
         annotations:
           description: |-
             Filesystem will likely run out of inodes within the next 24 hours at current write rate
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host inodes may fill in 24 hours (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1156,8 +1134,6 @@ groups:
         annotations:
           description: |-
             Disk latency is growing (read operations > 100ms)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host unusual disk read latency (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1253,8 +1229,6 @@ groups:
         annotations:
           description: |-
             Disk latency is growing (write operations > 100ms)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host unusual disk write latency (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1350,8 +1324,6 @@ groups:
         annotations:
           description: |-
             CPU load is > 80%
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host high CPU load (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1447,8 +1419,6 @@ groups:
         annotations:
           description: |-
             CPU load has been < 20% for 1 week. Consider reducing the number of CPUs.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host CPU is underutilized (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1543,8 +1513,6 @@ groups:
         annotations:
           description: |-
             CPU steal is > 10%. A noisy neighbor is killing VM performances or a spot instance may be out of credit.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host CPU steal noisy neighbor (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1639,8 +1607,6 @@ groups:
         annotations:
           description: |-
             CPU iowait > 10%. Your CPU is idling waiting for storage to respond.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host CPU high iowait (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1736,8 +1702,6 @@ groups:
         annotations:
           description: |-
             Disk usage >80%. Check storage for issues or increase IOPS capabilities. Check storage for issues.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host unusual disk IO (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1832,8 +1796,6 @@ groups:
         annotations:
           description: |-
             Context switching is growing on the node (twice the daily average during the last 15m)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host context switching high (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -1929,8 +1891,6 @@ groups:
         annotations:
           description: |-
             Swap is filling up (>80%)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host swap is filling up (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2025,8 +1985,6 @@ groups:
         annotations:
           description: |-
             systemd service crashed
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host systemd service crashed (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2122,8 +2080,6 @@ groups:
         annotations:
           description: |-
             Physical hardware component too hot
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host physical component too hot (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2218,8 +2174,6 @@ groups:
         annotations:
           description: |-
             Physical node temperature alarm triggered
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host node overtemperature alarm (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2314,8 +2268,6 @@ groups:
         annotations:
           description: |-
             MD RAID array {{ $labels.device }} on {{ $labels.instance }} has insufficient drives remaining.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host software RAID insufficient drives (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2411,8 +2363,6 @@ groups:
         annotations:
           description: |-
             MD RAID array {{ $labels.device }} on {{ $labels.instance }} needs attention.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host software RAID disk failure (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2507,8 +2457,6 @@ groups:
         annotations:
           description: |-
             Kernel version for {{ $labels.instance }} has changed.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host kernel version deviations (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2603,8 +2551,6 @@ groups:
         annotations:
           description: |-
             OOM kill detected
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host OOM kill detected (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2699,8 +2645,6 @@ groups:
         annotations:
           description: |-
             Host {{ $labels.instance }} has had {{ printf "%.0f" $value }} correctable memory errors reported by EDAC in the last 5 minutes.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host EDAC Correctable Errors detected (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2795,8 +2739,6 @@ groups:
         annotations:
           description: |-
             Host {{ $labels.instance }} has had {{ printf "%.0f" $value }} uncorrectable memory errors reported by EDAC in the last 5 minutes.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host EDAC Uncorrectable Errors detected (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2892,8 +2834,6 @@ groups:
         annotations:
           description: |-
             Host {{ $labels.instance }} interface {{ $labels.device }} has encountered {{ printf "%.0f" $value }} receive errors in the last two minutes.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host Network Receive Errors (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -2989,8 +2929,6 @@ groups:
         annotations:
           description: |-
             Host {{ $labels.instance }} interface {{ $labels.device }} has encountered {{ printf "%.0f" $value }} transmit errors in the last two minutes.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host Network Transmit Errors (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -3086,8 +3024,6 @@ groups:
         annotations:
           description: |-
             Bond "{{ $labels.device }}" degraded on "{{ $labels.instance }}".
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host Network Bond Degraded (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -3183,8 +3119,6 @@ groups:
         annotations:
           description: |-
             The number of conntrack is approaching limit
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host conntrack limit (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -3280,8 +3214,6 @@ groups:
         annotations:
           description: |-
             Clock skew detected. Clock is out of sync. Ensure NTP is configured correctly on this host.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host clock skew (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
@@ -3377,8 +3309,6 @@ groups:
         annotations:
           description: |-
             Clock not synchronising. Ensure NTP is configured on this host.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
           summary: Host clock not synchronising (instance {{ $labels.instance }})
         labels:
           __converted_prometheus_rule__: "true"
