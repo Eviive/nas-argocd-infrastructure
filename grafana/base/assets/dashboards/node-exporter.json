@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 7,
+  "id": null,
   "links": [
     {
       "icon": "external link",
@@ -15662,10 +15662,7 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "Mimir",
-          "value": "mimir"
-        },
+        "current": {},
         "includeAll": false,
         "label": "Datasource",
         "name": "ds_prometheus",
@@ -15676,10 +15673,7 @@
         "type": "datasource"
       },
       {
-        "current": {
-          "text": "integrations/node_exporter",
-          "value": "integrations/node_exporter"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "${ds_prometheus}"
@@ -15699,10 +15693,7 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": "k8s-control-plane-1",
-          "value": "k8s-control-plane-1"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "${ds_prometheus}"
@@ -15722,10 +15713,7 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": "control-plane-1",
-          "value": "control-plane-1"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "${ds_prometheus}"
