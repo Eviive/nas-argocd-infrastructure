@@ -14,4 +14,18 @@ configMapGenerator:
       annotations:
         grafana_folder: Infrastructure
     files:
-      - node-exporter.json=assets/dashboards/node-exporter.json
+      - assets/dashboards/node-exporter.json
+  - name: grafana-alerting-rules-infrastructure
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_alert: "1"
+    files:
+      - assets/alerting-rules/node-exporter.yaml
+  - name: grafana-recording-rules-infrastructure
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_alert: "1"
+    files:
+      - assets/recording-rules/node-exporter.yaml

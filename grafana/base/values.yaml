@@ -73,6 +73,9 @@ grafana.ini:
     use_refresh_token: true
 
 sidecar:
+  alerts:
+    enabled: true
+    searchNamespace: ALL
   dashboards:
     enabled: true
     searchNamespace: ALL
