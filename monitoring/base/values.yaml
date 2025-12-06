@@ -11,6 +11,9 @@ destinations:
 # Features
 clusterMetrics:
   enabled: true
+  cadvisor:
+    metricsTuning:
+      useDefaultAllowList: false
   kube-state-metrics:
     metricsTuning:
       useDefaultAllowList: false
@@ -31,6 +34,8 @@ podLogs:
 
 prometheusOperatorObjects:
   enabled: true
+  crds:
+    deploy: true
 
 # Collectors
 alloy-metrics:
