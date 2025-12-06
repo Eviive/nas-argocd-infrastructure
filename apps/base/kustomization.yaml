@@ -22,7 +22,7 @@ patches:
   - path: patches/application.yaml
     target:
       kind: Application
-  - path: patches/grafana.yaml
+  - path: patches/application-server-side-apply.yaml
     target:
       kind: Application
-      name: grafana
+      name: (grafana|monitoring)
