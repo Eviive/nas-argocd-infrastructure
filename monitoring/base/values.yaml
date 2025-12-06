@@ -11,18 +11,15 @@ destinations:
 # Features
 clusterMetrics:
   enabled: true
-  apiServer:
-    enabled: true
   cadvisor:
     enabled: false
-  controlPlane:
-    enabled: true
   kube-state-metrics:
     metricsTuning:
       useDefaultAllowList: false
   kubelet:
-    metricsTuning:
-      useDefaultAllowList: false
+    enabled: false
+  kubeletResource:
+    enabled: false
   node-exporter:
     metricsTuning:
       useDefaultAllowList: false
