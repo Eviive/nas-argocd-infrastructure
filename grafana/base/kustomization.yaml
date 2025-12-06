@@ -31,4 +31,5 @@ configMapGenerator:
         grafana_alert: "1"
     files:
       - node-exporter-rules.yaml=assets/node-exporter/rules.yaml
+      - kube-state-metrics-rules.yaml=assets/kube-state-metrics/rules.yaml
       - delete-rules.yaml=assets/delete-rules.yaml
