@@ -70,6 +70,8 @@ grafana.ini:
     scopes: openid profile email offline_access
     role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
     use_refresh_token: true
+  recording_rules:
+    default_datasource_uid: mimir
 
 sidecar:
   alerts:
