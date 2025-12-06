@@ -48,6 +48,17 @@ datasources:
           httpHeaderValue1: k8s-nas
 
 alerting:
+  policies.yaml:
+    apiVersion: 1
+    policies:
+      - orgId: 1
+        receiver: Discord
+        group_by:
+          - grafana_folder
+          - alertname
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 4h
   contactpoints.yaml:
     apiVersion: 1
     contactPoints:
@@ -58,6 +69,47 @@ alerting:
             type: discord
             settings:
               url: $DISCORD_WEBHOOK_URL
+              title: '{{ template "discord.title" . }}'
+              message: '{{ template "discord.message" . }}'
+  templates.yaml:
+    apiVersion: 1
+    templates:
+      - orgId: 1
+        name: Discord Template
+        template: |
+          {{ define "__discord_subject" }}{{ if eq .Status "firing" }}[FIRING:{{ .Alerts.Firing | len }}]{{ else }}[RESOLVED:{{ .Alerts.Resolved | len }}]{{ end }} {{ .GroupLabels.SortedPairs.Values | join " " }}{{ end }}
+
+          {{ define "__discord_text_alert_list" }}{{range .}}
+          Value: {{template "__discord_text_values_list" .}}
+
+          Started: <t:{{ .StartsAt.Unix }}:R>{{if .EndsAt.Unix }}
+          Ended: <t:{{ .EndsAt.Unix }}:R>
+          {{end}}
+          Labels:
+          {{range .Labels.SortedPairs}}- {{.Name}} = {{.Value}}
+          {{end}}
+          Annotations:
+          {{range .Annotations.SortedPairs}}- {{.Name}} = {{.Value}}
+          {{end}}
+          {{if gt (len .GeneratorURL) 0}}[🔍 View in Grafana]({{.GeneratorURL}}){{end}}
+          {{if gt (len .SilenceURL) 0}}[🔇 Silence Alert]({{.SilenceURL}}){{end}}
+          {{if gt (len .DashboardURL) 0}}[📈 View Dashboard]({{.DashboardURL}}){{end}}
+          {{if gt (len .PanelURL) 0}}[📉 View Panel]({{.PanelURL}}){{end}}
+
+          {{end}}
+          {{ end }}
+
+          {{ define "__discord_text_values_list" }}{{if len .Values}}{{$first := true}}{{range $refID, $value := .Values}}{{if $first}}{{$first = false}}{{else}}, {{end}}{{$refID}}={{$value}}{{end}}{{else}}[no value]{{end}}{{ end }}
+
+          {{ define "discord.message" }}
+          ## {{template "__discord_subject" .}}{{if gt (len .Alerts.Firing) 0}}
+          {{template "__discord_text_alert_list" .Alerts.Firing}}
+          {{end}}{{if gt (len .Alerts.Resolved) 0}}
+          {{template "__discord_text_alert_list" .Alerts.Resolved}}
+          {{end}}
+          {{ end }}
+
+          {{ define "discord.title" }}{{template "__discord_subject" .}}{{ end }}
 
 grafana.ini:
   date_formats:
