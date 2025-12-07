@@ -17,10 +17,6 @@ clusterMetrics:
   kube-state-metrics:
     metricsTuning:
       useDefaultAllowList: false
-  kubelet:
-    enabled: false
-  kubeletResource:
-    enabled: false
   node-exporter:
     metricsTuning:
       useDefaultAllowList: false
