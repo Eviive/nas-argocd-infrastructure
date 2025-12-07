@@ -12,7 +12,8 @@ destinations:
 clusterMetrics:
   enabled: true
   cadvisor:
-    enabled: false
+    metricsTuning:
+      useDefaultAllowList: false
   kube-state-metrics:
     metricsTuning:
       useDefaultAllowList: false
