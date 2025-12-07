@@ -24,6 +24,15 @@ configMapGenerator:
         grafana_folder: Kube State Metrics
     files:
       - kube-state-metrics.json=assets/kube-state-metrics/dashboard.json
+  - name: grafana-dashboards-kubernetes-events
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+      annotations:
+        grafana_folder: Kubernetes Events
+    files:
+      - kubernetes-events.json=assets/kubernetes-events/dashboard.json
   - name: grafana-rules
     options:
       disableNameSuffixHash: true
