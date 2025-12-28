@@ -5,21 +5,24 @@
 This repository contains the configuration for the infrastructure supporting my NAS's Kubernetes cluster.  
 It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to deploy all applications.
 
-## Applications
+## Dependencies
 
 | Name            | Provider |
 |-----------------|----------|
-| ArgoCD          | GitHub   |
-| MetalLB         | GitHub   |
-| Traefik         | Helm     |
-| Cert-Manager    | GitHub   |
+| ArgoCD          | Helm     |
 | Authentik       | Helm     |
+| Cert-Manager    | GitHub   |
+| Grafana         | Helm     |
+| Loki            | Helm     |
+| MetalLB         | GitHub   |
+| Mimir           | Helm     |
+| Monitoring      | Helm     |
+| n8n             | Helm     |
 | NFS Provisioner | GitHub   |
-| FlareSolverr    | Docker   |
-| Prometheus      | Helm     |
 | PostgreSQL      | Helm     |
 | Redis           | Helm     |
-| n8n             | Helm     |
+| Traefik         | Helm     |
+| nginx           | Docker   |
 
 ## Installation
 
