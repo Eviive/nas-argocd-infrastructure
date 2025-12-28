@@ -1,9 +1,0 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: flaresolverr
-spec:
-  source:
-    path: flaresolverr/$OVERLAY
-  destination:
-    namespace: flaresolverr

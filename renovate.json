@@ -33,8 +33,6 @@
         "schedule:weekly"
       ]
     }
-  ],
-  "ignoreDeps": [
-    "alexfozor/flaresolverr"
+
   ]
 }
