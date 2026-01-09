@@ -12,6 +12,7 @@ It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/
 | ArgoCD          | Helm     |
 | Authentik       | Helm     |
 | Cert-Manager    | GitHub   |
+| CloudNativePG   | Helm     |
 | Grafana         | Helm     |
 | Loki            | Helm     |
 | MetalLB         | GitHub   |

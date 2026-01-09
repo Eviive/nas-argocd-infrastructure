@@ -6,6 +6,7 @@ resources:
   - resources/argocd.yaml
   - resources/authentik.yaml
   - resources/cert-manager.yaml
+  - resources/cnpg.yaml
   - resources/grafana.yaml
   - resources/loki.yaml
   - resources/metallb.yaml
@@ -24,4 +25,4 @@ patches:
   - path: patches/application-server-side-apply.yaml
     target:
       kind: Application
-      name: (argocd|grafana|monitoring|traefik)
+      name: (argocd|cnpg|grafana|monitoring|traefik)

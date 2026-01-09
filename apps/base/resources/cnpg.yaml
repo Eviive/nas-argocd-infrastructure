@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg
+spec:
+  source:
+    path: cnpg/$OVERLAY
+  destination:
+    namespace: cnpg
