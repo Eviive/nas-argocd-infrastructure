@@ -1,0 +1,15 @@
+version:
+  postgresql: "16.11-minimal-trixie"
+
+databases:
+  - name: n8n
+
+cluster:
+  instances: 1
+  initdb:
+    database: n8n
+    secret: n8n-cnpg
+  storage:
+    storageClass: nfs-ssd-1
+  annotations:
+    folder: n8n-cnpg
