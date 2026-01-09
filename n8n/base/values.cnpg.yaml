@@ -8,7 +8,8 @@ cluster:
   instances: 1
   initdb:
     database: n8n
-    secret: n8n-cnpg
+    secret:
+      name: n8n-cnpg
   storage:
     storageClass: nfs-ssd-1
   annotations:
