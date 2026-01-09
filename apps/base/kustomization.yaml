@@ -24,4 +24,4 @@ patches:
   - path: patches/application-server-side-apply.yaml
     target:
       kind: Application
-      name: (grafana|monitoring)
+      name: (argocd|grafana|monitoring|traefik)
