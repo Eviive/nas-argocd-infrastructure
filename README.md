@@ -20,7 +20,6 @@ It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/
 | Monitoring      | Helm     |
 | n8n             | Helm     |
 | NFS Provisioner | GitHub   |
-| PostgreSQL      | Helm     |
 | Redis           | Helm     |
 | Traefik         | Helm     |
 | nginx           | Docker   |

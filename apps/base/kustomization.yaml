@@ -15,7 +15,6 @@ resources:
   - resources/n8n.yaml
   - resources/nfs-client-provisioner-hdd-1.yaml
   - resources/nfs-client-provisioner-ssd-1.yaml
-  - resources/postgresql.yaml
   - resources/redis.yaml
   - resources/traefik.yaml
 patches:
