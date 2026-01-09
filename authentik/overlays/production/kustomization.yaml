@@ -10,6 +10,13 @@ helmCharts:
     namespace: authentik
     includeCRDs: true
     valuesFile: ../../base/values.yaml
+  - name: cluster
+    repo: https://cloudnative-pg.github.io/charts
+    version: 0.5.0
+    releaseName: authentik-cnpg-cluster
+    namespace: authentik
+    includeCRDs: true
+    valuesFile: ../../base/values.cnpg.yaml
 patches:
   - path: patches/ingr.yaml
     target:

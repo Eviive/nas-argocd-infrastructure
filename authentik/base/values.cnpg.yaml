@@ -1,0 +1,16 @@
+version:
+  postgresql: "16.11-minimal-trixie"
+
+databases:
+  - name: authentik
+
+cluster:
+  instances: 1
+  initdb:
+    database: authentik
+    secret:
+      name: authentik-cnpg
+  storage:
+    storageClass: nfs-ssd-1
+  annotations:
+    folder: authentik-cnpg
