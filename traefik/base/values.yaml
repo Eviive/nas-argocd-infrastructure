@@ -1,33 +1,36 @@
 ports:
   web:
-    redirections:
-      entryPoint:
-        to: websecure
-        scheme: https
-        permanent: true
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
 
   web-ext:
     port: 8001
-    exposedPort: 80
     expose:
       default: false
       ext: true
+    exposedPort: 80
     protocol: TCP
-    redirections:
-      entryPoint:
-        to: websecure-ext
-        scheme: https
-        permanent: true
+    http:
+      redirections:
+        entryPoint:
+          to: websecure-ext
+          scheme: https
+          permanent: true
 
   websecure-ext:
     port: 8444
-    exposedPort: 443
     expose:
       default: false
       ext: true
+    exposedPort: 443
     protocol: TCP
-    tls:
-      enabled: true
+    http:
+      tls:
+        enabled: true
 
 service:
   additionalServices:
