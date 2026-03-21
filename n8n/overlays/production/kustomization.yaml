@@ -14,7 +14,7 @@ helmCharts:
       - values-production.yaml
   - name: cluster
     repo: https://cloudnative-pg.github.io/charts
-    version: 0.5.0
+    version: 0.6.0
     releaseName: n8n-cnpg-cluster
     namespace: n8n
     includeCRDs: true
