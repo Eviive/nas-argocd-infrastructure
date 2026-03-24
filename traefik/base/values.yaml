@@ -17,7 +17,8 @@ ports:
 
 service:
   additionalServices:
-    ext: {}
+    ext:
+      type: ClusterIP
 
 ingressRoute:
   dashboard:

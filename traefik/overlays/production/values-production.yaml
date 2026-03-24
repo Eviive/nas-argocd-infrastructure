@@ -1,10 +1,6 @@
 service:
   annotations:
     metallb.universe.tf/loadBalancerIPs: 192.168.1.201
-  additionalServices:
-    ext:
-      annotations:
-        metallb.universe.tf/loadBalancerIPs: 192.168.1.202
 
 ingressRoute:
   dashboard:
