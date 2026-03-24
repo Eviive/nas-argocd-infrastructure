@@ -11,6 +11,10 @@ spec:
       labels:
         app: cloudflare-tunnel
     spec:
+      securityContext:
+        sysctls:
+          - name: net.ipv4.ping_group_range
+            value: "65532 65532"
       containers:
         - name: cloudflare-tunnel
           image: cloudflare/cloudflared:2026.3.0
