@@ -6,6 +6,7 @@ resources:
   - resources/argocd.yaml
   - resources/authentik.yaml
   - resources/cert-manager.yaml
+  - resources/cloudflare-tunnel.yaml
   - resources/cnpg.yaml
   - resources/grafana.yaml
   - resources/loki.yaml
