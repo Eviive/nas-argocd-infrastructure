@@ -1,5 +1,4 @@
 - op: replace
   path: /spec/dnsNames
   value:
-    - "*.albertv.dev"
     - "*.home.albertv.dev"

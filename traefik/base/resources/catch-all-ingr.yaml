@@ -5,7 +5,7 @@ metadata:
 spec:
   entryPoints:
     - websecure
-    - websecure-ext
+    - web-ext
   routes:
     - kind: Rule
       match: HostRegexp(`^.+$`)

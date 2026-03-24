@@ -10,7 +10,6 @@ resources:
   - resources/catch-all-ingr.yaml
   - resources/catch-all-cert.yaml
   - resources/catch-all-middleware.yaml
-  - resources/logs-pvc.yaml
 patches:
   - path: patches/dashboard-ingr.yaml
     target:

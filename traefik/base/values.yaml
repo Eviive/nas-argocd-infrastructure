@@ -14,23 +14,6 @@ ports:
       ext: true
     exposedPort: 80
     protocol: TCP
-    http:
-      redirections:
-        entryPoint:
-          to: websecure-ext
-          scheme: https
-          permanent: true
-
-  websecure-ext:
-    port: 8444
-    expose:
-      default: false
-      ext: true
-    exposedPort: 443
-    protocol: TCP
-    http:
-      tls:
-        enabled: true
 
 service:
   additionalServices:
@@ -51,20 +34,3 @@ ingressRoute:
 providers:
   kubernetesCRD:
     allowCrossNamespace: true
-
-additionalVolumeMounts:
-  - name: logs
-    mountPath: /var/log/traefik
-
-deployment:
-  additionalVolumes:
-    - name: logs
-      persistentVolumeClaim:
-        claimName: traefik-logs
-
-logs:
-  general:
-    filePath: /var/log/traefik/traefik.log
-  access:
-    enabled: true
-    filePath: /var/log/traefik/access.log
