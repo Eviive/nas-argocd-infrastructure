@@ -14,6 +14,10 @@ ports:
       ext: true
     exposedPort: 80
     protocol: TCP
+    forwardedHeaders:
+      trustedIPs:
+        - "127.0.0.1/32"
+        - "10.244.0.0/16"
 
 service:
   additionalServices:

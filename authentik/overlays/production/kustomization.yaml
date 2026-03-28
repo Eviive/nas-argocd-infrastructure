@@ -22,6 +22,10 @@ patches:
     target:
       kind: IngressRoute
       name: authentik
+  - path: patches/ext-ingr.yaml
+    target:
+      kind: IngressRoute
+      name: authentik-ext
   - path: patches/cert.yaml
     target:
       kind: Certificate

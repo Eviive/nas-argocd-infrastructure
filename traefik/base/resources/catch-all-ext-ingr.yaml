@@ -1,10 +1,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: traefik-catch-all
+  name: traefik-catch-all-ext
 spec:
   entryPoints:
-    - websecure
+    - web-ext
   routes:
     - kind: Rule
       match: HostRegexp(`^.+$`)
@@ -14,5 +14,3 @@ spec:
           port: http
       middlewares:
         - name: traefik-catch-all
-  tls:
-    secretName: traefik-catch-all-tls

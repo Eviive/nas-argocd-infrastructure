@@ -8,6 +8,7 @@ resources:
   - resources/error-pages-svc.yaml
   - resources/error-pages-middleware.yaml
   - resources/catch-all-ingr.yaml
+  - resources/catch-all-ext-ingr.yaml
   - resources/catch-all-cert.yaml
   - resources/catch-all-middleware.yaml
 patches:

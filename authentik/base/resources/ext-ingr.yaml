@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: authentik-ext
+spec:
+  entryPoints:
+    - web-ext
+  routes:
+    - kind: Rule
+      services:
+        - name: authentik-server
+          port: http
+      middlewares:
+        - name: traefik-error-pages
+          namespace: traefik

@@ -5,4 +5,5 @@ resources:
   - resources/ns.yaml
   - resources/assets-pvc.yaml
   - resources/ingr.yaml
+  - resources/ext-ingr.yaml
   - resources/cert.yaml
