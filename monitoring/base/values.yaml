@@ -1,12 +1,24 @@
 destinations:
-  - name: mimir
+  mimir:
     type: prometheus
     url: http://mimir-gateway.mimir.svc.cluster.local/api/v1/push
-    tenantId: k8s-nas
-  - name: loki
+  loki:
     type: loki
     url: http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push
-    tenantId: k8s-nas
+
+# Collectors
+collectors:
+  alloy-metrics:
+    presets:
+      - clustered
+      - statefulset
+  alloy-logs:
+    presets:
+      - filesystem-log-reader
+      - daemonset
+  alloy-singleton:
+    presets:
+      - singleton
 
 # Features
 clusterMetrics:
@@ -17,33 +29,34 @@ clusterMetrics:
   kube-state-metrics:
     metricsTuning:
       useDefaultAllowList: false
-  node-exporter:
+  collector: alloy-metrics
+
+hostMetrics:
+  enabled: true
+  linuxHosts:
+    enabled: true
     metricsTuning:
       useDefaultAllowList: false
-  windows-exporter:
-    deploy: false
-    enabled: false
+  collector: alloy-metrics
+
+telemetryServices:
+  kube-state-metrics:
+    deploy: true
+  node-exporter:
+    deploy: true
 
 clusterEvents:
   enabled: true
+  collector: alloy-singleton
 
 nodeLogs:
   enabled: true
+  collector: alloy-logs
 
-podLogs:
+podLogsViaLoki:
   enabled: true
+  collector: alloy-logs
 
 prometheusOperatorObjects:
   enabled: true
-  crds:
-    deploy: true
-
-# Collectors
-alloy-metrics:
-  enabled: true
-
-alloy-singleton:
-  enabled: true
-
-alloy-logs:
-  enabled: true
+  collector: alloy-metrics
