@@ -7,7 +7,7 @@ configs:
         name: authentik
         type: oidc
         config:
-          issuer: https://authentik.home.albertv.dev/application/o/argocd/
+          issuer: https://authentik.albertv.dev/application/o/argocd/
           clientID: $dex.authentik.clientID
           clientSecret: $dex.authentik.clientSecret
           insecureEnableGroups: true
