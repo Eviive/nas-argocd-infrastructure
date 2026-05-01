@@ -12,6 +12,8 @@ resources:
   - resources/app-projects/media-server/media-server-application.yaml
   - resources/app-projects/projects/projects-app-project.yaml
   - resources/app-projects/projects/projects-application.yaml
+  - resources/app-projects/apps/apps-app-project.yaml
+  - resources/app-projects/apps/apps-application.yaml
 patches:
   - path: patches/app-project.yaml
     target:

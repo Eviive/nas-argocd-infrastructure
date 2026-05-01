@@ -52,5 +52,13 @@ patches:
     target:
       kind: Application
       name: projects-apps
+  - path: patches/app-projects/apps/apps-app-project.yaml
+    target:
+      kind: AppProject
+      name: apps
+  - path: patches/app-projects/apps/apps-application.yaml
+    target:
+      kind: Application
+      name: apps
 replacements:
   - path: replacements/application-overlay-replacement.yaml

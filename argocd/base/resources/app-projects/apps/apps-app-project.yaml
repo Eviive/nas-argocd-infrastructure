@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps
+spec:
+  description: Project for applications
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: argocd
+    - namespace: portfolio
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
