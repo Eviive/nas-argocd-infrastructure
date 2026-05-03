@@ -12,7 +12,7 @@ data:
         listen 8080;
         location / {
           proxy_set_header X-Scope-OrgID ${MIMIR_TENANT_ID};
-          proxy_pass http://mimir-gateway.mimir.svc.cluster.local/prometheus;
+          proxy_pass http://mimir-gateway.mimir.svc.cluster.local/prometheus/;
         }
       }
     }
