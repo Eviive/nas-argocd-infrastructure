@@ -3,3 +3,6 @@ kind: Kustomization
 namespace: mimir
 resources:
   - resources/ns.yaml
+  - resources/mimir-lens-proxy-cm.yaml
+  - resources/mimir-lens-proxy-deploy.yaml
+  - resources/mimir-lens-proxy-svc.yaml

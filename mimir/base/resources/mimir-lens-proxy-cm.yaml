@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mimir-lens-proxy
+data:
+  nginx.template: |
+    events {
+      worker_connections 1024;
+    }
+    http {
+      server {
+        listen 8080;
+        location / {
+          proxy_set_header X-Scope-OrgID ${MIMIR_TENANT_ID};
+          proxy_pass http://mimir-gateway.mimir.svc.cluster.local/prometheus;
+        }
+      }
+    }

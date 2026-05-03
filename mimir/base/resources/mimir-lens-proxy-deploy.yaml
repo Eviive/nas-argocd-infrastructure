@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mimir-lens-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mimir-lens-proxy
+  template:
+    metadata:
+      labels:
+        app: mimir-lens-proxy
+    spec:
+      containers:
+        - name: proxy
+          image: nginx:1.30.0@sha256:1a9ab83e2892b75773978e8d91f42a7a2a0d8bb704959a51ff17c0377481973d
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: MIMIR_TENANT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: mimir-lens-proxy
+                  key: tenant_id
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              envsubst '${MIMIR_TENANT_ID}' < /etc/nginx/templates/nginx.template > /etc/nginx/nginx.conf && 
+              nginx -g 'daemon off;'
+          volumeMounts:
+            - name: config-template
+              mountPath: /etc/nginx/templates/nginx.template
+      volumes:
+        - name: config-template
+          configMap:
+            name: mimir-lens-proxy
+            items:
+              - key: nginx.template
+                path: nginx.template

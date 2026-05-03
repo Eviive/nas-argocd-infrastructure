@@ -17,3 +17,7 @@ patches:
     target:
       kind: StatefulSet
       name: mimir-kafka
+  - path: patches/mimir-lens-proxy-cm.yaml
+    target:
+      kind: ConfigMap
+      name: mimir-lens-proxy
