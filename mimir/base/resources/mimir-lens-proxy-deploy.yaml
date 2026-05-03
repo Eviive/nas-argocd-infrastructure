@@ -27,11 +27,11 @@ spec:
           command: [ "/bin/sh", "-c" ]
           args:
             - |
-              envsubst '${MIMIR_TENANT_ID}' < /etc/nginx/templates/nginx.template > /etc/nginx/nginx.conf && 
+              cat /etc/nginx/templates/nginx.template | envsubst '${MIMIR_TENANT_ID}' > /etc/nginx/nginx.conf &&
               nginx -g 'daemon off;'
           volumeMounts:
             - name: config-template
-              mountPath: /etc/nginx/templates/nginx.template
+              mountPath: /etc/nginx/templates
       volumes:
         - name: config-template
           configMap:
