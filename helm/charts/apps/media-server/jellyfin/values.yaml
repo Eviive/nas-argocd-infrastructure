@@ -1,0 +1,75 @@
+base:
+  deployments:
+    - containers:
+        - name: jellyfin
+          image:
+            repository: jellyfin/jellyfin
+            tag: 10.11.9@sha256:bc9fa8e1462fffe3d8d4255fc62af478602641f4c0e5f4875fea8563d1189837
+          ports:
+            - name: http
+              containerPort: 8096
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: shows
+              mountPath: /data/shows
+            - name: movies
+              mountPath: /data/movies
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: jellyfin-config
+        - name: shows
+          persistentVolumeClaim:
+            claimName: jellyfin-shows
+        - name: movies
+          persistentVolumeClaim:
+            claimName: jellyfin-movies
+
+  pvcs:
+    - name: config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/jellyfin/config
+    - name: shows
+      accessModes:
+        - ReadWriteOnce
+      size: 200Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/shows
+    - name: movies
+      accessModes:
+        - ReadWriteOnce
+      size: 200Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/movies
+
+  services:
+    - ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  ingressRoutes:
+    - routes:
+        - match: Host(`jellyfin.home.albertv.dev`)
+          services:
+            - name: jellyfin
+              port: http
+      dnsNames:
+        - jellyfin.home.albertv.dev

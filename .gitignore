@@ -1,2 +1,4 @@
 charts/
 *.build.yaml
+
+!helm/charts

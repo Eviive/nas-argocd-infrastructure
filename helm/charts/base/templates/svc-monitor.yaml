@@ -1,0 +1,17 @@
+{{- range .Values.serviceMonitors }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "base.component-fullname" (dict "context" $ "component" .name) }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  {{- with .endpoints }}
+  endpoints:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "base.selectorLabels" (dict "context" $ "component" .name) | nindent 6 }}
+{{- end }}

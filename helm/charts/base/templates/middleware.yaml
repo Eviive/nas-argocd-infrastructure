@@ -1,0 +1,11 @@
+{{- range .Values.middlewares }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "base.component-fullname" (dict "context" $ "component" .name) }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  {{- toYaml .spec | nindent 2 }}
+{{- end }}

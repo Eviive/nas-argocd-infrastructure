@@ -1,0 +1,172 @@
+base:
+  deployments:
+    - name: lens-proxy
+      containers:
+        - name: nginx
+          image:
+            repository: nginx
+            tag: 1.31.1@sha256:5aca99593157f4ae539a5dec1092a0ad8762f8e2eb1789085a13a0f5622369f6
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              cat /etc/nginx/templates/nginx.template | envsubst '${MIMIR_TENANT_ID}' > /etc/nginx/nginx.conf &&
+              nginx -g 'daemon off;'
+          env:
+            - name: MIMIR_TENANT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: mimir-lens-proxy
+                  key: tenant_id
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - name: config-template
+              mountPath: /etc/nginx/templates
+      volumes:
+        - name: config-template
+          configMap:
+            name: mimir-lens-proxy
+            items:
+              - key: nginx.template.conf
+                path: nginx.template.conf
+
+  services:
+    - name: lens-proxy
+      ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  configMaps:
+    - name: lens-proxy
+      files:
+        nginx.template.conf: assets/nginx.template.conf
+      literals:
+        tenant_id: k8s-nas
+
+mimir-distributed:
+  global:
+    extraEnvFrom:
+      - secretRef:
+          name: mimir-s3
+
+  mimir:
+    structuredConfig:
+      common:
+        storage:
+          backend: s3
+          s3:
+            endpoint: truenas.home.albertv.dev:9000
+            access_key_id: "${S3_ACCESS_KEY_ID}"
+            secret_access_key: "${S3_ACCESS_KEY}"
+      blocks_storage:
+        s3:
+          bucket_name: mimir-blocks
+
+  alertmanager:
+    enabled: false
+
+  distributor:
+    resources:
+      requests: null
+      limits: null
+
+  compactor:
+    resources:
+      requests: null
+      limits: null
+    persistentVolume:
+      storageClass: nfs-ssd-1
+      annotations:
+        folder: monitoring/mimir/compactor
+
+  ingester:
+    replicas: 1
+    resources:
+      requests: null
+      limits: null
+    persistentVolume:
+      storageClass: nfs-ssd-1
+      annotations:
+        folder: monitoring/mimir/ingester
+    zoneAwareReplication:
+      enabled: false
+
+  overrides_exporter:
+    enabled: false
+
+  ruler:
+    enabled: false
+
+  memcachedExporter:
+    resources:
+      requests: null
+      limits: null
+
+  chunks-cache:
+    enabled: true
+    resources:
+      requests: null
+      limits: null
+
+  index-cache:
+    enabled: true
+    resources:
+      requests: null
+      limits: null
+
+  metadata-cache:
+    enabled: true
+    resources:
+      requests: null
+      limits: null
+
+  results-cache:
+    enabled: true
+    resources:
+      requests: null
+      limits: null
+
+  rollout_operator:
+    enabled: false
+
+  minio:
+    enabled: false
+
+  kafka:
+    persistence:
+      # TODO: can't add folder annotation to kafka pvc, will add it back when I deploy a kafka myself
+      enabled: false
+      # storageClassName: nfs-ssd-1
+    resources:
+      requests: null
+      limits: null
+
+  querier:
+    replicas: 1
+    resources:
+      requests: null
+      limits: null
+
+  query_frontend:
+    resources:
+      requests: null
+      limits: null
+
+  query_scheduler:
+    replicas: 1
+    resources:
+      requests: null
+      limits: null
+
+  store_gateway:
+    resources:
+      requests: null
+      limits: null
+    persistentVolume:
+      storageClass: nfs-ssd-1
+      annotations:
+        folder: monitoring/mimir/store-gateway
+    zoneAwareReplication:
+      enabled: false

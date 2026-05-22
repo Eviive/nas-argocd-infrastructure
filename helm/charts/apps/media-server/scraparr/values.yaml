@@ -1,0 +1,39 @@
+base:
+  deployments:
+    - containers:
+        - name: scraparr
+          image:
+            repository: thegameprofi/scraparr
+            tag: 3.0.3@sha256:47ae07184e9d35ed7c25ed378e79a423b6f9da15056c9299d517af2bbe6f5e96
+          ports:
+            - name: http-metrics
+              containerPort: 7100
+          volumeMounts:
+            - name: config
+              mountPath: /scraparr/config
+              readOnly: true
+      volumes:
+        - name: config
+          secret:
+            secretName: scraparr-config
+
+  services:
+    - clusterIP: None
+      ports:
+        - name: http-metrics
+          port: 7100
+          targetPort: http-metrics
+
+  serviceMonitors:
+    - endpoints:
+        - port: http-metrics
+          path: /metrics
+
+  configMaps:
+    - name: grafana-dashboard
+      labels:
+        grafana_dashboard: "1"
+      annotations:
+        grafana_folder: Media Server
+      files:
+        scraparr.json: assets/grafana-dashboard.json

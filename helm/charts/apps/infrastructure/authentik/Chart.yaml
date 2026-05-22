@@ -1,0 +1,14 @@
+apiVersion: v2
+name: authentik
+type: application
+version: 1.0.0
+dependencies:
+  - name: base
+    version: 1.0.0
+    repository: file://../../../base
+  - name: authentik
+    version: 2026.2.3
+    repository: https://charts.goauthentik.io
+  - name: cluster
+    version: 0.6.1
+    repository: https://cloudnative-pg.github.io/charts

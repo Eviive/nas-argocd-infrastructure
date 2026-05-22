@@ -1,0 +1,162 @@
+base:
+  deployments:
+    - strategy:
+        type: Recreate
+      initContainers:
+        - name: gluetun
+          image:
+            repository: qmcgaw/gluetun
+            tag: v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
+          restartPolicy: Always
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - (ip rule del table 51820; ip -6 rule del table 51820) || true
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: protonvpn
+            - name: SERVER_COUNTRIES
+              value: Iceland,Switzerland,Sweden
+            - name: VPN_TYPE
+              value: wireguard
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: qbittorrent-gluetun-protonvpn
+                  key: wireguard-private-key
+            - name: DOT
+              value: "off"
+            - name: DNS_ADDRESS
+              value: 10.2.0.1
+            - name: PORT_FORWARD_ONLY
+              value: "on"
+            - name: VPN_PORT_FORWARDING
+              value: "on"
+            - name: VPN_PORT_FORWARDING_UP_COMMAND
+              value: /bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://localhost:8080/api/v2/app/setPreferences 2>&1'
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            - name: gluetun-config
+              mountPath: /gluetun
+      containers:
+        - name: qbittorrent
+          image:
+            repository: linuxserver/qbittorrent
+            tag: 5.2.0@sha256:eeea9f8a8cdde23555186843d26e8ded1222421f31f98a5cc1b50c2882ebcf4e
+          env:
+            - name: PUID
+              value: "1057"
+            - name: PGID
+              value: "1056"
+          ports:
+            - name: http
+              containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /api/v2/app/version
+              port: http
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/v2/app/version
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            timeoutSeconds: 10
+          resources:
+            limits:
+              memory: "2Gi"
+            requests:
+              memory: "512Mi"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: downloads
+              mountPath: /downloads
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: qbittorrent-config
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: qbittorrent-downloads
+        - name: gluetun-config
+          persistentVolumeClaim:
+            claimName: qbittorrent-gluetun-config
+
+  pvcs:
+    - name: config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/qbittorrent/config
+    - name: downloads
+      accessModes:
+        - ReadWriteOnce
+      size: 400Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/downloads
+    - name: gluetun-config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/qbittorrent-gluetun/config
+
+  services:
+    - ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  ingressRoutes:
+    - routes:
+        - match: Host(`qbittorrent.home.albertv.dev`)
+          services:
+            - name: qbittorrent
+              port: http
+          enableAuthentikMiddleware: true
+      authentikProxyProviderRouteMatch: Host(`qbittorrent.home.albertv.dev`)
+      dnsNames:
+        - qbittorrent.home.albertv.dev
+
+  cronJobs:
+    - name: trackers
+      schedule: "30 * * * *"
+      concurrencyPolicy: Forbid
+      failedJobsHistoryLimit: 3
+      job:
+        restartPolicy: Never
+        containers:
+          - name: trackers
+            image:
+              repository: bash
+              tag: 5.3.9@sha256:38697a8e277c4b61f75193f003db16590eda7b096577dd1c2be53afa207954e7
+            command:
+              - bash
+            args:
+              - -c
+              - >-
+                apk add -q curl &&
+                curl -fsSL https://raw.githubusercontent.com/Eviive/nas-scripts/main/qbittorrent/trackers/update-trackers.sh | bash
+            env:
+              - name: QBITTORRENT_HOST
+                value: http://qbittorrent.qbittorrent.svc.cluster.local
+              - name: QBITTORRENT_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: qbittorrent
+                    key: qbittorrent-username
+              - name: QBITTORRENT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: qbittorrent
+                    key: qbittorrent-password

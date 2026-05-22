@@ -1,0 +1,35 @@
+base:
+  deployments:
+    - securityContext:
+        sysctls:
+          - name: net.ipv4.ping_group_range
+            value: "65532 65532"
+      containers:
+        - name: cloudflared
+          image:
+            repository: cloudflare/cloudflared
+            tag: 2026.5.1@sha256:a5b5e6fd9a372f054b9a843c219bfbcdceb54691605312a8b1ee72978bdf1aa1
+          args:
+            - tunnel
+            - --no-autoupdate
+            - --loglevel
+            - info
+            - --metrics
+            - 0.0.0.0:2000
+            - run
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-tunnel-token
+                  key: token
+          ports:
+            - name: metrics
+              containerPort: 2000
+          livenessProbe:
+            httpGet:
+              path: /ready
+              port: metrics
+            failureThreshold: 1
+            initialDelaySeconds: 10
+            periodSeconds: 10
