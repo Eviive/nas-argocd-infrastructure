@@ -9,7 +9,7 @@ base:
           command: [ "/bin/sh", "-c" ]
           args:
             - |
-              cat /etc/nginx/templates/nginx.template | envsubst '${MIMIR_TENANT_ID}' > /etc/nginx/nginx.conf &&
+              cat /etc/nginx/templates/nginx.template.conf | envsubst '${MIMIR_TENANT_ID}' > /etc/nginx/nginx.conf &&
               nginx -g 'daemon off;'
           env:
             - name: MIMIR_TENANT_ID
