@@ -22,6 +22,9 @@ spec:
       source:
         repoURL: https://github.com/Eviive/nas-argocd-infrastructure
         path: "{{ `{{ .path.path }}` }}"
+        helm:
+          valueFiles:
+            - values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{ `{{ .path.basename }}` }}"
