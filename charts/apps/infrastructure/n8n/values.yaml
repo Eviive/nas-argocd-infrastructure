@@ -44,6 +44,7 @@ n8n:
     editorBaseUrl: https://n8n.home.albertv.dev
   webhook:
     url: https://n8n.home.albertv.dev
+  existingEncryptionKeySecret: n8n
 
 cluster:
   version:
