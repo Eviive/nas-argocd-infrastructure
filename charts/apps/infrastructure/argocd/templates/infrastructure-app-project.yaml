@@ -10,7 +10,7 @@ spec:
     - "https://github.com/Eviive/nas-argocd-infrastructure"
   destinations:
     - namespace: kube-system
-    - server: https://kubernetes.default.svc
+      server: https://kubernetes.default.svc
     - namespace: argocd
       server: https://kubernetes.default.svc
     - namespace: authentik
