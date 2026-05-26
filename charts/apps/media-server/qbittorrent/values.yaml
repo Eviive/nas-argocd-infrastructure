@@ -48,7 +48,7 @@ base:
         - name: qbittorrent
           image:
             repository: linuxserver/qbittorrent
-            tag: 5.2.0@sha256:eeea9f8a8cdde23555186843d26e8ded1222421f31f98a5cc1b50c2882ebcf4e
+            tag: 14.3.9@sha256:751f377e7bcfe8e7aee1d219049720690510f488bba649f8ceffcd911e83d908
           env:
             - name: PUID
               value: "1057"
