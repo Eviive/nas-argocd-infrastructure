@@ -1,0 +1,27 @@
+{{- range .Values.services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "base.component-fullname" (dict "context" $ "component" .name) }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  {{- with .type }}
+  type: {{ . }}
+  {{- end }}
+  {{- with .clusterIP }}
+  clusterIP: {{ . }}
+  {{- end }}
+  ports:
+    {{- range .ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      targetPort: {{ .targetPort }}
+      {{- with .protocol }}
+      protocol: {{ . }}
+      {{- end }}
+    {{- end }}
+  selector:
+    {{- include "base.selectorLabels" (dict "context" $ "component" .name) | nindent 4 }}
+{{- end }}

@@ -1,0 +1,69 @@
+base:
+  deployments:
+    - containers:
+        - name: radarr
+          image:
+            repository: linuxserver/radarr
+            tag: 6.1.1@sha256:079e48870584baf2a3e7e43e7ba6d3c834555931851a59c82c51cc792d285caf
+          env:
+            - name: PUID
+              value: "1057"
+            - name: PGID
+              value: "1056"
+          ports:
+            - name: http
+              containerPort: 7878
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: movies
+              mountPath: /movies
+            - name: downloads
+              mountPath: /downloads
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: radarr-config
+        - name: movies
+          persistentVolumeClaim:
+            claimName: radarr-movies
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: radarr-downloads
+
+  pvcs:
+    - name: config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/radarr/config
+    - name: movies
+      accessModes:
+        - ReadWriteOnce
+      size: 200Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/movies
+    - name: downloads
+      accessModes:
+        - ReadWriteOnce
+      size: 400Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/downloads
+
+  services:
+    - ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  ingressRoutes:
+    - routes:
+        - match: Host(`radarr.home.albertv.dev`)
+          services:
+            - name: radarr
+              port: http
+          enableAuthentikMiddleware: true
+      authentikProxyProviderRouteMatch: Host(`radarr.home.albertv.dev`)
+      dnsNames:
+        - radarr.home.albertv.dev

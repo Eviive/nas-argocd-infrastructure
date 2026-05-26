@@ -1,0 +1,8 @@
+nfs-subdir-external-provisioner:
+  nfs:
+    server: truenas.home.albertv.dev
+    path: /mnt/hdd-1/k8s-nfs
+  storageClass:
+    name: nfs-hdd-1
+    reclaimPolicy: Retain
+    pathPattern: ${.PVC.annotations.folder}

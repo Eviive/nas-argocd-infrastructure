@@ -28,7 +28,7 @@ It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/
 
 When installing from scratch, you need to apply the ArgoCD application first :
 ```bash
-kubectl apply -k argocd/overlays/ENV
+helm upgrade --install argocd charts/apps/infrastructure/argocd --namespace argocd --create-namespace -f charts/apps/infrastructure/argocd/values.yaml
 ```
 
 From there, you can install the rest of the applications using the ArgoCD UI by port-forwarding the `argocd-server` service :

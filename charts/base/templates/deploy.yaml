@@ -1,0 +1,41 @@
+{{- range .Values.deployments }}
+---
+{{ $name := include "base.component-fullname" (dict "context" $ "component" .name) }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  {{- with .strategy }}
+  strategy:
+    type: {{ .type }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "base.selectorLabels" (dict "context" $ "component" .name) | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "base.labels" (dict "context" $ "component" .name) | nindent 8 }}
+    spec:
+      {{- with .securityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .initContainers }}
+      initContainers:
+        {{- range . }}
+        {{- include "base.container" (dict "context" $ "container" .) | nindent 8 }}
+        {{- end }}
+      {{- end }}
+      containers:
+        {{- range .containers }}
+        {{- include "base.container" (dict "context" $ "container" .) | nindent 8 }}
+        {{- end }}
+      {{- with .volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

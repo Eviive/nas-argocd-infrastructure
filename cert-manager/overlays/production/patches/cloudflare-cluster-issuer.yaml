@@ -1,3 +1,0 @@
-- op: replace
-  path: /spec/acme/solvers/0/dns01/cloudflare/email
-  value: albert.vaillon21@gmail.com

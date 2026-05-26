@@ -1,0 +1,82 @@
+base:
+  deployments:
+    - containers:
+        - name: bazarr
+          image:
+            repository: linuxserver/bazarr
+            tag: 1.5.6@sha256:95f27692c3de6dbe130cd035d342d8138ec74ade7b62cfc52e11ae222c52c855
+          env:
+            - name: PUID
+              value: "1057"
+            - name: PGID
+              value: "1056"
+          ports:
+            - name: http
+              containerPort: 6767
+          livenessProbe:
+            httpGet:
+              path: /api/system/ping
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/system/ping
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: shows
+              mountPath: /tv
+            - name: movies
+              mountPath: /movies
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: bazarr-config
+        - name: shows
+          persistentVolumeClaim:
+            claimName: bazarr-shows
+        - name: movies
+          persistentVolumeClaim:
+            claimName: bazarr-movies
+
+  pvcs:
+    - name: config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/bazarr/config
+    - name: shows
+      accessModes:
+        - ReadWriteOnce
+      size: 200Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/shows
+    - name: movies
+      accessModes:
+        - ReadWriteOnce
+      size: 200Gi
+      storageClassName: nfs-hdd-1
+      folder: media-server/movies
+
+  services:
+    - ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  ingressRoutes:
+    - routes:
+        - match: Host(`bazarr.home.albertv.dev`)
+          services:
+            - name: bazarr
+              port: http
+          enableAuthentikMiddleware: true
+      authentikProxyProviderRouteMatch: Host(`bazarr.home.albertv.dev`)
+      dnsNames:
+        - bazarr.home.albertv.dev

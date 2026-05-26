@@ -1,2 +1,4 @@
 charts/
+!/charts/
+
 *.build.yaml

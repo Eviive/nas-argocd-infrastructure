@@ -1,0 +1,14 @@
+apiVersion: v2
+name: n8n
+type: application
+version: 1.0.0
+dependencies:
+  - name: base
+    version: 1.0.0
+    repository: file://../../../base
+  - name: n8n
+    version: 1.16.42
+    repository: https://community-charts.github.io/helm-charts
+  - name: cluster
+    version: 0.6.1
+    repository: https://cloudnative-pg.github.io/charts

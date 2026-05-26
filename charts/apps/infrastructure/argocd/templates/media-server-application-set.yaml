@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ include "base.component-fullname" (dict "context" $ "component" "infrastructure") }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" "infrastructure") | nindent 4 }}
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  generators:
+    - git:
+        repoURL: https://github.com/Eviive/nas-argocd-infrastructure
+        directories:
+          - path: charts/apps/media-server/*
+  template:
+    metadata:
+      name: "{{ `{{ .path.basename }}` }}"
+    spec:
+      project: media-server
+      source:
+        repoURL: https://github.com/Eviive/nas-argocd-infrastructure
+        path: "{{ `{{ .path.path }}` }}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{ `{{ .path.basename }}` }}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - RespectIgnoreDifferences=true

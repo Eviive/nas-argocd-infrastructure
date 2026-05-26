@@ -1,0 +1,57 @@
+base:
+  pvcs:
+    - name: assets
+      accessModes:
+        - ReadWriteOnce
+      size: 5Gi
+      storageClassName: nfs-ssd-1
+      folder: authentik/assets
+
+  ingressRoutes:
+    - external: true
+      routes:
+        - match: Host(`authentik.albertv.dev`)
+          services:
+            - name: authentik-server
+              port: http
+
+authentik:
+  server:
+    volumeMounts:
+      - name: assets
+        mountPath: /web/dist/assets/images/custom
+        subPath: images
+        readOnly: true
+    volumes:
+      - name: assets
+        persistentVolumeClaim:
+          claimName: authentik-assets
+    envFrom:
+      - secretRef:
+          name: authentik-env
+
+  worker:
+    envFrom:
+      - secretRef:
+          name: authentik-env
+
+  redis:
+    enabled: false
+
+cluster:
+  version:
+    postgresql: "16.11-minimal-trixie"
+
+  databases:
+    - name: authentik
+
+  cluster:
+    instances: 1
+    initdb:
+      database: authentik
+      secret:
+        name: authentik-cnpg
+    storage:
+      storageClass: nfs-ssd-1
+    annotations:
+      folder: authentik-cnpg

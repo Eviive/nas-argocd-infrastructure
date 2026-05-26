@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: media-server
+spec:
+  description: Project for media server applications
+  sourceRepos:
+    - "https://github.com/Eviive/nas-argocd-infrastructure"
+  destinations:
+    - namespace: bazarr
+    - namespace: jellyfin
+    - namespace: jellyseerr
+    - namespace: prowlarr
+    - namespace: qbittorrent
+    - namespace: radarr
+    - namespace: scraparr
+    - namespace: sonarr
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace

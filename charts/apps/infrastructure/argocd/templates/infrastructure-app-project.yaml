@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infrastructure
+spec:
+  description: Project for infrastructure applications
+  sourceRepos:
+    - "https://github.com/Eviive/nas-argocd-infrastructure"
+  destinations:
+    - namespace: argocd
+    - namespace: authentik
+    - namespace: cert-manager
+    - namespace: cloudflare-tunnel
+    - namespace: cloudnative-pg
+    - namespace: grafana
+    - namespace: loki
+    - namespace: metallb
+    - namespace: mimir
+    - namespace: monitoring
+    - namespace: n8n
+    - namespace: nfs-client-provisioner-hdd-1
+    - namespace: nfs-client-provisioner-ssd-1
+    - namespace: redis
+    - namespace: traefik
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+    - group: ""
+      kind: ServiceAccount
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+    - group: storage.k8s.io
+      kind: StorageClass
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+    - group: networking.k8s.io
+      kind: IngressClass
+    - group: cert-manager.io
+      kind: ClusterIssuer

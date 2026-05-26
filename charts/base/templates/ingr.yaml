@@ -1,0 +1,65 @@
+{{- range .Values.ingressRoutes }}
+---
+{{ $name := include "base.component-fullname" (dict "context" $ "component" .name) }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  entryPoints:
+    - {{ .external | default false | ternary "web-ext" "websecure" }}
+  routes:
+    {{- range .routes }}
+    - kind: Rule
+      match: {{ .match }}
+      {{- with .priority }}
+      priority: {{ . }}
+      {{- end }}
+      {{- with .services }}
+      services:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      middlewares:
+        {{- if not .disableErrorPagesMiddleware }}
+        - name: traefik-error-pages
+          namespace: traefik
+        {{- end }}
+        {{- if .enableAuthentikMiddleware }}
+        - name: ak-outpost-authentik-embedded-outpost
+          namespace: authentik
+        {{- end }}
+      {{- with .middlewares }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- end }}
+    {{- if .authentikProxyProviderRouteMatch }}
+    - kind: Rule
+      match: "({{ .authentikProxyProviderRouteMatch }}) && PathPrefix(`/outpost.goauthentik.io/`)"
+      services:
+        - name: ak-outpost-authentik-embedded-outpost
+          namespace: authentik
+          port: http
+    {{- end }}
+  {{- if not .external }}
+  tls:
+    secretName: {{ $name }}-tls
+  {{- end }}
+{{- if not .external }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  secretName: {{ $name }}-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: cert-manager-cloudflare
+  dnsNames:
+    {{- toYaml .dnsNames | nindent 4 }}
+{{- end }}
+{{- end }}

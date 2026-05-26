@@ -1,0 +1,71 @@
+k8s-monitoring:
+  cluster:
+    name: k8s-nas
+
+  destinations:
+    mimir:
+      type: prometheus
+      url: http://mimir-gateway.mimir.svc.cluster.local/api/v1/push
+      tenantId: k8s-nas
+    loki:
+      type: loki
+      url: http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push
+      tenantId: k8s-nas
+
+  # Collectors
+  collectors:
+    alloy-metrics:
+      presets:
+        - clustered
+        - statefulset
+    alloy-logs:
+      presets:
+        - filesystem-log-reader
+        - daemonset
+    alloy-singleton:
+      presets:
+        - singleton
+
+  # Features
+  clusterMetrics:
+    enabled: true
+    cadvisor:
+      metricsTuning:
+        useDefaultAllowList: false
+    kube-state-metrics:
+      metricsTuning:
+        useDefaultAllowList: false
+    collector: alloy-metrics
+
+  hostMetrics:
+    enabled: true
+    linuxHosts:
+      enabled: true
+      metricsTuning:
+        useDefaultAllowList: false
+    collector: alloy-metrics
+
+  telemetryServices:
+    kube-state-metrics:
+      deploy: true
+    node-exporter:
+      deploy: true
+      extraArgs:
+        - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|erofs|sysfs|tracefs|tmpfs|ramfs)$
+        - --collector.filesystem.mount-points-exclude=^/(var/lib/kubelet/pods/.+)($|/)
+
+  clusterEvents:
+    enabled: true
+    collector: alloy-singleton
+
+  nodeLogs:
+    enabled: true
+    collector: alloy-logs
+
+  podLogsViaLoki:
+    enabled: true
+    collector: alloy-logs
+
+  prometheusOperatorObjects:
+    enabled: true
+    collector: alloy-metrics

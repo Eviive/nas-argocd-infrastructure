@@ -1,0 +1,64 @@
+base:
+  ingressRoutes:
+    - routes:
+        - match: Host(`n8n.home.albertv.dev`)
+          services:
+            - name: n8n
+              port: http
+          enableAuthentikMiddleware: true
+      authentikProxyProviderRouteMatch: Host(`n8n.home.albertv.dev`)
+      dnsNames:
+        - n8n.home.albertv.dev
+
+  configMaps:
+    - name: n8n-hooks
+      files:
+        auth.js: assets/hooks/auth.js
+
+n8n:
+  db:
+    type: postgresdb
+  externalPostgresql:
+    host: n8n-cnpg-cluster-rw.n8n.svc.cluster.local
+    username: n8n
+    database: n8n
+    existingSecret: n8n
+  main:
+    persistence:
+      enabled: true
+      storageClass: nfs-ssd-1
+      annotations:
+        folder: n8n
+    extraEnvVars:
+      N8N_FORWARD_AUTH_HEADER: X-authentik-email
+      EXTERNAL_HOOK_FILES: /home/node/hooks/auth.js
+      N8N_PROXY_HOPS: 1
+    volumes:
+      - name: hooks
+        configMap:
+          name: n8n-hooks
+    volumeMounts:
+      - name: hooks
+        mountPath: /home/node/hooks
+        readOnly: true
+    editorBaseUrl: https://n8n.home.albertv.dev
+  webhook:
+    url: https://n8n.home.albertv.dev
+
+cluster:
+  version:
+    postgresql: "16.11-minimal-trixie"
+
+  databases:
+    - name: n8n
+
+  cluster:
+    instances: 1
+    initdb:
+      database: n8n
+      secret:
+        name: n8n-cnpg
+    storage:
+      storageClass: nfs-ssd-1
+    annotations:
+      folder: n8n-cnpg

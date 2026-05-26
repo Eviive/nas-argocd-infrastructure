@@ -1,0 +1,12 @@
+dependencies:
+- name: base
+  repository: file://../../../base
+  version: 1.0.0
+- name: authentik
+  repository: https://charts.goauthentik.io
+  version: 2026.2.3
+- name: cluster
+  repository: https://cloudnative-pg.github.io/charts
+  version: 0.6.1
+digest: sha256:9021f2b35c1101542fc404f661e87d0533ea9c677a9845af557b4c002de47001
+generated: "2026-05-24T18:48:35.1199607+02:00"

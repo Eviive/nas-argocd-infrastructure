@@ -1,0 +1,29 @@
+{{- range .Values.cronJobs }}
+---
+{{ $name := include "base.component-fullname" (dict "context" $ "component" .name) }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" .name) | nindent 4 }}
+spec:
+  schedule: {{ .schedule | quote }}
+  {{- with .concurrencyPolicy }}
+  concurrencyPolicy: {{ . }}
+  {{- end }}
+  {{- with .failedJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ . }}
+  {{- end }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          {{- with .job.restartPolicy }}
+          restartPolicy: {{ . }}
+          {{- end }}
+          containers:
+            {{- range .job.containers }}
+            {{- include "base.container" (dict "context" $ "container" .) | nindent 12 }}
+            {{- end }}
+{{- end }}
