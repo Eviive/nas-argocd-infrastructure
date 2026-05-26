@@ -11,7 +11,7 @@ base:
         - n8n.home.albertv.dev
 
   configMaps:
-    - name: n8n-hooks
+    - name: hooks
       files:
         auth.js: assets/hooks/auth.js
 
@@ -19,7 +19,7 @@ n8n:
   db:
     type: postgresdb
   externalPostgresql:
-    host: n8n-cnpg-cluster-rw.n8n.svc.cluster.local
+    host: n8n-cluster-rw.n8n.svc.cluster.local
     username: n8n
     database: n8n
     existingSecret: n8n
