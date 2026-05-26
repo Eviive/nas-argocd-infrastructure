@@ -1,4 +1,0 @@
-- op: replace
-  path: /spec/dnsNames
-  value:
-    - n8n.home.albertv.dev

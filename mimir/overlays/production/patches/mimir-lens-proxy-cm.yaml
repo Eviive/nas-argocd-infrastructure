@@ -1,3 +1,0 @@
-- op: add
-  path: /data/tenant_id
-  value: k8s-nas

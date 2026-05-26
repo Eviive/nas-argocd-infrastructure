@@ -1,8 +1,0 @@
-cluster:
-  name: k8s-nas
-
-destinations:
-  mimir:
-    tenantId: k8s-nas
-  loki:
-    tenantId: k8s-nas
