@@ -2,19 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: media-server
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" "media-server") | nindent 4 }}
 spec:
   description: Project for media server applications
   sourceRepos:
     - "https://github.com/Eviive/nas-argocd-infrastructure"
   destinations:
     - namespace: bazarr
+      server: https://kubernetes.default.svc
     - namespace: jellyfin
+      server: https://kubernetes.default.svc
     - namespace: jellyseerr
+      server: https://kubernetes.default.svc
     - namespace: prowlarr
+      server: https://kubernetes.default.svc
     - namespace: qbittorrent
+      server: https://kubernetes.default.svc
     - namespace: radarr
+      server: https://kubernetes.default.svc
     - namespace: scraparr
+      server: https://kubernetes.default.svc
     - namespace: sonarr
+      server: https://kubernetes.default.svc
   namespaceResourceWhitelist:
     - group: "*"
       kind: "*"

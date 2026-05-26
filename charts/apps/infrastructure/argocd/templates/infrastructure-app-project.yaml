@@ -2,26 +2,43 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: infrastructure
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" "infrastructure") | nindent 4 }}
 spec:
   description: Project for infrastructure applications
   sourceRepos:
     - "https://github.com/Eviive/nas-argocd-infrastructure"
   destinations:
     - namespace: argocd
+      server: https://kubernetes.default.svc
     - namespace: authentik
+      server: https://kubernetes.default.svc
     - namespace: cert-manager
+      server: https://kubernetes.default.svc
     - namespace: cloudflare-tunnel
+      server: https://kubernetes.default.svc
     - namespace: cloudnative-pg
+      server: https://kubernetes.default.svc
     - namespace: grafana
+      server: https://kubernetes.default.svc
     - namespace: loki
+      server: https://kubernetes.default.svc
     - namespace: metallb
+      server: https://kubernetes.default.svc
     - namespace: mimir
+      server: https://kubernetes.default.svc
     - namespace: monitoring
+      server: https://kubernetes.default.svc
     - namespace: n8n
+      server: https://kubernetes.default.svc
     - namespace: nfs-client-provisioner-hdd-1
+      server: https://kubernetes.default.svc
     - namespace: nfs-client-provisioner-ssd-1
+      server: https://kubernetes.default.svc
     - namespace: redis
+      server: https://kubernetes.default.svc
     - namespace: traefik
+      server: https://kubernetes.default.svc
   namespaceResourceWhitelist:
     - group: "*"
       kind: "*"
