@@ -44,6 +44,7 @@ cluster:
 
   databases:
     - name: authentik
+      owner: authentik
 
   cluster:
     instances: 1

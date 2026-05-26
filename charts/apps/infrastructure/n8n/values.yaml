@@ -51,6 +51,7 @@ cluster:
 
   databases:
     - name: n8n
+      owner: n8n
 
   cluster:
     instances: 1
