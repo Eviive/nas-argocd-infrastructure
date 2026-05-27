@@ -23,5 +23,5 @@ data:
   {{ $key }}: |-
     {{- $context.Files.Get $path | nindent 4 }}
   {{- end }}
-{{- end }}
+{{- end -}}
 {{- end }}

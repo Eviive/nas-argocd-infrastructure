@@ -62,4 +62,4 @@ spec:
   dnsNames:
     {{- toYaml .dnsNames | nindent 4 }}
 {{- end }}
-{{- end }}
+{{- end -}}

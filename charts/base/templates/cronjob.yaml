@@ -26,4 +26,4 @@ spec:
             {{- range .job.containers }}
             {{- include "base.container" (dict "context" $ "container" .) | nindent 12 }}
             {{- end }}
-{{- end }}
+{{- end -}}

@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" "apps") | nindent 4 }}
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  generators:
+    - git:
+        repoURL: https://github.com/Eviive/nas-argocd-infrastructure
+        revision: HEAD
+        directories:
+          - path: charts/apps/apps/*
+  template:
+    metadata:
+      name: "{{ `{{ .path.basename }}` }}"
+    spec:
+      project: apps
+      source:
+        repoURL: https://github.com/Eviive/nas-argocd-infrastructure
+        path: "{{ `{{ .path.path }}` }}"
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{ `{{ .path.basename }}` }}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - RespectIgnoreDifferences=true

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" "apps") | nindent 4 }}
+spec:
+  description: Project for miscellaneous applications
+  sourceRepos:
+    - "https://github.com/Eviive/nas-argocd-infrastructure"
+  destinations:
+    - namespace: portfolio
+      server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace

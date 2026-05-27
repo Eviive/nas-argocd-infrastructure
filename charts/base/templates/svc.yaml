@@ -24,4 +24,4 @@ spec:
     {{- end }}
   selector:
     {{- include "base.selectorLabels" (dict "context" $ "component" .name) | nindent 4 }}
-{{- end }}
+{{- end -}}

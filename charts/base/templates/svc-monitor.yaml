@@ -14,4 +14,4 @@ spec:
   selector:
     matchLabels:
       {{- include "base.selectorLabels" (dict "context" $ "component" .name) | nindent 6 }}
-{{- end }}
+{{- end -}}
