@@ -2,8 +2,6 @@ apiVersion: v2
 name: cloudflare-tunnel
 type: application
 version: 1.0.0
-# renovate: image=cloudflare/cloudflared
-appVersion: 2026.5.2
 dependencies:
   - name: base
     version: 1.0.0

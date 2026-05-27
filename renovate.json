@@ -41,15 +41,5 @@
   ],
   "ignoreDeps": [
     "fallenbagel/jellyseerr"
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "datasourceTemplate": "docker",
-      "managerFilePatterns": ["/(^|/)Chart\\.yaml$/"],
-      "matchStrings": [
-        "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\'?(?<currentValue>[\\w+\\.\\-]*)'?"
-      ]
-    }
   ]
 }
