@@ -25,11 +25,21 @@
         "HelmChart"
       ],
       "matchDepNames": [
-        "postgresql",
-        "redis",
-        "n8n"
+        "redis"
       ],
       "pinDigests": false
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "linuxserver/qbittorrent"
+      ],
+      "allowedVersions": "!/.*(14\\.3\\.9|20\\.04\\.1).*/"
     }
+  ],
+  "ignoreDeps": [
+    "fallenbagel/jellyseerr"
   ]
 }
