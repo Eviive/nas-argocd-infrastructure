@@ -3,26 +3,45 @@
 ## Overview
 
 This repository contains the configuration for the infrastructure supporting my NAS's Kubernetes cluster.  
-It uses ArgoCD's [App-of-Apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to deploy all applications.
 
 ## Dependencies
 
-| Name            | Provider |
-|-----------------|----------|
-| ArgoCD          | Helm     |
-| Authentik       | Helm     |
-| Cert-Manager    | GitHub   |
-| CloudNativePG   | Helm     |
-| Grafana         | Helm     |
-| Loki            | Helm     |
-| MetalLB         | GitHub   |
-| Mimir           | Helm     |
-| Monitoring      | Helm     |
-| n8n             | Helm     |
-| NFS Provisioner | GitHub   |
-| Redis           | Helm     |
-| Traefik         | Helm     |
-| nginx           | Docker   |
+### Infrastructure
+
+| Name                     | Provider |
+|--------------------------|----------|
+| ArgoCD                   | Helm     |
+| Authentik                | Helm     |
+| Cert-Manager             | GitHub   |
+| Cloudflared              | Docker   |
+| CloudNativePG            | Helm     |
+| Grafana                  | Helm     |
+| Loki                     | Helm     |
+| MetalLB                  | GitHub   |
+| Mimir                    | Helm     |
+| nginx                    | Docker   |
+| Monitoring               | Helm     |
+| n8n                      | Helm     |
+| NFS Provisioner          | GitHub   |
+| Prometheus Operator CRDs | Helm     |
+| Traefik                  | Helm     |
+| Redis                    | Helm     |
+
+### Media Server
+
+| Name         | Provider |
+|--------------|----------|
+| Bazarr       | Docker   |
+| Jellyfin     | Docker   |
+| Jellyseerr   | Docker   |
+| Prowlarr     | Docker   |
+| CoreDNS      | Docker   |
+| Gluetun      | Docker   |
+| FlareSolverr | Docker   |
+| qBittorrent  | Docker   |
+| Radarr       | Docker   |
+| Scraparr     | Docker   |
+| Sonarr       | Docker   |
 
 ## Installation
 
