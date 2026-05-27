@@ -1,0 +1,11 @@
+apiVersion: v2
+name: projects
+type: application
+version: 1.0.0
+dependencies:
+  - name: base
+    version: 1.0.0
+    repository: file://../../../base
+  - name: cluster
+    version: 0.6.1
+    repository: https://cloudnative-pg.github.io/charts

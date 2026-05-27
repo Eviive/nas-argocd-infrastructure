@@ -1,0 +1,138 @@
+base:
+  deployments:
+    - name: webapp
+      containers:
+        - name: webapp
+          image:
+            repository: eviive/repository
+            tag: projects-webapp-2.2.0
+          ports:
+            - name: http
+              containerPort: 80
+      imagePullSecrets:
+        - name: projects-image-pull-secret
+    - name: api
+      containers:
+        - name: api
+          image:
+            repository: eviive/repository
+            tag: projects-api-2.1.0
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: projects-api-env
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            initialDelaySeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          volumeMounts:
+            - name: logs
+              mountPath: /workspace/logs
+      volumes:
+        - name: logs
+          persistentVolumeClaim:
+            claimName: projects-api-logs
+      imagePullSecrets:
+        - name: projects-image-pull-secret
+    - name: bff
+      containers:
+        - name: bff
+          image:
+            repository: eviive/repository
+            tag: projects-bff-1.1.0
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: projects-bff-env
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            initialDelaySeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          volumeMounts:
+            - name: logs
+              mountPath: /workspace/logs
+      volumes:
+        - name: logs
+          persistentVolumeClaim:
+            claimName: projects-bff-logs
+      imagePullSecrets:
+        - name: projects-image-pull-secret
+
+  pvcs:
+    - name: api-logs
+      accessModes:
+        - ReadWriteOnce
+      size: 500Mi
+      storageClassName: nfs-ssd-1
+      folder: projects/api/logs
+    - name: bff-logs
+      accessModes:
+        - ReadWriteOnce
+      size: 500Mi
+      storageClassName: nfs-ssd-1
+      folder: projects/bff/logs
+
+  services:
+    - name: webapp
+      ports:
+        - name: http
+          port: 80
+          targetPort: http
+    - name: api
+      ports:
+        - name: http
+          port: 80
+          targetPort: http
+    - name: bff
+      ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  ingressRoutes:
+    - external: true
+      routes:
+        - match: Host(`projects.albertv.dev`)
+          services:
+            - name: projects-webapp
+              port: http
+        - match: Host(`projects.albertv.dev`) && (PathRegexp(`^/(api|oauth2|logout|v2/api-docs|v3/api-docs|swagger-resources|configuration/ui|configuration/security|webjars|swagger-ui)(.*)?$`) || PathRegexp(`^/login/.+$`))
+          services:
+            - name: projects-bff
+              port: http
+
+cluster:
+  version:
+    postgresql: "16.11-minimal-trixie"
+
+  databases:
+    - name: projects-api
+
+  cluster:
+    instances: 1
+    initdb:
+      database: projects-api
+      secret:
+        name: projects-api-cnpg
+    storage:
+      storageClass: nfs-ssd-1
+    annotations:
+      folder: projects/api/cnpg
