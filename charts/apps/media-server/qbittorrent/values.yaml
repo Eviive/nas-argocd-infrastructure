@@ -31,6 +31,8 @@ base:
               value: "off"
             - name: DNS_ADDRESS
               value: 10.2.0.1
+            - name: FIREWALL_INPUT_PORTS
+              value: "8080"
             - name: PORT_FORWARD_ONLY
               value: "on"
             - name: VPN_PORT_FORWARDING

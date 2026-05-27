@@ -47,6 +47,8 @@ base:
               value: 127.0.0.2
             - name: FIREWALL_OUTBOUND_SUBNETS
               value: 10.96.0.0/12
+            - name: FIREWALL_INPUT_PORTS
+              value: "8191,9696"
           securityContext:
             capabilities:
               add:
