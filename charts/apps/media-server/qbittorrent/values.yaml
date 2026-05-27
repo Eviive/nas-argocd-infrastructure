@@ -60,14 +60,12 @@ base:
             - name: http
               containerPort: 8080
           livenessProbe:
-            httpGet:
-              path: /api/v2/app/version
+            tcpSocket:
               port: http
             initialDelaySeconds: 5
             timeoutSeconds: 10
           readinessProbe:
-            httpGet:
-              path: /api/v2/app/version
+            tcpSocket:
               port: http
             initialDelaySeconds: 2
             periodSeconds: 10
