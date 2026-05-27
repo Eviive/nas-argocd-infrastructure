@@ -2,6 +2,8 @@ apiVersion: v2
 name: jellyseerr
 type: application
 version: 1.0.0
+# renovate: image=fallenbagel/jellyseerr
+appVersion: preview-OIDC
 dependencies:
   - name: base
     version: 1.0.0

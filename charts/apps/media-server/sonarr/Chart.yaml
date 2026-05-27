@@ -2,6 +2,8 @@ apiVersion: v2
 name: sonarr
 type: application
 version: 1.0.0
+# renovate: image=linuxserver/sonarr
+appVersion: 4.0.17
 dependencies:
   - name: base
     version: 1.0.0
