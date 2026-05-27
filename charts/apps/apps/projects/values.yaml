@@ -125,6 +125,7 @@ cluster:
 
   databases:
     - name: projects-api
+      owner: projects-api
 
   cluster:
     instances: 1
