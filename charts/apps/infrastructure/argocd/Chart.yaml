@@ -7,5 +7,5 @@ dependencies:
     version: 1.0.0
     repository: file://../../../base
   - name: argo-cd
-    version: 9.5.17
+    version: 9.5.18
     repository: https://argoproj.github.io/argo-helm
