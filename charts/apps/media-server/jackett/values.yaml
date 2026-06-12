@@ -1,0 +1,154 @@
+base:
+  deployments:
+    - initContainers:
+        - name: coredns
+          image:
+            repository: coredns/coredns
+            tag: 1.14.4@sha256:3e98f280fd601b37411c5fb7075fd9f337833c480f1644970b727ae0af067782
+          args:
+            - -conf
+            - /etc/coredns/Corefile
+          restartPolicy: Always
+          env:
+            - name: LOCAL_DNS
+              value: 10.96.0.10
+            - name: VPN_DNS
+              value: 10.2.0.1
+          volumeMounts:
+            - name: coredns-config
+              mountPath: /etc/coredns
+        - name: gluetun
+          image:
+            repository: qmcgaw/gluetun
+            tag: v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
+          restartPolicy: Always
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - (ip rule del table 51820; ip -6 rule del table 51820) || true
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: protonvpn
+            - name: SERVER_COUNTRIES
+              value: Iceland,Switzerland,Sweden
+            - name: VPN_TYPE
+              value: wireguard
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jackett-gluetun-protonvpn
+                  key: wireguard-private-key
+            - name: DOT
+              value: "off"
+            - name: DNS_ADDRESS
+              value: 127.0.0.2
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: 10.96.0.0/12
+            - name: FIREWALL_INPUT_PORTS
+              value: "8191,9117"
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            - name: gluetun-config
+              mountPath: /gluetun
+        - name: flaresolverr
+          image:
+            repository: ghcr.io/flaresolverr/flaresolverr
+            tag: v3.5.0@sha256:139dfee1c6f89249c8d665d1333a42e8ec74ec0a86bc6bb1c8461e10d3a66a47
+          restartPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8191
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            timeoutSeconds: 10
+      containers:
+        - name: jackett
+          image:
+            repository: linuxserver/jackett
+            tag: 0.24.2051@sha256:4e2ef852d2ac53c2c059f4993fff67ee089029640e23430c1e4508981cf2d5f6
+          env:
+            - name: PUID
+              value: "1057"
+            - name: PGID
+              value: "1056"
+          ports:
+            - name: http
+              containerPort: 9117
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            timeoutSeconds: 10
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: jackett-config
+        - name: gluetun-config
+          persistentVolumeClaim:
+            claimName: jackett-gluetun-config
+        - name: coredns-config
+          configMap:
+            name: jackett-coredns-config
+
+  pvcs:
+    - name: config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/jackett/config
+    - name: gluetun-config
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      storageClassName: nfs-ssd-1
+      folder: media-server/jackett-gluetun/config
+
+  services:
+    - ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+  ingressRoutes:
+    - routes:
+        - match: Host(`jackett.home.albertv.dev`)
+          services:
+            - name: jackett
+              port: http
+          enableAuthentikMiddleware: true
+      authentikProxyProviderRouteMatch: Host(`jackett.home.albertv.dev`)
+      dnsNames:
+        - jackett.home.albertv.dev
+
+  configMaps:
+    - name: coredns-config
+      files:
+        Corefile: assets/coredns/Corefile
