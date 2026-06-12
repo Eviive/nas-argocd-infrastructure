@@ -11,6 +11,8 @@ spec:
   destinations:
     - namespace: bazarr
       server: https://kubernetes.default.svc
+    - namespace: jackett
+      server: https://kubernetes.default.svc
     - namespace: jellyfin
       server: https://kubernetes.default.svc
     - namespace: jellyseerr
