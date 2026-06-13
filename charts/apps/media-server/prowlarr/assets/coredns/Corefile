@@ -1,5 +1,0 @@
-. {
-    bind 127.0.0.2
-    forward cluster.local {$LOCAL_DNS}
-    forward . {$VPN_DNS}
-}

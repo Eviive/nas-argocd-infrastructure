@@ -32,9 +32,9 @@ This repository contains the configuration for the infrastructure supporting my 
 | Name         | Provider |
 |--------------|----------|
 | Bazarr       | Docker   |
+| Jackett      | Docker   |
 | Jellyfin     | Docker   |
 | Jellyseerr   | Docker   |
-| Prowlarr     | Docker   |
 | CoreDNS      | Docker   |
 | Gluetun      | Docker   |
 | FlareSolverr | Docker   |

@@ -17,8 +17,6 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: jellyseerr
       server: https://kubernetes.default.svc
-    - namespace: prowlarr
-      server: https://kubernetes.default.svc
     - namespace: qbittorrent
       server: https://kubernetes.default.svc
     - namespace: radarr
