@@ -4,9 +4,9 @@ dependencies:
   version: 1.0.0
 - name: n8n
   repository: https://community-charts.github.io/helm-charts
-  version: 1.22.4
+  version: 1.22.7
 - name: cluster
   repository: https://cloudnative-pg.github.io/charts
   version: 0.6.1
-digest: sha256:0715b800d77f8f08e3768aefc670f4ee15f74a761abf62e7f6c26ac8449f59d7
-generated: "2026-06-18T12:09:54.719805558Z"
+digest: sha256:b97d2414b0454e79e766fc90c3ec4e8b74a8be505a5862dc97a5a5614e977809
+generated: "2026-06-19T20:46:53.941110121Z"
