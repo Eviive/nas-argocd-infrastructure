@@ -81,7 +81,7 @@ base:
         - name: jackett
           image:
             repository: linuxserver/jackett
-            tag: 0.24.2116@sha256:64758061fb24d1d16bdef3f03b5b432bf10e6e43e49aac499c41ee4630e3cdb0
+            tag: 0.24.2122@sha256:3610e7773ad669eaddd58ac734852ebdf97d2504cff129a5e81b5f1cac1667b7
           env:
             - name: PUID
               value: "1057"
