@@ -10,5 +10,5 @@ dependencies:
     version: 1.22.7
     repository: https://community-charts.github.io/helm-charts
   - name: cluster
-    version: 0.6.1
+    version: 0.7.0
     repository: https://cloudnative-pg.github.io/charts
