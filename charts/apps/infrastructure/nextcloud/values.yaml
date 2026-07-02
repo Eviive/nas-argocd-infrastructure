@@ -20,10 +20,12 @@ nextcloud:
     existingSecret:
       enabled: true
       secretName: nextcloud
+  internalDatabase:
+    enabled: false
   externalDatabase:
     enabled: true
     type: postgresql
-    host: nextcloud-cluster-rw.authentik.svc.cluster.local
+    host: nextcloud-cluster-rw.nextcloud.svc.cluster.local
     existingSecret:
       enabled: true
       secretName: nextcloud
