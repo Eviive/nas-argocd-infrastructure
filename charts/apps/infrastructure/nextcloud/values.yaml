@@ -16,17 +16,17 @@ nextcloud:
       secretName: nextcloud
   externalRedis:
     enabled: true
-    host:
+    host: redis-master.redis.svc.cluster.local
     existingSecret:
       enabled: true
       secretName: nextcloud
   externalDatabase:
     enabled: true
-    type:
-    host:
+    type: postgresql
+    host: nextcloud-cluster-rw.authentik.svc.cluster.local
     existingSecret:
       enabled: true
-      secretName:
+      secretName: nextcloud
   persistence:
     enabled: true
     storageClass: nfs-ssd-1
