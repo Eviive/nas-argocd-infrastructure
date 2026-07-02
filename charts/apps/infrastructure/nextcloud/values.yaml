@@ -11,14 +11,13 @@ base:
 nextcloud:
   nextcloud:
     host: nextcloud.home.albertv.dev
-  redis:
-    enabled: false
-#  externalRedis:
-#    enabled: true
-#    host: redis-master.redis.svc.cluster.local
-#    existingSecret:
-#      enabled: true
-#      secretName: nextcloud
+    extraEnv:
+      - name: OVERWRITEHOST
+        value: nextcloud.home.albertv.dev
+      - name: OVERWRITEPROTOCOL
+        value: https
+      - name: OVERWRITECLIURL
+        value: https://nextcloud.home.albertv.dev
   internalDatabase:
     enabled: false
   externalDatabase:
