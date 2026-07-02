@@ -37,6 +37,10 @@ nextcloud:
       storageClass: nfs-hdd-1
       annotations:
         folder: nextcloud/data
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
 
 cluster:
   version:
