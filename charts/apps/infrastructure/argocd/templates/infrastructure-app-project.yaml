@@ -33,6 +33,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: n8n
       server: https://kubernetes.default.svc
+    - namespace: nextcloud
+      server: https://kubernetes.default.svc
     - namespace: nfs-client-provisioner-hdd-1
       server: https://kubernetes.default.svc
     - namespace: nfs-client-provisioner-ssd-1
