@@ -1,0 +1,58 @@
+base:
+  ingressRoutes:
+    - routes:
+        - match: Host(`nextcloud.home.albertv.dev`)
+          services:
+            - name: nextcloud
+              port: http
+      dnsNames:
+        - nextcloud.home.albertv.dev
+
+nextcloud:
+  nextcloud:
+    host: nextcloud.home.albertv.dev
+    existingSecret:
+      enabled: true
+      secretName: nextcloud
+  externalRedis:
+    enabled: true
+    host:
+    existingSecret:
+      enabled: true
+      secretName: nextcloud
+  externalDatabase:
+    enabled: true
+    type:
+    host:
+    existingSecret:
+      enabled: true
+      secretName:
+  persistence:
+    enabled: true
+    storageClass: nfs-ssd-1
+    annotations:
+      folder: nextcloud/main
+    nextcloudData:
+      enabled: true
+      storageClass: nfs-hdd-1
+      annotations:
+        folder: nextcloud/data
+
+cluster:
+  version:
+    postgresql: "16.11-minimal-trixie"
+
+  databases:
+    - name: nextcloud
+      owner: nextcloud
+
+  cluster:
+    instances: 1
+    initdb:
+      database: nextcloud
+      secret:
+        name: nextcloud-cnpg
+    storage:
+      storageClass: nfs-ssd-1
+    annotations:
+      folder: nextcloud-cnpg

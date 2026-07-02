@@ -1,0 +1,12 @@
+dependencies:
+- name: base
+  repository: file://../../../base
+  version: 1.0.0
+- name: nextcloud
+  repository: https://nextcloud.github.io/helm
+  version: 9.2.0
+- name: cluster
+  repository: https://cloudnative-pg.github.io/charts
+  version: 0.7.0
+digest: sha256:6f5a69425880d3ab1ac88916d8782cb20577eb1424ef8ece52c48ec7e8bfa68e
+generated: "2026-07-02T20:42:45.7085534+02:00"
