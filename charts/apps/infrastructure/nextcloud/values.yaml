@@ -11,6 +11,9 @@ base:
 nextcloud:
   nextcloud:
     host: nextcloud.home.albertv.dev
+    existingSecret:
+      enabled: true
+      secretName: nextcloud
     extraEnv:
       - name: OVERWRITEHOST
         value: nextcloud.home.albertv.dev
