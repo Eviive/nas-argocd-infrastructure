@@ -11,12 +11,14 @@ base:
 nextcloud:
   nextcloud:
     host: nextcloud.home.albertv.dev
-  externalRedis:
-    enabled: true
-    host: redis-master.redis.svc.cluster.local
-    existingSecret:
-      enabled: true
-      secretName: nextcloud
+  redis:
+    enabled: false
+#  externalRedis:
+#    enabled: true
+#    host: redis-master.redis.svc.cluster.local
+#    existingSecret:
+#      enabled: true
+#      secretName: nextcloud
   internalDatabase:
     enabled: false
   externalDatabase:
