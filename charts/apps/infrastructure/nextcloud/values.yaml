@@ -21,12 +21,32 @@ nextcloud:
         value: https
       - name: OVERWRITECLIURL
         value: https://nextcloud.home.albertv.dev
+      - name: REDIS_HOST_USER
+        valueFrom:
+          secretKeyRef:
+            name: nextcloud
+            key: redis-username
+    configs:
+      redis-custom.config.php: |-
+        <?php
+        $CONFIG = array(
+          'redis' => array(
+            'dbindex' => 2
+          ),
+        );
+
   internalDatabase:
     enabled: false
   externalDatabase:
     enabled: true
     type: postgresql
     host: nextcloud-cluster-rw.nextcloud.svc.cluster.local
+    existingSecret:
+      enabled: true
+      secretName: nextcloud
+  externalRedis:
+    enabled: true
+    host: redis-master.redis.svc.cluster.local
     existingSecret:
       enabled: true
       secretName: nextcloud
