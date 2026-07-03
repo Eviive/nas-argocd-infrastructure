@@ -22,6 +22,7 @@ This repository contains the configuration for the infrastructure supporting my 
 | nginx                    | Docker   |
 | Monitoring               | Helm     |
 | n8n                      | Helm     |
+| Nextcloud                | Helm     |
 | NFS Provisioner          | GitHub   |
 | Prometheus Operator CRDs | Helm     |
 | Traefik                  | Helm     |

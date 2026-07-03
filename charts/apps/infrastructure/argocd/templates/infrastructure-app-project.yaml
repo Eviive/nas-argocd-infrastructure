@@ -37,6 +37,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: nfs-client-provisioner-hdd-1
       server: https://kubernetes.default.svc
+    - namespace: nfs-client-provisioner-hdd-2
+      server: https://kubernetes.default.svc
     - namespace: nfs-client-provisioner-ssd-1
       server: https://kubernetes.default.svc
     - namespace: prometheus-operator-crds

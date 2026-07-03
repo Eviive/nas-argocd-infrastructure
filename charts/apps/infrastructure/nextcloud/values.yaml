@@ -37,7 +37,7 @@ nextcloud:
       folder: nextcloud/main
     nextcloudData:
       enabled: true
-      storageClass: nfs-hdd-1
+      storageClass: nfs-hdd-2
       annotations:
         folder: nextcloud/data
   livenessProbe:
