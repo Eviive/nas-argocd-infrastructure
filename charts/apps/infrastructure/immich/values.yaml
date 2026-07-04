@@ -1,6 +1,6 @@
 base:
   pvcs:
-    - name: shows
+    - name: library
       accessModes:
         - ReadWriteOnce
       size: 200Gi
