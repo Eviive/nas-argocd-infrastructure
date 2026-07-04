@@ -60,21 +60,24 @@ immich:
         storageClass: nfs-ssd-1
 
 cluster:
-  version:
-    postgresql: "18"
   databases:
     - name: immich
       owner: immich
       extensions:
+        - name: vector
         - name: vchord
+        - name: cube
+        - name: earthdistance
   cluster:
     instances: 1
-    imageCatalogRef:
-      kind: ImageCatalog
-      name: immich-cluster
+    imageName: ghcr.io/tensorchord/cloudnative-vectorchord:18.4-1.1.1
     postgresql:
       shared_preload_libraries:
         - vchord.so
+    roles:
+      - name: immich
+        superuser: true
+        login: true
     initdb:
       database: immich
       secret:
