@@ -58,6 +58,8 @@ immich:
         storageClass: nfs-ssd-1
 
 cluster:
+  version:
+    postgresql: "18"
   databases:
     - name: immich
       owner: immich
@@ -66,10 +68,8 @@ cluster:
   cluster:
     instances: 1
     imageCatalogRef:
-      apiGroup: postgresql.cnpg.io
       kind: ImageCatalog
       name: immich-cluster
-      major: 18
     postgresql:
       shared_preload_libraries:
         - vchord.so
