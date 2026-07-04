@@ -33,6 +33,18 @@ immich:
                 secretKeyRef:
                   name: immich
                   key: db-password
+            REDIS_HOSTNAME: redis-master.redis.svc.cluster.local
+            REDIS_DBINDEX: 3
+            REDIS_USERNAME:
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: redis-username
+            REDIS_PASSWORD:
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: redis-password
   immich:
     persistence:
       library:
