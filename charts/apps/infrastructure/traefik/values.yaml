@@ -111,6 +111,11 @@ traefik:
             scheme: https
             permanent: true
 
+    websecure:
+      transport:
+        respondingTimeouts:
+          readTimeout: 300
+
     web-ext:
       port: 8001
       expose:
@@ -122,6 +127,9 @@ traefik:
         trustedIPs:
           - "127.0.0.1/32"
           - "10.244.0.0/16"
+      transport:
+        respondingTimeouts:
+          readTimeout: 300
 
   service:
     annotations:
