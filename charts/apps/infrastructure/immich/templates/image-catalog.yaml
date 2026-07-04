@@ -1,0 +1,15 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ImageCatalog
+metadata:
+  name: {{ include "base.component-fullname" (dict "context" $ "component" "cluster") }}
+  labels:
+    {{- include "base.labels" (dict "context" $ "component" "cluster") | nindent 4 }}
+spec:
+  images:
+    - image: ghcr.io/cloudnative-pg/postgresql:18.4-minimal-trixie
+      major: 18
+      extensions:
+        - name: vchord
+          image:
+            reference: ghcr.io/tensorchord/vchord-scratch:pg18-v1.1.1

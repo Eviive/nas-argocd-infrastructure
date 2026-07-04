@@ -58,15 +58,21 @@ immich:
         storageClass: nfs-ssd-1
 
 cluster:
-  version:
-    postgresql: "16.11-minimal-trixie"
-
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ImageCatalog
+    name: immich-cluster
+    major: 18
   databases:
     - name: immich
       owner: immich
-
+      extensions:
+        - name: vchord
   cluster:
     instances: 1
+    postgresql:
+      shared_preload_libraries:
+        - vchord.so
     initdb:
       database: immich
       secret:
