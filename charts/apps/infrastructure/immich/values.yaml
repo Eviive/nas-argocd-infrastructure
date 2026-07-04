@@ -1,0 +1,65 @@
+base:
+  pvcs:
+    - name: shows
+      accessModes:
+        - ReadWriteOnce
+      size: 200Gi
+      storageClassName: nfs-hdd-2
+      folder: immich/library
+  ingressRoutes:
+    - routes:
+        - match: Host(`immich.home.albertv.dev`)
+          services:
+            - name: immich-server
+              port: http
+      dnsNames:
+        - immich.home.albertv.dev
+
+immich:
+  controllers:
+    main:
+      containers:
+        main:
+          env:
+            DB_HOSTNAME: nextcloud-cluster-rw.nextcloud.svc.cluster.local
+            DB_DATABASE_NAME: immich
+            DB_USERNAME:
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: db-username
+            DB_PASSWORD:
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: db-password
+  immich:
+    persistence:
+      library:
+        existingClaim: immich-library
+  machine-learning:
+    persistence:
+      cache:
+        type: persistentVolumeClaim
+        size: 10Gi
+        accessMode: ReadWriteOnce
+        storageClass: nfs-ssd-1
+
+cluster:
+  version:
+    postgresql: "16.11-minimal-trixie"
+
+  databases:
+    - name: immich
+      owner: immich
+
+  cluster:
+    instances: 1
+    initdb:
+      database: immich
+      secret:
+        name: immich-cnpg
+    storage:
+      storageClass: nfs-ssd-1
+    annotations:
+      folder: immich-cnpg

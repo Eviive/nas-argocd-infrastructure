@@ -16,6 +16,7 @@ This repository contains the configuration for the infrastructure supporting my 
 | Cloudflared              | Docker   |
 | CloudNativePG            | Helm     |
 | Grafana                  | Helm     |
+| Immich                   | Helm     |
 | Loki                     | Helm     |
 | MetalLB                  | GitHub   |
 | Mimir                    | Helm     |
