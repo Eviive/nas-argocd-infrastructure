@@ -53,6 +53,8 @@ immich:
     persistence:
       cache:
         type: persistentVolumeClaim
+        annotations:
+          folder: immich/machine-learning
         size: 10Gi
         accessMode: ReadWriteOnce
         storageClass: nfs-ssd-1
