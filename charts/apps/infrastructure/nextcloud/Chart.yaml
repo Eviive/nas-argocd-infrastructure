@@ -7,7 +7,7 @@ dependencies:
     version: 1.0.0
     repository: file://../../../base
   - name: nextcloud
-    version: 9.2.0
+    version: 9.2.1
     repository: https://nextcloud.github.io/helm
   - name: cluster
     version: 0.7.0
