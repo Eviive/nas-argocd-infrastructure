@@ -7,7 +7,7 @@ dependencies:
     version: 1.0.0
     repository: file://../../../base
   - name: n8n
-    version: 1.24.14
+    version: 1.24.15
     repository: https://community-charts.github.io/helm-charts
   - name: cluster
     version: 0.8.1
