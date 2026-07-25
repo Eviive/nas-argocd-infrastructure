@@ -7,13 +7,12 @@ base:
       storageClassName: nfs-hdd-2
       folder: immich/library
   ingressRoutes:
-    - routes:
-        - match: Host(`immich.home.albertv.dev`)
+    - external: true
+      routes:
+        - match: Host(`immich.albertv.dev`)
           services:
             - name: immich-server
               port: http
-      dnsNames:
-        - immich.home.albertv.dev
 
 immich:
   controllers:
