@@ -12,23 +12,24 @@ spec:
     - git:
         repoURL: https://github.com/Eviive/nas-argocd-infrastructure
         revision: HEAD
-        directories:
-          - path: charts/apps/infrastructure/*
+        files:
+          - path: charts/apps/infrastructure/*/config.json
   template:
     metadata:
-      name: "{{ `{{ .path.basename }}` }}"
+      name: "{{ `{{ .name }}` }}"
     spec:
       project: infrastructure
       source:
         repoURL: https://github.com/Eviive/nas-argocd-infrastructure
-        path: "{{ `{{ .path.path }}` }}"
+        path: "charts/apps/infrastructure/{{ `{{ .name }}` }}"
         helm:
           valueFiles:
             - values.yaml
       destination:
         server: https://kubernetes.default.svc
-        namespace: "{{ `{{ .path.basename }}` }}"
+        namespace: "{{ `{{ .name }}` }}"
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
           - RespectIgnoreDifferences=true
+          - "ServerSideApply={{ `{{ default \"false\" (get . \"serverSideApply\") }}` }}"
