@@ -60,6 +60,8 @@ nextcloud:
       storageClass: nfs-hdd-2
       annotations:
         folder: nextcloud/data
+  startupProbe:
+    enabled: true
 
 cluster:
   version:
