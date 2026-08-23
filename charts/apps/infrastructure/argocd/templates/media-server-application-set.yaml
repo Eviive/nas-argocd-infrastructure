@@ -29,6 +29,11 @@ spec:
         server: https://kubernetes.default.svc
         namespace: "{{ `{{ .name }}` }}"
       syncPolicy:
+        {{ `{{- if eq (default "false" (get . "autoSync") | toString) "true" }}` }}
+        automated:
+          prune: true
+          selfHeal: true
+        {{ `{{- end }}` }}
         syncOptions:
           - CreateNamespace=true
           - RespectIgnoreDifferences=true

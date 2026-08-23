@@ -1,3 +1,4 @@
 {
-  "name": "portfolio"
+  "name": "portfolio",
+  "autoSync": "true"
 }

@@ -1,3 +1,4 @@
 {
-  "name": "scraparr"
+  "name": "scraparr",
+  "autoSync": "true"
 }

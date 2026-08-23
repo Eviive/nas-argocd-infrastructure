@@ -1,3 +1,4 @@
 {
-  "name": "sonarr"
+  "name": "sonarr",
+  "autoSync": "true"
 }

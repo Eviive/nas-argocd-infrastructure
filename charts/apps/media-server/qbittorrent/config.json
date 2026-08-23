@@ -1,3 +1,4 @@
 {
-  "name": "qbittorrent"
+  "name": "qbittorrent",
+  "autoSync": "true"
 }

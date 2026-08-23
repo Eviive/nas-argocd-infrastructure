@@ -1,3 +1,4 @@
 {
-  "name": "jellyseerr"
+  "name": "jellyseerr",
+  "autoSync": "true"
 }
