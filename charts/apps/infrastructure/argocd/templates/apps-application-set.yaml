@@ -5,6 +5,8 @@ metadata:
   labels:
     {{- include "base.labels" (dict "context" $ "component" "apps") | nindent 4 }}
 spec:
+  syncPolicy:
+    applicationsSync: create-update
   goTemplate: true
   goTemplateOptions:
     - missingkey=error
