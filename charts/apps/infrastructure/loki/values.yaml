@@ -43,6 +43,7 @@ loki:
           name: loki-s3
 
   chunksCache:
+    allocatedMemory: 512
     resources:
       requests: null
       limits: null
