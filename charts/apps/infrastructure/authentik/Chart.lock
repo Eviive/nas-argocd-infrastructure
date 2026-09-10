@@ -4,9 +4,9 @@ dependencies:
   version: 1.0.0
 - name: authentik
   repository: https://charts.goauthentik.io
-  version: 2026.8.1
+  version: 2026.8.2
 - name: cluster
   repository: https://cloudnative-pg.github.io/charts
   version: 0.8.1
-digest: sha256:52d4f5962a5dc83a67082d7ca5f0d9f9493f92be94d280c19359d0e90a741e0c
-generated: "2026-09-01T19:14:57.868159095Z"
+digest: sha256:53fa022e5e5b3c48f9cc466bdb043bb3e637bbea19794069efa27229ec37f839
+generated: "2026-09-10T01:45:38.167050453Z"
