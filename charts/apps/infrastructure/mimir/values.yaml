@@ -5,7 +5,7 @@ base:
         - name: nginx
           image:
             repository: nginx
-            tag: 1.31.6@sha256:f6ee2eff6bc131ec351c3c70e95c146fa12b2eb4426954e5279bbda36740667e
+            tag: 1.31.6@sha256:908dc23e643a1447dbfb2e189ed268bfde6a51a5bf9a34d3dd3440a24f58ccf7
           command: [ "/bin/sh", "-c" ]
           args:
             - |
