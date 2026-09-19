@@ -139,7 +139,7 @@ base:
           - name: trackers
             image:
               repository: bash
-              tag: 5.3.20@sha256:bfe38ab74faa887cdbe5849dad0572fde3a5c75b99ea554890de7e52c7de8f6d
+              tag: 5.3.20@sha256:61962062d969cb46dfc2bad061d36342406fa485f64f246aa7e95693ca07df1f
             command:
               - bash
             args:
