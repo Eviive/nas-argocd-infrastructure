@@ -4,9 +4,9 @@ dependencies:
   version: 1.0.0
 - name: nextcloud
   repository: https://nextcloud.github.io/helm
-  version: 9.2.7
+  version: 9.3.0
 - name: cluster
   repository: https://cloudnative-pg.github.io/charts
   version: 0.8.1
-digest: sha256:de10be4e542c4925f2da19c685fff11d2a90aeb80cd314712ed28902e9d22fb8
-generated: "2026-09-19T20:55:35.966736641Z"
+digest: sha256:083b15a26462ccfe583e19ff21568d4a6d0970184084b3ab03c5e3625488757e
+generated: "2026-09-25T04:35:52.10135985Z"
