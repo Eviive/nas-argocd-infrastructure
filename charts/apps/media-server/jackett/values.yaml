@@ -1,22 +1,6 @@
 base:
   deployments:
     - initContainers:
-        - name: coredns
-          image:
-            repository: coredns/coredns
-            tag: 1.14.7@sha256:7efd3c635b03efd68c4e8398fc45f0d993d0e9ab016f72c1cefb0fd6d01aa286
-          args:
-            - -conf
-            - /etc/coredns/Corefile
-          restartPolicy: Always
-          env:
-            - name: LOCAL_DNS
-              value: 10.96.0.10
-            - name: VPN_DNS
-              value: 10.2.0.1
-          volumeMounts:
-            - name: coredns-config
-              mountPath: /etc/coredns
         - name: gluetun
           image:
             repository: qmcgaw/gluetun
@@ -44,9 +28,7 @@ base:
             - name: DOT
               value: "off"
             - name: DNS_ADDRESS
-              value: 127.0.0.2
-            - name: FIREWALL_OUTBOUND_SUBNETS
-              value: 10.96.0.0/12
+              value: 10.2.0.1
             - name: FIREWALL_INPUT_PORTS
               value: "8191,9117"
           securityContext:
@@ -113,9 +95,6 @@ base:
         - name: gluetun-config
           persistentVolumeClaim:
             claimName: jackett-gluetun-config
-        - name: coredns-config
-          configMap:
-            name: jackett-coredns-config
 
   pvcs:
     - name: config
@@ -147,8 +126,3 @@ base:
       authentikProxyProviderRouteMatch: Host(`jackett.home.albertv.dev`)
       dnsNames:
         - jackett.home.albertv.dev
-
-  configMaps:
-    - name: coredns-config
-      files:
-        Corefile: assets/coredns/Corefile

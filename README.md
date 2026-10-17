@@ -37,7 +37,6 @@ This repository contains the configuration for the infrastructure supporting my 
 | Jackett      | Docker   |
 | Jellyfin     | Docker   |
 | Jellyseerr   | Docker   |
-| CoreDNS      | Docker   |
 | Gluetun      | Docker   |
 | FlareSolverr | Docker   |
 | qBittorrent  | Docker   |
