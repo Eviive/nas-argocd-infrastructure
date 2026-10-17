@@ -45,7 +45,7 @@
       "matchDepNames": [
         "jellyfin/jellyfin"
       ],
-      "allowedVersions": "/\\d+\\.\\d+\\.\\d+/"
+      "ignoreVersions": "/^20\\d{8}/"
     }
   ],
   "ignoreDeps": [
