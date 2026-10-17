@@ -37,6 +37,15 @@
         "linuxserver/qbittorrent"
       ],
       "allowedVersions": "!/.*(14\\.3\\.9|20\\.04\\.1).*/"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "jellyfin/jellyfin"
+      ],
+      "allowedVersions": "/\\d+\\.\\d+\\.\\d+/"
     }
   ],
   "ignoreDeps": [
